@@ -1,0 +1,11 @@
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Shared\bin\Debug\net8.0\ProyectoManhattan.Shared.deps.json
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Shared\bin\Debug\net8.0\ProyectoManhattan.Shared.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Shared\bin\Debug\net8.0\ProyectoManhattan.Shared.pdb
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Shared\obj\Debug\net8.0\ProyectoManhattan.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Shared\obj\Debug\net8.0\ProyectoManhattan.Shared.AssemblyInfoInputs.cache
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Shared\obj\Debug\net8.0\ProyectoManhattan.Shared.AssemblyInfo.cs
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Shared\obj\Debug\net8.0\ProyectoManhattan.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Shared\obj\Debug\net8.0\ProyectoManhattan.Shared.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Shared\obj\Debug\net8.0\refint\ProyectoManhattan.Shared.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Shared\obj\Debug\net8.0\ProyectoManhattan.Shared.pdb
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Shared\obj\Debug\net8.0\ref\ProyectoManhattan.Shared.dll

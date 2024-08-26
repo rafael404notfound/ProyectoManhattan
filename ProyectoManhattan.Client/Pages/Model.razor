@@ -1,0 +1,53 @@
+﻿@page "/Model"
+@inject HttpClient Http
+
+<div class="p-2">
+    <h3>Consultar Modelo</h3>
+    <EditForm Model="shoe" OnSubmit="Submit" class="d-flex flex-row">
+	<div>
+        <label>
+            Ean: 
+            <InputText @bind-Value="shoe.Ean" />
+        </label>
+    </div>
+    <div>
+        <button class="btn btn-primary btn-success btn-sm" type="submit">Enviar</button>
+    </div>
+    <div>
+        <MudProgressCircular Color="Color.Primary" Indeterminate="@loading" Size="Size.Small"/>
+    </div>
+</EditForm>
+
+@if(shoeModel != null){
+    <div >
+        <h5>Referencia:</h5>
+        <p>@shoeModel.Uneco @shoeModel.Family @shoeModel.Model</p> 
+    </div>
+
+    
+
+    <h5>Tallaje:</h5>
+    <MudTable Items="@shoeModel.Sizes" Hover="true"  Breakpoint="Breakpoint.None">
+        <HeaderContent>
+            <MudTh>Talla</MudTh>
+            <MudTh>Stock</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Talla">@context.Size</MudTd>
+            <MudTd DataLabel="Stock">@context.Count</MudTd>
+        </RowTemplate>
+    </MudTable>
+}
+</div>
+
+@code {
+    public Shoe shoe { get; set; } = new Shoe();
+    public ShoeModel? shoeModel { get; set; }
+    public bool loading { get; set; } = false;
+
+    public async Task Submit(){
+        loading = true;
+        shoeModel = await Http.GetFromJsonAsync<ShoeModel>($"https://localhost:5000/shoe?shoeEan={shoe.Ean}");
+        loading = false;
+    }
+}

@@ -1,0 +1,253 @@
+﻿@page "/DiferenciaStock"
+@inject HttpClient Http
+<PageTitle>Diferencia Stock</PageTitle>
+
+<h1>Calcular diferencia de stock</h1>
+
+<form @onsubmit=@FormSubmitted  class="d-flex flex-row align-items-end">
+    <div>
+        <label>
+            <MudTextField @bind-Value="inputValue" Label="Scanear" Variant="Variant.Text"></MudTextField>
+            @*<input type="text" @bind="inputValue" />*@
+        </label>
+    </div>
+    <div>
+        <MudButton Variant="Variant.Filled" Size="Size.Small"  Color="Color.Primary" OnClick="@(() => FormSubmitted())">Añadir</MudButton>
+        @*<button class="btn btn-primary btn-success btn-sm" type="submit">Añadir</button>*@
+    </div>
+</form>
+
+@if(shoeRefs.Count > 0)
+{
+    @foreach(var shoeRef in shoeRefs)
+    {
+    <p>@shoeRef</p>
+    }
+}
+<div class="d-flex flex-row pe-2">
+    <MudButton Variant="Variant.Filled"  Color="Color.Primary" OnClick="@(() => CalculateStockDiff())">Calcular</MudButton>
+    @*<button class="btn btn-primary"onclick="@CalculateStockDiff"> Calcular</button>*@
+    <div>
+        <MudProgressCircular Color="Color.Primary" Indeterminate="@loading" Size="Size.Small"/>
+    </div>
+</div>
+
+@*
+@if (result.MissingShoeModels.Count() > 0)
+{
+    <MudGrid>
+        <MudItem>
+            <MudPaper Width="100%">
+                <MudList T="string" Dense="true">
+                    <MudListSubheader>Faltante</MudListSubheader>
+                    @foreach(ShoeModel shoeModel in result.MissingShoeModels)
+                    {
+                        <MudListItem Text="@($"{shoeModel.Uneco} {shoeModel.Family} {shoeModel.Model}")" >
+                            <NestedList>
+                                @foreach(Shoe shoe in shoeModel.Sizes.Where(s => s.Count > 0))
+                                {
+                                    <MudListItem Text="@($"{shoe.Size}")"></MudListItem>
+                                }
+                            </NestedList>
+                        </MudListItem>
+                    }
+                </MudList>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+}
+
+@if (result.SurplusShoeModels.Count() > 0)
+{
+    <MudGrid>
+        <MudItem>
+            <MudPaper Width="100%">
+                <MudList T="string" Dense="true">
+                    <MudListSubheader>Sobrante</MudListSubheader>
+                    @foreach(ShoeModel shoeModel in result.SurplusShoeModels)
+                    {
+                        <MudListItem Text="@($"{shoeModel.Uneco} {shoeModel.Family} {shoeModel.Model}")" >
+                            <NestedList>
+                                @foreach(Shoe shoe in shoeModel.Sizes.Where(s => s.Count > 0))
+                                {
+                                    <MudListItem Text="@($"{shoe.Size} - - - - - {shoe.Count} unidades")"></MudListItem>
+                                }
+                            </NestedList>
+                        </MudListItem>
+                    }
+                </MudList>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+}
+
+@if (result.TotalShoeModels.Count() > 0)
+{
+    <MudGrid>
+        <MudItem>
+            <MudPaper Width="100%">
+                <MudList T="string" Dense="true">
+                    <MudListSubheader>Stock Total</MudListSubheader>
+                    @foreach(ShoeModel shoeModel in result.TotalShoeModels)
+                    {
+                        <MudListItem Text="@($"{shoeModel.Uneco} {shoeModel.Family} {shoeModel.Model}")" >
+                            <NestedList>
+                                @foreach(Shoe shoe in shoeModel.Sizes)
+                                {
+                                    <MudListItem Text="@($"{shoe.Size} - - - - - {shoe.Count} unidades")"></MudListItem>
+                                }
+                            </NestedList>
+                        </MudListItem>
+                    }
+                </MudList>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+}
+
+@if (result.ScannedShoeModels.Count() > 0)
+{
+    <MudGrid>
+        <MudItem>
+            <MudPaper Width="100%">
+                <MudList T="string" Dense="true">
+                    <MudListSubheader>Scaneados</MudListSubheader>
+                    @foreach(ShoeModel shoeModel in result.ScannedShoeModels)
+                    {
+                        <MudListItem Text="@($"{shoeModel.Uneco} {shoeModel.Family} {shoeModel.Model}")" >
+                            <NestedList>
+                                @foreach(Shoe shoe in shoeModel.Sizes.Where(s => s.Count > 0))
+                                {
+                                    <MudListItem Text="@($"{shoe.Size} - - - - - {shoe.Count} unidades")"></MudListItem>
+                                }
+                            </NestedList>
+                        </MudListItem>
+                    }
+                </MudList>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+}
+
+*@
+
+<MudList T ="string">
+    @foreach(var error in result.Errors)
+    {
+        <MudItem>@error</MudItem>
+    }
+</MudList>
+
+@if(shoeTableContexts != null)
+{
+    <MudTable Hover="true" Height="500px" FixedHeader="true"
+          Items="@shoeTableContexts"
+          GroupBy="@_groupDefinition"
+          GroupHeaderStyle="background-color:var(--mud-palette-background-gray)"
+          GroupHeaderClass="bg-secondary"
+          GroupFooterClass="mb-4"
+          Dense="true"
+          @ref="_tableRef">
+        <ColGroup>
+            <col style="width: 60px;" />
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+        </ColGroup>
+        <HeaderContent>
+            <MudTh>Talla</MudTh>
+            <MudTh>Faltante</MudTh>
+            <MudTh>Sobrante</MudTh>
+            <MudTh>Scaneadas</MudTh>
+            <MudTh>Stock Total</MudTh>
+        </HeaderContent>
+        <GroupHeaderTemplate>
+            <MudTh Class="mud-table-cell-custom-group" colspan="5">@*($"{context.Key.Substring(3, 4)} {context.Key.Substring(7, 3)} {context.Key.Substring(10, 5)}")*@ @context.Key </MudTh>
+        </GroupHeaderTemplate>
+        <RowTemplate>
+            <MudTd DataLabel="Talla">@context.Size</MudTd>
+            <MudTd DataLabel="Faltante">@context.Missing</MudTd>
+            <MudTd DataLabel="Sobrante">@context.Surplus</MudTd>
+            <MudTd DataLabel="Scaneadas">@context.Scanned</MudTd>
+            <MudTd DataLabel="Stock Total">@context.TotalStock</MudTd>
+        </RowTemplate>
+    </MudTable>    
+}
+
+<style>
+    .mud-table-cell-custom-group {
+        font-weight: 500;
+    }
+
+    .mud-table-cell-custom-group-footer {
+        padding-bottom: 50px;
+        text-align: right;
+    }
+</style>
+
+
+@code {
+    public List<string> shoeRefs { get; set; } = new List<string>();
+    public string? inputValue { get; set; }
+    public CalculateMissingShoesDto result { get; set; } = new CalculateMissingShoesDto();
+    public bool loading { get; set; } = false;
+    public List<ShoeTableContext> shoeTableContexts { get; set; }
+    private MudTable<ShoeTableContext> _tableRef;
+
+    private void FormSubmitted()
+    {
+        shoeRefs.Add(inputValue);
+        inputValue = "";
+    }
+
+    private async Task CalculateStockDiff()
+    {
+        loading = true;
+        var response = await Http.PostAsJsonAsync("https://localhost:5000/Shoe", shoeRefs);
+        result = await response.Content.ReadFromJsonAsync<CalculateMissingShoesDto>();
+        shoeTableContexts = GetShoeTableCotnexts(result);
+        loading = false;
+    }
+
+    public class ShoeTableContext
+    {
+        public string? RefWithOutSize { get; set; }
+        public int Size { get; set; }
+        public int Scanned { get; set; }
+        public int Missing { get; set; }
+        public int Surplus { get; set; }
+        public int TotalStock { get; set; }
+    }
+
+    public List<ShoeTableContext> GetShoeTableCotnexts(CalculateMissingShoesDto calculateMissingShoesDto)
+    {
+        List<ShoeTableContext> shoeTableContexts = new List<ShoeTableContext>();
+        foreach(var totalStockShoeModel in calculateMissingShoesDto.TotalShoeModels)
+        {
+            foreach(var shoe in totalStockShoeModel.Sizes)
+            {
+                shoeTableContexts.Add(new ShoeTableContext
+                    {
+                        RefWithOutSize = totalStockShoeModel.RefWithOutSize,
+                        Size = shoe.Size,
+                        Scanned = calculateMissingShoesDto.ScannedShoeModels.Where(sM => sM.RefWithOutSize == totalStockShoeModel.RefWithOutSize).FirstOrDefault().Sizes.Where(s => s.Reference == shoe.Reference).FirstOrDefault().Count,
+                        Missing = calculateMissingShoesDto.MissingShoeModels.Where(sM => sM.RefWithOutSize == totalStockShoeModel.RefWithOutSize).FirstOrDefault().Sizes.Where(s => s.Reference == shoe.Reference).FirstOrDefault().Count,
+                        Surplus = calculateMissingShoesDto.SurplusShoeModels.Where(sM => sM.RefWithOutSize == totalStockShoeModel.RefWithOutSize).FirstOrDefault().Sizes.Where(s => s.Reference == shoe.Reference).FirstOrDefault().Count,
+                        TotalStock = shoe.Count
+                    });
+            }
+        }
+        return shoeTableContexts;
+    }
+
+    private TableGroupDefinition<ShoeTableContext> _groupDefinition = new()
+        {
+            GroupName = "Modelo",
+            Indentation = false,
+            Expandable = true,
+            IsInitiallyExpanded = true,
+            Selector = (s) => s.RefWithOutSize
+        };
+}
