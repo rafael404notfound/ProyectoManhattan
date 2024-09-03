@@ -13,6 +13,10 @@ using iText.Kernel.Font;
 using iText.Layout;
 using iText.Kernel.Pdf;
 using Microsoft.AspNetCore.Mvc;
+using iText.IO.Source;
+using iText.Kernel.Colors;
+using iText.Kernel.Geom;
+using Org.BouncyCastle.Math.EC;
 
 namespace ProyectoManhattan.Application
 {
@@ -20,11 +24,89 @@ namespace ProyectoManhattan.Application
     {
         public string CreatePdf(CalculateMissingShoesDto result)
         {
-            string path = "C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Server/pdf/file.pdf";
-            PdfDocument pdf = new PdfDocument(new PdfWriter(path));
+            //string path = "pdf/file.pdf";
+            //PdfDocument pdf = new PdfDocument(new PdfWriter(path));
+            MemoryStream baos = new MemoryStream();
+            PdfWriter writer = new PdfWriter(baos);
+            PdfDocument pdf = new PdfDocument(writer);
+
             iText.Layout.Document d = new iText.Layout.Document(pdf);
 
             PdfFont font = PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN);
+
+            Paragraph header = new Paragraph("INFORME MANHATTAN")
+                    .SetFont(font)
+                    .SetFontSize(42);
+
+            d.Add(header);
+
+            float missingShoeCount= 0;
+            foreach(var shoeModel in result.MissingShoeModels)
+            {
+                foreach(var shoe in shoeModel.Sizes)
+                {
+                    if(shoe.Count > 0) missingShoeCount ++;
+                }
+            }
+            float surplusShoeCount = 0;
+            foreach (var shoeModel in result.SurplusShoeModels)
+            {
+                foreach (var shoe in shoeModel.Sizes)
+                {
+                    if (shoe.Count > 0) surplusShoeCount += shoe.Count;
+                }
+            }
+            float totalUniqueShoeCount = 0;
+            foreach (var shoeModel in result.TotalShoeModels)
+            {
+                foreach (var shoe in shoeModel.Sizes)
+                {
+                    if (shoe.Count > 0) totalUniqueShoeCount++;
+                }
+            }
+            float totalShoeCount = 0;
+            foreach (var shoeModel in result.TotalShoeModels)
+            {
+                foreach (var shoe in shoeModel.Sizes)
+                {
+                    if (shoe.Count > 0) totalShoeCount+= shoe.Count;
+                }
+            }
+            float scannedShoeCount = 0;
+            foreach (var shoeModel in result.ScannedShoeModels)
+            {
+                foreach (var shoe in shoeModel.Sizes)
+                {
+                    if (shoe.Count > 0) scannedShoeCount += shoe.Count;
+                }
+            }
+            float scannedUniqueShoeCount = 0;
+            foreach (var shoeModel in result.ScannedShoeModels)
+            {
+                foreach (var shoe in shoeModel.Sizes)
+                {
+                    if (shoe.Count > 0) scannedUniqueShoeCount++;
+                }
+            }
+            Paragraph p = new Paragraph($"*** Faltan {missingShoeCount} zapatos únicos ({(missingShoeCount / totalUniqueShoeCount)*100}% del total de zapatos únicos).")
+                    .SetFont(font)
+                    .SetFontSize(12);
+            d.Add(p);
+
+            p = new Paragraph($"*** Sobran {surplusShoeCount} zapatos ({(surplusShoeCount / scannedShoeCount) * 100}% del total de zapatos en tienda).")
+                    .SetFont(font)
+                    .SetFontSize(12);
+            d.Add(p);
+
+            p = new Paragraph($"*** En total hay {totalShoeCount} zapatos de los cuales {totalUniqueShoeCount} son unicos.")
+                    .SetFont(font)
+                    .SetFontSize(12);
+            d.Add(p);
+
+            p = new Paragraph($"*** En tienda hay {scannedShoeCount} zapatos de los cuales {scannedUniqueShoeCount} son unicos.")
+                    .SetFont(font)
+                    .SetFontSize(12);
+            d.Add(p);
 
             Table table = new Table(6);
             table.SetWidth(UnitValue.CreatePercentValue(80)).SetMarginBottom(10);
@@ -34,6 +116,8 @@ namespace ProyectoManhattan.Application
             table.AddHeaderCell(new Cell().SetFont(font).Add(new Paragraph("Sobrante")));
             table.AddHeaderCell(new Cell().SetFont(font).Add(new Paragraph("Scaneadas")));
             table.AddHeaderCell(new Cell().SetFont(font).Add(new Paragraph("Stock Total")));
+
+            result.TotalShoeModels = result.TotalShoeModels.OrderBy(s => s.RefWithOutSize).ToList();
 
             foreach (var shoeModel in result.TotalShoeModels)
             {
@@ -58,9 +142,12 @@ namespace ProyectoManhattan.Application
 
             d.Add(table);
             d.Close();
+            
+            byte[] bytes = baos.ToArray();
 
-            byte[] pdfBytes = System.IO.File.ReadAllBytes("pdf/file.pdf");
-            string base64Pdf = Convert.ToBase64String(pdfBytes);
+            //byte[] pdfBytes = System.IO.File.ReadAllBytes("pdf/file.pdf");
+            //string base64Pdf = Convert.ToBase64String(pdfBytes);
+            string base64Pdf = Convert.ToBase64String(bytes);
             return base64Pdf;
         }
     }

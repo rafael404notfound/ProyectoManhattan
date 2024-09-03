@@ -1,17 +1,25 @@
-﻿@page "/Model"
+﻿@page "/"
+@page "/ConsultarModelo"
 @inject HttpClient Http
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
 
-<div class="p-2">
-    <h3>Consultar Modelo</h3>
-    <EditForm Model="shoe" OnSubmit="Submit" class="d-flex flex-row">
+
+<h1>Consultar Modelo</h1>
+<EditForm Model="shoe" OnSubmit="Submit" class="d-flex flex-row align-items-end">
+    <div>
+        <MudSelect T="string" @bind-Value="methodSelected" >
+            <MudSelectItem Value="@("Codigo de barras")" />
+            <MudSelectItem Value="@("Matnr")" />
+        </MudSelect>
+    </div>
 	<div>
         <label>
-            Ean: 
-            <InputText @bind-Value="shoe.Ean" />
+            <MudTextField @bind-Value="input" Label="@getLabel()" Variant="Variant.Text" InputType="InputType.Text"></MudTextField>
         </label>
     </div>
     <div>
-        <button class="btn btn-primary btn-success btn-sm" type="submit">Enviar</button>
+        <MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Primary" ButtonType="ButtonType.Submit">Consultar</MudButton>
     </div>
     <div>
         <MudProgressCircular Color="Color.Primary" Indeterminate="@loading" Size="Size.Small"/>
@@ -19,14 +27,14 @@
 </EditForm>
 
 @if(shoeModel != null){
-    <div >
+    <div class=" mt-2">
         <h5>Referencia:</h5>
         <p>@shoeModel.Uneco @shoeModel.Family @shoeModel.Model</p> 
     </div>
 
     
 
-    <h5>Tallaje:</h5>
+    <h5 class="mt-2">Tallaje:</h5>
     <MudTable Items="@shoeModel.Sizes" Hover="true"  Breakpoint="Breakpoint.None">
         <HeaderContent>
             <MudTh>Talla</MudTh>
@@ -38,16 +46,75 @@
         </RowTemplate>
     </MudTable>
 }
-</div>
+
 
 @code {
     public Shoe shoe { get; set; } = new Shoe();
     public ShoeModel? shoeModel { get; set; }
     public bool loading { get; set; } = false;
+    public string uneco { get; set; } = string.Empty;
+    public string methodSelected { get; set; } = "Codigo de barras";
+    public string input { get; set; } = "";
+
+    public string getLabel()
+    {
+        if(methodSelected == "Codigo de barras") return "Scanear";
+        if (methodSelected == "Matnr") return "Introducir Matnr";
+        else return "";
+    }
 
     public async Task Submit(){
-        loading = true;
-        shoeModel = await Http.GetFromJsonAsync<ShoeModel>($"https://localhost:5000/shoe?shoeEan={shoe.Ean}");
-        loading = false;
+        switch(methodSelected)
+        {
+            case "Codigo de barras":
+                shoeModel = null;
+                shoe.Ean = input;
+                try
+                {
+                    loading = true;
+                    shoeModel = await Http.GetFromJsonAsync<ShoeModel>($"{UrlGetter.Url}shoe/Ean?shoeEan={input}");
+                    loading = false;
+                }
+                catch
+                {
+                    loading = false;
+                    await InvokeAsync(StateHasChanged);
+                    var result = await DialogService.ShowAsync<DialogUneco>(string.Empty);
+                    this.uneco = await result.GetReturnValueAsync<string>() ?? string.Empty;
+                    if (uneco != "")
+                    {
+                        loading = true;
+                        await InvokeAsync(StateHasChanged);
+                        try
+                        {
+                            shoeModel = await Http.GetFromJsonAsync<ShoeModel>($"{UrlGetter.Url}shoe/Uneco?shoeEan={shoe.Ean}&shoeUneco={uneco}");
+                        }
+                        catch
+                        {
+                            Snackbar.Add($"No se ha encontrado resultado para Ean '{shoe.Ean}' con Uneco '{uneco}'", Severity.Error);
+                        }
+
+                    }
+                    loading = false;
+                }
+                input = "";
+                break;
+
+            case "Referencia":
+                shoeModel = null;
+                loading = true;
+                shoeModel = await Http.GetFromJsonAsync<ShoeModel>($"{UrlGetter.Url}shoe/reference?shoeReference={input}");
+                loading = false;
+                input = "";
+                break;
+
+            case "Matnr":
+                shoeModel = null;
+                loading = true;
+                shoeModel = await Http.GetFromJsonAsync<ShoeModel>($"{UrlGetter.Url}shoe/matnr?shoeMatnr={input}");
+                loading = false;
+                input = "";
+                break;
+        }
     }
 }

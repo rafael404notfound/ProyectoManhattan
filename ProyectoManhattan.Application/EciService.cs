@@ -32,15 +32,18 @@ namespace ProyectoManhattan.Application
                 //shoe.Size = Int32.Parse(((XmlNode)element)["d:Talla"]?.InnerText ?? "0");
                 shoe.Count = Int32.Parse(((XmlNode)element)["d:Stock"]?.InnerText ?? "0");
                 //shoe.Matnr = ((XmlNode)element)["d:Matnr"]?.InnerText;
-                if (shoes.Where(s => s.Ean == shoe.Ean).FirstOrDefault() == null) shoes.Add(shoe);
+                if (shoes.Where(s => s.Matnr == shoe.Matnr).FirstOrDefault() == null) shoes.Add(shoe);
             }
             return shoes;
         }
 
-        public void SetShoeInfoByEan(string ean, ref Shoe shoe, HttpClient httpClient)
+        public void SetShoeInfoByEan(string ean, ref Shoe shoe, HttpClient httpClient, string? uneco = null)
         {
             // Send Http request
-            var url = new Uri($"https://sapfiori.elcorteingles.es/sap/opu/odata/GECI/EA_CROSS_SRV;o=GEW_006/ESCANSet/?$filter=Ean11%20eq%20%27{ean}%27%20and%20Uneco%20eq%20%27%27%20and%20Werks%20eq%20%27007E%27%20and%20Matnr%20eq%20%27%27%20and%20Mard%20eq%20%27%27%20and%20Empresa%20eq%20%27001%27%20and%20Rfid%20eq%20%27X%27");
+            Uri url;
+            if(uneco == null) url = new Uri($"https://sapfiori.elcorteingles.es/sap/opu/odata/GECI/EA_CROSS_SRV;o=GEW_006/ESCANSet/?$filter=Ean11%20eq%20%27{ean}%27%20and%20Uneco%20eq%20%27%27%20and%20Werks%20eq%20%27007E%27%20and%20Matnr%20eq%20%27%27%20and%20Mard%20eq%20%27%27%20and%20Empresa%20eq%20%27001%27%20and%20Rfid%20eq%20%27X%27");
+            else url = new Uri($"https://sapfiori.elcorteingles.es/sap/opu/odata/GECI/EA_CROSS_SRV;o=GEW_006/ESCANSet/?$filter=Ean11%20eq%20%27{ean}%27%20and%20Uneco%20eq%20%27{uneco}%27%20and%20Werks%20eq%20%27007E%27%20and%20Matnr%20eq%20%27%27%20and%20Mard%20eq%20%27%27%20and%20Empresa%20eq%20%27001%27%20and%20Rfid%20eq%20%27X%27");
+
             var response = httpClient.GetStringAsync(url).Result;
 
             // Get xml from response
@@ -53,15 +56,15 @@ namespace ProyectoManhattan.Application
             shoe.Matnr = elements.Item(0)?["d:Matnr"]?.InnerText;
             shoe.Reference = elements.Item(0)?["d:RefHost"]?.InnerText;
             shoe.Ean = ean;
-            shoe.Size = (int)(Int64.Parse(shoe.Matnr ?? "0") % 100);
+            shoe.Size = (int)(Int64.Parse(shoe.Matnr ?? "0") % 1000);
 
         }
 
-        public async Task<Shoe> GetShoeByEan(string ean, HttpClient httpClient)
+        public async Task<Shoe> GetShoeByEan(string ean, HttpClient httpClient, string? uneco = null)
         {
             // Get and set shoe infi
             Shoe shoe = new Shoe();
-            SetShoeInfoByEan(ean, ref shoe, httpClient);
+            SetShoeInfoByEan(ean, ref shoe, httpClient, uneco);
 
             // Send Http request
             var url = new Uri($"https://sapfiori.elcorteingles.es/sap/opu/odata/GECI/EA_CONSULTA_ARTICULO_SRV;o=GEW_006/EA_HEADERSet(Matnr='{shoe.Matnr}',Werks='007E',Stock='')");
@@ -166,7 +169,7 @@ namespace ProyectoManhattan.Application
             shoe.Ean = elements.Item(0)?["d:Ean11"]?.InnerText;
             shoe.Reference = elements.Item(0)?["d:RefHost"]?.InnerText;
             shoe.Matnr = elements.Item(0)?["d:Matnr"]?.InnerText;
-            shoe.Size = shoe.Size = (int)(Int64.Parse(shoe.Matnr ?? "0") % 100);
+            shoe.Size = shoe.Size = (int)(Int64.Parse(shoe.Matnr ?? "0") % 1000);
         }
 
         public CalculateMissingShoesDto CalculateMissingShoes(List<ShoeModel> scannedShoeModels, bool scannedAtParking, HttpClient httpClient)
@@ -262,6 +265,25 @@ namespace ProyectoManhattan.Application
                 ScannedAtParking = scannedAtParking,
                 Errors = errors
             };
+        }
+
+        public async Task<string> GetShoeMatnrByReference(string reference, HttpClient httpClient)
+        {
+            string uneco = reference.Substring(3, 4);
+            // Send Http request
+            var url = new Uri($"https://sapfiori.elcorteingles.es/sap/opu/odata/GECI/EA_CONSULTA_ARTICULO_SRV;o=GEW_006/EA_HEADERSet(Matnr='1070443010110',Werks='007E',Stock='')?$filter=RefHost%20eq%27{reference}%27%20and%20Uneco%20eq%27{uneco}%27");
+
+            var response = await httpClient.GetStringAsync(url);
+
+            // Get xml from response
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(response);
+
+            //get Count from response
+            var elements = doc.GetElementsByTagName("m:properties");
+            string matnr = elements.Item(0)?["d:Matnr"]?.InnerText;
+
+            return matnr;
         }
     }
 }

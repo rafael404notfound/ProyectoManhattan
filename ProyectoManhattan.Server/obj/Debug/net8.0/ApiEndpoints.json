@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "EciApi.Controllers.ShoeController",
-    "Method": "FetchShoeModel",
+    "Method": "FetchShoeModelByEan",
     "RelativePath": "Shoe",
     "HttpMethod": "GET",
     "IsController": true,
@@ -28,6 +28,92 @@
   },
   {
     "ContainingType": "EciApi.Controllers.ShoeController",
+    "Method": "FetchShoeModelByMatnr",
+    "RelativePath": "Shoe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "shoeMatnr",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.Entities.ShoeModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "FetchShoeModel"
+  },
+  {
+    "ContainingType": "EciApi.Controllers.ShoeController",
+    "Method": "FetchShoeModeByReference",
+    "RelativePath": "Shoe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "shoeReference",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.Entities.ShoeModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "FetchShoeModel"
+  },
+  {
+    "ContainingType": "EciApi.Controllers.ShoeController",
+    "Method": "FetchShoeModelByUneco",
+    "RelativePath": "Shoe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "shoeEan",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "shoeUneco",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.Entities.ShoeModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "FetchShoeModelWithUneco"
+  },
+  {
+    "ContainingType": "EciApi.Controllers.ShoeController",
     "Method": "GetMissingShoes",
     "RelativePath": "Shoe",
     "HttpMethod": "POST",
@@ -36,7 +122,7 @@
     "Parameters": [
       {
         "Name": "shoeEans",
-        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "System.Collections.Generic.List\u00601[[Domain.Dto.EanAndUnecoDto, ProyectoManhattan.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],
@@ -52,6 +138,115 @@
       }
     ],
     "EndpointName": "GetMissingShoes"
+  },
+  {
+    "ContainingType": "EciApi.Controllers.ShoeController",
+    "Method": "FetchShoeModelByEan",
+    "RelativePath": "Shoe/Ean",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "shoeEan",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.Entities.ShoeModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EciApi.Controllers.ShoeController",
+    "Method": "FetchShoeModelByMatnr",
+    "RelativePath": "Shoe/matnr",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "shoeMatnr",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.Entities.ShoeModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EciApi.Controllers.ShoeController",
+    "Method": "FetchShoeModeByReference",
+    "RelativePath": "Shoe/reference",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "shoeReference",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.Entities.ShoeModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EciApi.Controllers.ShoeController",
+    "Method": "FetchShoeModelByUneco",
+    "RelativePath": "Shoe/Uneco",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "shoeEan",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "shoeUneco",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.Entities.ShoeModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "ProyectoManhattan.Server.Controllers.WeatherForecastController",

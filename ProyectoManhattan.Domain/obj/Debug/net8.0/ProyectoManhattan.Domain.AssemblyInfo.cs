@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProyectoManhattan.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fad0de89119be6287abc2e83e21b59f149b7543c")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProyectoManhattan.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProyectoManhattan.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

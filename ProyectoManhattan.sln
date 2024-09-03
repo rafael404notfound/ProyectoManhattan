@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoManhattan.Server", "ProyectoManhattan.Server\ProyectoManhattan.Server.csproj", "{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoManhattan.Server", "ProyectoManhattan.Server\ProyectoManhattan.Server.csproj", "{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoManhattan.Client", "ProyectoManhattan.Client\ProyectoManhattan.Client.csproj", "{CA1C8EC7-1BB2-44DE-81ED-5C60DF84D882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoManhattan.Client", "ProyectoManhattan.Client\ProyectoManhattan.Client.csproj", "{CA1C8EC7-1BB2-44DE-81ED-5C60DF84D882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoManhattan.Domain", "ProyectoManhattan.Domain\ProyectoManhattan.Domain.csproj", "{F4EB34B9-D8D1-4312-8079-F2B3057DD4C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoManhattan.Domain", "ProyectoManhattan.Domain\ProyectoManhattan.Domain.csproj", "{F4EB34B9-D8D1-4312-8079-F2B3057DD4C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoManhattan.Application", "ProyectoManhattan.Application\ProyectoManhattan.Application.csproj", "{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoManhattan.Application", "ProyectoManhattan.Application\ProyectoManhattan.Application.csproj", "{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{49DE8336-D00E-4642-96B6-51B4F2B81D22}"
 EndProject

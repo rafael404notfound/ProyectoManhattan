@@ -13,6 +13,7 @@ using iText.Layout;
 using iText.Kernel.Pdf;
 using ProyectoManhattan.Application;
 using System.Net.Http;
+using Domain.Dto;
 
 namespace EciApi.Controllers
 {
@@ -34,7 +35,8 @@ namespace EciApi.Controllers
         }
 
         [HttpGet(Name = "FetchShoeModel")]
-        public async Task<ShoeModel> FetchShoeModel(string shoeEan)
+        [Route("Ean")]
+        public async Task<ShoeModel> FetchShoeModelByEan(string shoeEan)
         {
             var handler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
             HttpClient httpClient = new HttpClient(handler);
@@ -49,8 +51,59 @@ namespace EciApi.Controllers
             return result;
         }
 
+        [HttpGet(Name = "FetchShoeModel")]
+        [Route("matnr")]
+        public async Task<ShoeModel> FetchShoeModelByMatnr(string shoeMatnr)
+        {
+            var handler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
+            HttpClient httpClient = new HttpClient(handler);
+            List<Shoe> shoes = new List<Shoe>();
+            Shoe shoe = new Shoe();
+
+            shoes = _eciService.FetchByMatnr(shoeMatnr, httpClient).Result;
+            ShoeModel result = _eciService.GetShoeModelTemplateByMatnr(shoeMatnr, httpClient).Result;
+            result.Sizes = shoes;
+
+            return result;
+        }
+
+
+        [HttpGet(Name = "FetchShoeModel")]
+        [Route("reference")]
+        public async Task<ShoeModel> FetchShoeModeByReference(string shoeReference)
+        {
+            var handler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
+            HttpClient httpClient = new HttpClient(handler);
+            List<Shoe> shoes = new List<Shoe>();
+            Shoe shoe = new Shoe();
+
+            shoe.Matnr = _eciService.GetShoeMatnrByReference(shoeReference, httpClient).Result;
+            shoes = _eciService.FetchByMatnr(shoe.Matnr, httpClient).Result;
+            ShoeModel result = _eciService.GetShoeModelTemplateByMatnr(shoe.Matnr, httpClient).Result;
+            result.Sizes = shoes;
+
+            return result;
+        }
+
+        [HttpGet(Name = "FetchShoeModelWithUneco")]
+        [Route("Uneco")]
+        public async Task<ShoeModel> FetchShoeModelByUneco([FromQuery]string shoeEan, [FromQuery]string shoeUneco)
+        {
+            var handler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
+            HttpClient httpClient = new HttpClient(handler);
+            List<Shoe> shoes = new List<Shoe>();
+            Shoe shoe = new Shoe();
+
+            _eciService.SetShoeInfoByEan(shoeEan, ref shoe, httpClient, shoeUneco);
+            shoes = _eciService.FetchByMatnr(shoe.Matnr, httpClient).Result;
+            ShoeModel result = _eciService.GetShoeModelTemplateByMatnr(shoe.Matnr, httpClient).Result;
+            result.Sizes = shoes;
+
+            return result;
+        }
+
         [HttpPost(Name = "GetMissingShoes")]
-        public async Task<CalculateMissingShoesDto> GetMissingShoes(List<string> shoeEans)
+        public async Task<CalculateMissingShoesDto> GetMissingShoes(List<EanAndUnecoDto> shoeEans)
         {
             var handler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
             HttpClient httpClient = new HttpClient(handler);
@@ -59,7 +112,7 @@ namespace EciApi.Controllers
             Shoe shoe = new Shoe();
             foreach (var shoeEan in shoeEans)
             {
-                shoe = await _eciService.GetShoeByEan(shoeEan, httpClient);
+                shoe = await _eciService.GetShoeByEan(shoeEan.Ean, httpClient, shoeEan.Uneco);
                 shoe.Count = 1;
                 shoes.Add(shoe);
             }

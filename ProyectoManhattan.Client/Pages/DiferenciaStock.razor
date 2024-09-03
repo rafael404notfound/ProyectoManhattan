@@ -1,13 +1,20 @@
-﻿@page "/DiferenciaStock"
+﻿@page "/CalcularDiferencia"
 @inject HttpClient Http
 <PageTitle>Diferencia Stock</PageTitle>
 
 <h1>Calcular diferencia de stock</h1>
 
+<div>
+    <label>
+        <MudTextField @bind-Value="uneco" Label="Uneco" Variant="Variant.Text" InputType="InputType.Text"></MudTextField>
+        @*<input type="text" @bind="inputValue" />*@
+    </label>
+</div>
+
 <form @onsubmit=@FormSubmitted  class="d-flex flex-row align-items-end">
     <div>
         <label>
-            <MudTextField @bind-Value="inputValue" Label="Scanear" Variant="Variant.Text"></MudTextField>
+            <MudTextField @bind-Value="inputValue" Label="Scanear" Variant="Variant.Text" InputType="InputType.Text"></MudTextField>
             @*<input type="text" @bind="inputValue" />*@
         </label>
     </div>
@@ -17,11 +24,11 @@
     </div>
 </form>
 
-@if(shoeRefs.Count > 0)
+@if(shoes.Count > 0)
 {
-    @foreach(var shoeRef in shoeRefs)
+    @foreach(var shoe in shoes)
     {
-    <p>@shoeRef</p>
+    <MudChip T="string" Color="Color.Secondary">@shoe.Uneco : @shoe.Ean</MudChip>
     }
 }
 <div class="d-flex flex-row pe-2">
@@ -143,10 +150,10 @@
     <MudTable Hover="true" Height="500px" FixedHeader="true"
           Items="@shoeTableContexts"
           GroupBy="@_groupDefinition"
-          GroupHeaderStyle="background-color:var(--mud-palette-background-gray)"
-          GroupHeaderClass="bg-secondary"
+              GroupHeaderStyle="background-color:var(--mud-palette-background-gray)"
           GroupFooterClass="mb-4"
           Dense="true"
+          Breakpoint="Breakpoint.None"
           @ref="_tableRef">
         <ColGroup>
             <col style="width: 60px;" />
@@ -164,7 +171,7 @@
             <MudTh>Stock Total</MudTh>
         </HeaderContent>
         <GroupHeaderTemplate>
-            <MudTh Class="mud-table-cell-custom-group" colspan="5">@*($"{context.Key.Substring(3, 4)} {context.Key.Substring(7, 3)} {context.Key.Substring(10, 5)}")*@ @context.Key </MudTh>
+            <MudTh Class="mud-table-cell-custom-group" colspan="5">@($"{context.Key.ToString()?.Substring(3, 4)} {context.Key.ToString()?.Substring(7, 3)} {context.Key.ToString()?.Substring(10, 5)}")</MudTh>
         </GroupHeaderTemplate>
         <RowTemplate>
             <MudTd DataLabel="Talla">@context.Size</MudTd>
@@ -189,8 +196,10 @@
 
 
 @code {
-    public List<string> shoeRefs { get; set; } = new List<string>();
+    //public List<string> shoeRefs { get; set; } = new List<string>();
+    public List<EanAndUnecoDto> shoes = new List<EanAndUnecoDto>();
     public string? inputValue { get; set; }
+    public string? uneco { get; set; }
     public CalculateMissingShoesDto result { get; set; } = new CalculateMissingShoesDto();
     public bool loading { get; set; } = false;
     public List<ShoeTableContext> shoeTableContexts { get; set; }
@@ -198,14 +207,14 @@
 
     private void FormSubmitted()
     {
-        shoeRefs.Add(inputValue);
+        shoes.Add(new EanAndUnecoDto(inputValue, uneco));
         inputValue = "";
     }
 
     private async Task CalculateStockDiff()
     {
         loading = true;
-        var response = await Http.PostAsJsonAsync("https://localhost:5000/Shoe", shoeRefs);
+        var response = await Http.PostAsJsonAsync($"{UrlGetter.Url}Shoe", shoes);
         result = await response.Content.ReadFromJsonAsync<CalculateMissingShoesDto>();
         shoeTableContexts = GetShoeTableCotnexts(result);
         loading = false;
@@ -238,6 +247,7 @@
                         TotalStock = shoe.Count
                     });
             }
+            shoeTableContexts = shoeTableContexts.OrderBy(s => s.RefWithOutSize).ToList();
         }
         return shoeTableContexts;
     }
@@ -247,7 +257,7 @@
             GroupName = "Modelo",
             Indentation = false,
             Expandable = true,
-            IsInitiallyExpanded = true,
+            IsInitiallyExpanded = false,
             Selector = (s) => s.RefWithOutSize
         };
 }
