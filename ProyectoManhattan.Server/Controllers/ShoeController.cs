@@ -14,6 +14,8 @@ using iText.Kernel.Pdf;
 using ProyectoManhattan.Application;
 using System.Net.Http;
 using Domain.Dto;
+using iText.Commons.Bouncycastle.Cert.Ocsp;
+using MudBlazor;
 
 namespace EciApi.Controllers
 {
@@ -47,6 +49,7 @@ namespace EciApi.Controllers
             shoes = _eciService.FetchByMatnr(shoe.Matnr, httpClient).Result;
             ShoeModel result = _eciService.GetShoeModelTemplateByMatnr(shoe.Matnr, httpClient).Result;
             result.Sizes = shoes;
+            result.Brand = shoe.Brand;
 
             return result;
         }
@@ -105,17 +108,42 @@ namespace EciApi.Controllers
         [HttpPost(Name = "GetMissingShoes")]
         public async Task<CalculateMissingShoesDto> GetMissingShoes(List<EanAndUnecoDto> shoeEans)
         {
+
             var handler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
             HttpClient httpClient = new HttpClient(handler);
 
             List<Shoe> shoes = new List<Shoe>();
             Shoe shoe = new Shoe();
+
+
             foreach (var shoeEan in shoeEans)
             {
                 shoe = await _eciService.GetShoeByEan(shoeEan.Ean, httpClient, shoeEan.Uneco);
                 shoe.Count = 1;
                 shoes.Add(shoe);
             }
+
+            /*List<Task<Shoe>> tasks = new List<Task<Shoe>>();
+            foreach (var shoeEan in shoeEans)
+            {
+                tasks.Add(_eciService.GetShoeByEan(shoeEan.Ean, httpClient, shoeEan.Uneco));
+            }
+            foreach (var task in tasks)
+            {
+                task.Wait();
+                var shoe = task.Result;
+                shoe.Count = 1;
+                shoes.Add(shoe);
+            }*/
+
+            
+           /* List<Task<Shoe>> tasks = new List<Task<Shoe>>();
+            foreach (var shoeEan in shoeEans)
+            {
+                tasks.Add(_eciService.GetShoeByEan(shoeEan.Ean, httpClient, shoeEan.Uneco));
+            }
+            var results = await Task.WhenAll(tasks.ToArray());
+            shoes.AddRange(results);     */
 
             List<ShoeModel> scannedShoeModels = await _eciService.GroupShoesInToShoeModels(shoes, httpClient);
 

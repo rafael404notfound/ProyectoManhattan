@@ -6,13 +6,12 @@
 
 
 <h1>Consultar Modelo</h1>
+<MudSelect T="string" @bind-Value="methodSelected">
+    <MudSelectItem Value="@("Codigo de barras")" />
+    <MudSelectItem Value="@("Referencia")" />
+    <MudSelectItem Value="@("Matnr")" />
+</MudSelect>
 <EditForm Model="shoe" OnSubmit="Submit" class="d-flex flex-row align-items-end">
-    <div>
-        <MudSelect T="string" @bind-Value="methodSelected" >
-            <MudSelectItem Value="@("Codigo de barras")" />
-            <MudSelectItem Value="@("Matnr")" />
-        </MudSelect>
-    </div>
 	<div>
         <label>
             <MudTextField @bind-Value="input" Label="@getLabel()" Variant="Variant.Text" InputType="InputType.Text"></MudTextField>
@@ -27,11 +26,18 @@
 </EditForm>
 
 @if(shoeModel != null){
+    
+    if(shoeModel.Brand != null)
+    {
+        <div class=" mt-2">
+            <h5>Marca:</h5>
+            <p>@shoeModel.Brand</p>
+        </div>
+    }
     <div class=" mt-2">
         <h5>Referencia:</h5>
-        <p>@shoeModel.Uneco @shoeModel.Family @shoeModel.Model</p> 
+        <p>@shoeModel.Uneco @shoeModel.Family @shoeModel.Model</p>
     </div>
-
     
 
     <h5 class="mt-2">Tallaje:</h5>
@@ -60,6 +66,7 @@
     {
         if(methodSelected == "Codigo de barras") return "Scanear";
         if (methodSelected == "Matnr") return "Introducir Matnr";
+        if (methodSelected == "Referencia") return "Introducir Ref";
         else return "";
     }
 
@@ -103,7 +110,7 @@
             case "Referencia":
                 shoeModel = null;
                 loading = true;
-                shoeModel = await Http.GetFromJsonAsync<ShoeModel>($"{UrlGetter.Url}shoe/reference?shoeReference={input}");
+                shoeModel = await Http.GetFromJsonAsync<ShoeModel>($"{UrlGetter.Url}shoe/Ean?shoeEan={input}");
                 loading = false;
                 input = "";
                 break;

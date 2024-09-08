@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Xml;
 using Domain.Entities;
 using Domain.Dto;
+using Org.BouncyCastle.Crypto.Operators;
+using System.Threading;
 
 namespace ProyectoManhattan.Application
 {
@@ -57,11 +59,18 @@ namespace ProyectoManhattan.Application
             shoe.Reference = elements.Item(0)?["d:RefHost"]?.InnerText;
             shoe.Ean = ean;
             shoe.Size = (int)(Int64.Parse(shoe.Matnr ?? "0") % 1000);
+            string descL = elements.Item(0)?["d:DescL"]?.InnerText;
+            string descr = elements.Item(0)?["d:Descr"]?.InnerText;
+            string brand = descL.Substring(descr.Length + 5);
+            shoe.Brand = brand.Split(' ').First();
+
 
         }
 
         public async Task<Shoe> GetShoeByEan(string ean, HttpClient httpClient, string? uneco = null)
         {
+            //int threadId = Thread.CurrentThread.ManagedThreadId;
+            //Console.WriteLine($"Iniciando GetShoeByEan para ean =¨{ean} en treadId = {threadId}");
             // Get and set shoe infi
             Shoe shoe = new Shoe();
             SetShoeInfoByEan(ean, ref shoe, httpClient, uneco);
@@ -79,15 +88,21 @@ namespace ProyectoManhattan.Application
             var elements = doc.GetElementsByTagName("d:HeaderSt");
             string count = elements.Item(0)?["d:Stock"]?.InnerText;
             shoe.Count = (int)char.GetNumericValue(count[0]);
+            //threadId = Thread.CurrentThread.ManagedThreadId;
+            //Console.WriteLine($"Finalizando GetShoeByEan para ean =¨{ean} en treadId = {threadId}");
 
             return shoe;
         }
 
         public async Task<List<ShoeModel>> GroupShoesInToShoeModels(List<Shoe> shoes, HttpClient httpClient)
         {
+            //int threadId = Thread.CurrentThread.ManagedThreadId;
+            //Console.WriteLine($"");
+            //Console.WriteLine($"Iniciando GroupShoesInToShoeModels en treadId = {threadId}");
             List<ShoeModel> shoeModels = new List<ShoeModel>();
             foreach (var shoe in shoes)
             {
+                //Console.WriteLine($"Iniciando agrupacion de zapato con matnr = {shoe.Matnr} en treadId = {threadId}");
                 string refWithOutSize = shoe.Reference.Remove(shoe.Reference.Length - 3);
                 ShoeModel? shoeModel = shoeModels.Where(s => s.RefWithOutSize == refWithOutSize).FirstOrDefault();
                 if (shoeModel != null)
@@ -100,6 +115,8 @@ namespace ProyectoManhattan.Application
                     shoeModel.Sizes.Where(s => s.Size == shoe.Size).FirstOrDefault().Count++;
                     shoeModels.Add(shoeModel);
                 }
+                //threadId = Thread.CurrentThread.ManagedThreadId;
+                //Console.WriteLine($"Finalizando agrupacion de zapato con matnr = {shoe.Matnr} en treadId = {threadId}");
             }
 
             return shoeModels;
@@ -122,6 +139,7 @@ namespace ProyectoManhattan.Application
             {
                 Shoe shoe = new Shoe();
                 shoe.Matnr = ((XmlNode)element)["d:Matnr"]?.InnerText;
+                // !!!!!!!!!!! Delete this call for efficiency ????
                 SetShoeInfoByMatnr(shoe.Matnr, ref shoe, httpClient);
                 shoe.Count = 0;
                 if (shoes.Where(s => s.Size == shoe.Size).FirstOrDefault() == null) shoes.Add(shoe);
