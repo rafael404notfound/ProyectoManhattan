@@ -1,0 +1,8 @@
+@page "/Informe/{ReportId:int}"
+
+<ReportPage ReportId="@ReportId"></ReportPage>
+
+@code 
+{
+    [Parameter] public int ReportId { get; set; }
+}

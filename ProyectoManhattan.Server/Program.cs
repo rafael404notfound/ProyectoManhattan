@@ -1,13 +1,27 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using ProyectoManhattan.Infrastructure.Persistance;
 using ProyectoManhattan.Application;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddDbContext<ApplicationDbContext>(opts =>
+{
+    opts.UseSqlServer(builder.Configuration["ConnectionStrings:ApplicationConnectionSql"]);
+    opts.EnableSensitiveDataLogging(true);
+    //AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+});
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 builder.Services.AddHostedService((sp) => sp.GetRequiredService<CookieGetter>());
+builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+builder.Services.AddScoped<IApplicationRepo, EFApplicationRepository>();
+builder.Services.AddScoped<IReportRepo, EFReportRepository>();
 builder.Services.AddSingleton<CookieGetter>();
 builder.Services.AddSingleton<PdfEditor>();
 builder.Services.AddTransient<EciService>();

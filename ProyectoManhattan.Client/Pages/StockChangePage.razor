@@ -1,0 +1,23 @@
+@page "/CambioDeInventario/{operationString}"
+
+<ProyectoManhattan.BlazorComponents.Pages.StockChange operation = "@operation"></ProyectoManhattan.BlazorComponents.Pages.StockChange>
+
+@code{
+    [Parameter] public string operationString { get; set; }
+    public Operation operation { get; set; }
+    protected override void OnInitialized()
+    {
+        switch (operationString) 
+        {
+            case "Añadir":
+                operation = Operation.Add;
+                break;
+            case "Retirar":
+                operation = Operation.Substract;
+                break;
+            default:
+                throw new Exception("Error (valor no valido para parametro url 'operationString')");
+                break;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+﻿@inject ISnackbar Snackbar
+
+<MudDialog>
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            Especifique el Uneco
+        </MudText>
+    </TitleContent>
+    <DialogContent>
+        <MudTextField @bind-Value="@this.Uneco" Label="Uneco" />
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancelar</MudButton>
+        <MudButton Color="Color.Success" OnClick="OK">OK</MudButton>
+    </DialogActions>
+</MudDialog>
+@code {
+    [CascadingParameter]
+    private MudDialogInstance MudDialog { get; set; }
+
+    [Parameter]
+    public string Uneco { get; set; }
+
+    private void Cancel() => MudDialog.Cancel();
+
+    private void OK() => this.MudDialog.Close(DialogResult.Ok<string>(this.Uneco));
+}

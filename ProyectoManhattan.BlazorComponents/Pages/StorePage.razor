@@ -1,0 +1,88 @@
+﻿@inject HttpClient Http
+@inject NavigationManager _navigationManager
+@inject IDialogService DialogService
+
+<h1>Almacen</h1>
+<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Primary" OnClick="@(() => _navigationManager.NavigateTo("Inventario"))">Crear Marca</MudButton>
+<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Secondary" OnClick="@(() => _navigationManager.NavigateTo("CambioDeInventario/Añadir"))">Añadir</MudButton>
+<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Warning" OnClick="@(() => _navigationManager.NavigateTo("CambioDeInventario/Retirar"))">Retirar</MudButton>
+<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Info" OnClick="@(() => CreateReport())">Generar Informe</MudButton>
+
+@if(reportOperationResult is not null)
+{
+	<h5>@reportOperationResult</h5>
+}
+
+<h3>Marcas:</h3>
+@if(brands is not null)
+{
+	foreach(var brand in brands)
+	{
+		
+		<MudCard Class="mb-2">
+			<MudCardHeader>
+				<CardHeaderContent>
+					<NavLink href=@($"/Almacen/{brand.DisplayName}")>
+						<MudText>@brand.DisplayName</MudText>
+					</NavLink>
+				</CardHeaderContent>
+				<CardHeaderActions>
+            		<MudIconButton Icon="@Icons.Material.Outlined.Delete" Color="Color.Error" @onclick="async() => await DeleteBrand(brand.DisplayName)"/>
+        		</CardHeaderActions>
+			</MudCardHeader>
+		</MudCard>
+		
+	}
+}
+
+
+@code {
+	private List<Brand>? brands;
+	public string? reportOperationResult;
+	protected override async Task OnInitializedAsync()
+	{
+		await GetData();
+	}
+
+	public async Task GetData()
+	{
+		var task = Http.GetFromJsonAsync<List<Brand>>($"{UrlGetter.Url}Brand/GetBrands");
+		await task.ContinueWith((r) =>
+		{
+			brands = r.Result;
+			StateHasChanged();
+		});
+	}
+
+	private async Task DeleteBrand(string brandName){
+		var id = brands?.Where(b => b.DisplayName == brandName).FirstOrDefault()?.Id;
+		var factory = new EventCallbackFactory();
+		var parameters = new DialogParameters<DialogDeleteBrand>
+        {
+            { x => x.ContentText, $"Estas seguro de que quieres borrar la marca {brandName}?" },
+            { x => x.ButtonText, "Borrar" },
+            { x => x.Color, Color.Error },
+			{ x => x.Id, id },
+			{ x => x.updateUI, factory.Create(this,() => GetData())}
+        };
+		var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+		var dialog = DialogService.ShowAsync<DialogDeleteBrand>("Borrar", parameters, options);
+
+		await dialog;
+	}
+
+	public async Task CreateReport()
+	{
+		var result = await Http.PostAsJsonAsync<List<Brand>>($"{UrlGetter.Url}Report/Create", brands);
+		/*if (result.EnsureSuccessStatusCode().IsSuccessStatusCode is true)
+		{
+			reportOperationResult = "Informe creado con exito";
+		} 
+		else 
+		{
+			reportOperationResult = "Error";
+		}*/
+	}
+				
+}

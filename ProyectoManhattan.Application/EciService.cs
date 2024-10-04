@@ -8,6 +8,8 @@ using Domain.Entities;
 using Domain.Dto;
 using Org.BouncyCastle.Crypto.Operators;
 using System.Threading;
+using System.Diagnostics;
+using Domain.ValueTypes;
 
 namespace ProyectoManhattan.Application
 {
@@ -62,7 +64,7 @@ namespace ProyectoManhattan.Application
             string descL = elements.Item(0)?["d:DescL"]?.InnerText;
             string descr = elements.Item(0)?["d:Descr"]?.InnerText;
             string brand = descL.Substring(descr.Length + 5);
-            shoe.Brand = brand.Split(' ').First();
+            shoe.BrandSapName = brand.Split(' ').First();
 
 
         }
@@ -99,7 +101,9 @@ namespace ProyectoManhattan.Application
             //int threadId = Thread.CurrentThread.ManagedThreadId;
             //Console.WriteLine($"");
             //Console.WriteLine($"Iniciando GroupShoesInToShoeModels en treadId = {threadId}");
+
             List<ShoeModel> shoeModels = new List<ShoeModel>();
+            //GroupShoesIntoShoeModelsDto result = new GroupShoesIntoShoeModelsDto();
             foreach (var shoe in shoes)
             {
                 //Console.WriteLine($"Iniciando agrupacion de zapato con matnr = {shoe.Matnr} en treadId = {threadId}");
@@ -113,6 +117,33 @@ namespace ProyectoManhattan.Application
                 {
                     shoeModel = await GetShoeModelTemplateByMatnr(shoe.Matnr, httpClient);
                     shoeModel.Sizes.Where(s => s.Size == shoe.Size).FirstOrDefault().Count++;
+                    shoeModels.Add(shoeModel);
+                }
+                //threadId = Thread.CurrentThread.ManagedThreadId;
+                //Console.WriteLine($"Finalizando agrupacion de zapato con matnr = {shoe.Matnr} en treadId = {threadId}");
+            }
+
+            return shoeModels;
+        }
+
+        public async Task<List<ShoeModel>> GetShoeModelStock(List<Shoe> shoes, HttpClient httpClient)
+        {
+            //int threadId = Thread.CurrentThread.ManagedThreadId;
+            //Console.WriteLine($"");
+            //Console.WriteLine($"Iniciando GroupShoesInToShoeModels en treadId = {threadId}");
+            List<ShoeModel> shoeModels = new List<ShoeModel>();
+            foreach (var shoe in shoes)
+            {
+                //Console.WriteLine($"Iniciando agrupacion de zapato con matnr = {shoe.Matnr} en treadId = {threadId}");
+                string refWithOutSize = shoe.Reference.Remove(shoe.Reference.Length - 3);
+                ShoeModel? shoeModel = shoeModels.Where(s => s.RefWithOutSize == refWithOutSize).FirstOrDefault();
+                if (shoeModel != null)
+                {
+                    shoeModel.Sizes.Where(s => s.Size == shoe.Size).FirstOrDefault().Count++;
+                }
+                else
+                {
+                    shoeModel = await GetShoeModelTemplateByMatnr(shoe.Matnr, httpClient);
                     shoeModels.Add(shoeModel);
                 }
                 //threadId = Thread.CurrentThread.ManagedThreadId;
@@ -138,18 +169,24 @@ namespace ProyectoManhattan.Application
             foreach (var element in elements)
             {
                 Shoe shoe = new Shoe();
-                shoe.Matnr = ((XmlNode)element)["d:Matnr"]?.InnerText;
+                shoe.Matnr = $"{Convert.ToInt64(((XmlNode)element)["d:Matnr"]?.InnerText)}";
                 // !!!!!!!!!!! Delete this call for efficiency ????
-                SetShoeInfoByMatnr(shoe.Matnr, ref shoe, httpClient);
+                //SetShoeInfoByMatnr(shoe.Matnr, ref shoe, httpClient);
                 shoe.Count = 0;
+                //shoe.Count = Int32.Parse(((XmlNode)element)["d:Stock"]?.InnerText ?? "0");
+                shoe.Size = (int)(Int64.Parse(shoe.Matnr ?? "0") % 1000);
                 if (shoes.Where(s => s.Size == shoe.Size).FirstOrDefault() == null) shoes.Add(shoe);
             }
             ShoeModel shoeModel = new ShoeModel();
-            shoeModel.RefWithOutSize = shoes.FirstOrDefault().Reference.Remove(shoes.FirstOrDefault().Reference.Length - 3);
+            Shoe shoeInfo = new Shoe();
+            SetShoeInfoByMatnr(matnr, ref shoeInfo, httpClient);
+
+            shoeModel.RefWithOutSize = shoeInfo.Reference.Remove(shoeInfo.Reference.Length - 3);
             shoeModel.Uneco = shoeModel.RefWithOutSize.Substring(3, 4);
             shoeModel.Family = shoeModel.RefWithOutSize.Substring(7, 3);
             shoeModel.Model = shoeModel.RefWithOutSize.Substring(10, 5);
             shoeModel.Sizes = shoes;
+            shoeModel.BrandSapName = shoeInfo.BrandSapName;
 
             return shoeModel;
         }
@@ -188,6 +225,10 @@ namespace ProyectoManhattan.Application
             shoe.Reference = elements.Item(0)?["d:RefHost"]?.InnerText;
             shoe.Matnr = elements.Item(0)?["d:Matnr"]?.InnerText;
             shoe.Size = shoe.Size = (int)(Int64.Parse(shoe.Matnr ?? "0") % 1000);
+            string descL = elements.Item(0)?["d:DescL"]?.InnerText;
+            string descr = elements.Item(0)?["d:Descr"]?.InnerText;
+            string brand = descL.Substring(descr.Length + 5);
+            shoe.BrandSapName = brand.Split(' ').First();
         }
 
         public CalculateMissingShoesDto CalculateMissingShoes(List<ShoeModel> scannedShoeModels, bool scannedAtParking, HttpClient httpClient)
@@ -197,11 +238,16 @@ namespace ProyectoManhattan.Application
             List<ShoeModel> surplusShoeModels = new List<ShoeModel>();
             List<string> errors = new List<string>();
 
+            Console.WriteLine($"Started foreach");
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
             foreach (var scannedShoeModel in scannedShoeModels)
             {
                 try
                 {
                     // Get model's global stock count
+                    // DELETE THIS FOR EFFICIENCY GAINS
                     List<Shoe> totalShoes = FetchByMatnr(scannedShoeModel.Sizes.FirstOrDefault().Matnr, httpClient).Result;
 
                     // Add result to TotalShoeModel
@@ -237,10 +283,11 @@ namespace ProyectoManhattan.Application
                     foreach (var totalShoe in totalShoes)
                     {
                         Shoe scannedShoe = scannedShoeModel.Sizes.Where(s => s.Matnr == totalShoe.Matnr).FirstOrDefault();
+                        int storeCount = totalShoe.Count - scannedShoe.Count;
 
                         // If store stock is == 0 and global stock is not 0
                         // Add shoe size with count = 1 to missingShoeModel's size list and shoe size with count = 0 to surplusShoeModels
-                        if (scannedShoe.Count == 0
+                        if (storeCount <= 0
                             && totalShoe.Count != 0)
                         {
                             missingShoeModels.Where(s => s.RefWithOutSize == scannedShoeModel.RefWithOutSize).FirstOrDefault().Sizes
@@ -251,16 +298,16 @@ namespace ProyectoManhattan.Application
                         // If store is greater than 0
                         // Add shoesize with count = 0  to missingShoeModel's size list and shoe size with count = (StoreStock-1) to surplusShoeModels
 
-                        else if (scannedShoe.Count > 0)
+                        else if (storeCount > 0)
                         {
                             missingShoeModels.Where(s => s.RefWithOutSize == scannedShoeModel.RefWithOutSize).FirstOrDefault().Sizes
                                 .Add(new Shoe { Count = 0, Ean = totalShoe.Ean, Matnr = totalShoe.Matnr, Reference = totalShoe.Reference, Size = totalShoe.Size });
                             surplusShoeModels.Where(s => s.RefWithOutSize == scannedShoeModel.RefWithOutSize).FirstOrDefault().Sizes
-                                .Add(new Shoe { Count = scannedShoe.Count - 1, Ean = totalShoe.Ean, Matnr = totalShoe.Matnr, Reference = totalShoe.Reference, Size = totalShoe.Size });
+                                .Add(new Shoe { Count = storeCount - 1, Ean = totalShoe.Ean, Matnr = totalShoe.Matnr, Reference = totalShoe.Reference, Size = totalShoe.Size });
                         }
                         // If global stock is 0
                         // Add shoesize with count = 0  to missingShoeModel's size list and shoe size with count = 0 to surplusShoeModels
-                        else if (scannedShoe.Count == 0)
+                        else if (totalShoe.Count == 0)
                         {
                             missingShoeModels.Where(s => s.RefWithOutSize == scannedShoeModel.RefWithOutSize).FirstOrDefault().Sizes
                                 .Add(new Shoe { Count = 0, Ean = totalShoe.Ean, Matnr = totalShoe.Matnr, Reference = totalShoe.Reference, Size = totalShoe.Size });
@@ -274,6 +321,10 @@ namespace ProyectoManhattan.Application
                     errors.Add($"Error calculating {scannedShoeModel.Uneco} {scannedShoeModel.Family} {scannedShoeModel.Model}");
                 }
             }
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            Console.WriteLine($"Finished foreach in {ts.ToString()}");
+
             return new CalculateMissingShoesDto
             {
                 MissingShoeModels = missingShoeModels,
@@ -302,6 +353,105 @@ namespace ProyectoManhattan.Application
             string matnr = elements.Item(0)?["d:Matnr"]?.InnerText;
 
             return matnr;
+        }
+
+        public Report CalculateReport(List<Brand> brands, HttpClient httpClient)
+        {
+            Report result = new Report();
+
+            // Start counting up calculation time
+            var watch = Stopwatch.StartNew();
+
+            // Get BrandReportInfo for each brand
+            foreach(var brand in brands)
+            {
+                CalculateMissingShoesDto calculateMissingShoesDto = CalculateMissingShoes(brand.ShoeModels, true, httpClient);
+                BrandReportInfo brandReportInfo = new BrandReportInfo(brand);
+
+                foreach(ShoeModel totalShoeModel in calculateMissingShoesDto.TotalShoeModels)
+                {                    
+                    List<ShoeReportInfo> shoeReportInfos = new List<ShoeReportInfo>();
+                    foreach(Shoe totalShoe in totalShoeModel.Sizes)
+                    {
+                        shoeReportInfos.Add(new ShoeReportInfo
+                            (
+                                totalShoe,
+                                calculateMissingShoesDto.ScannedShoeModels.FirstOrDefault(ssm => ssm.RefWithOutSize == totalShoeModel.RefWithOutSize).Sizes
+                                    .FirstOrDefault(s => s.Size == totalShoe.Size).Count,
+                                totalShoe.Count,
+                                calculateMissingShoesDto.MissingShoeModels.FirstOrDefault(ssm => ssm.RefWithOutSize == totalShoeModel.RefWithOutSize).Sizes
+                                    .FirstOrDefault(s => s.Size == totalShoe.Size).Count, 
+                                calculateMissingShoesDto.SurplusShoeModels.FirstOrDefault(ssm => ssm.RefWithOutSize == totalShoeModel.RefWithOutSize).Sizes
+                                    .FirstOrDefault(s => s.Size == totalShoe.Size).Count
+                            ));
+                    }
+                    brandReportInfo.ShoeModelReportInfos.Add(new ShoeModelReportInfo(totalShoeModel, shoeReportInfos));
+                }
+
+
+                /*
+                // Create BrandReportInfo from CalculateMissingShoes result
+                Brand newBrand = new Brand
+                {
+                    Id = null,
+                    SapName = brand.SapName,
+                    DisplayName = brand.DisplayName,
+                    ShoeModels = new List<ShoeModel>()                 
+                };
+
+                foreach(var shoeModel in brand.ShoeModels)
+                {
+                    ShoeModel newShoeModel = new ShoeModel 
+                    {
+                        Id = null,
+                        Uneco = shoeModel.Uneco,
+                        Family = shoeModel.Family,
+                        Model = shoeModel.Model,
+                        RefWithOutSize = shoeModel.RefWithOutSize,
+                        BrandSapName = shoeModel.BrandSapName,
+                        Sizes = new List<Shoe>()
+                    };
+                    foreach(var size in shoeModel.Sizes)
+                    {
+                        Shoe newShoe = new Shoe 
+                        {
+                            Id = null,
+                            Ean = size.Ean,
+                            Matnr = size.Matnr,
+                            Reference = size.Reference,
+                            BrandSapName = size.BrandSapName,
+                            Size = size.Size,
+                            Count = size.Count
+                        };
+                        newShoeModel.Sizes.Add(newShoe);
+                    }
+                    newBrand.ShoeModels.Add(newShoeModel);
+                }*/
+
+                /*brand.ShoeModels.Select(sm => 
+                    { 
+                        sm.Id = 0;
+                        sm.Sizes.Select(s => s.Id = 0);
+                        return sm;
+                    });
+                brand.Id = 0;*/
+
+                
+                
+
+                result.BrandReportInfos.Add(brandReportInfo);
+            }
+
+            // Stop counting calculation time
+            watch.Stop();
+
+            // Finish building Report result
+            result.CreatedAt = DateTime.Now;
+            result.Name = $"Infome_{result.CreatedAt.ToString()}";
+            result.CalculationTime = watch.ElapsedMilliseconds;
+            result.IsFinished = true;
+
+            return result;
         }
     }
 }

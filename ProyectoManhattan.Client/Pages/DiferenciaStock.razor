@@ -241,9 +241,9 @@
                     {
                         RefWithOutSize = totalStockShoeModel.RefWithOutSize,
                         Size = shoe.Size,
-                        Scanned = calculateMissingShoesDto.ScannedShoeModels.Where(sM => sM.RefWithOutSize == totalStockShoeModel.RefWithOutSize).FirstOrDefault().Sizes.Where(s => s.Reference == shoe.Reference).FirstOrDefault().Count,
-                        Missing = calculateMissingShoesDto.MissingShoeModels.Where(sM => sM.RefWithOutSize == totalStockShoeModel.RefWithOutSize).FirstOrDefault().Sizes.Where(s => s.Reference == shoe.Reference).FirstOrDefault().Count,
-                        Surplus = calculateMissingShoesDto.SurplusShoeModels.Where(sM => sM.RefWithOutSize == totalStockShoeModel.RefWithOutSize).FirstOrDefault().Sizes.Where(s => s.Reference == shoe.Reference).FirstOrDefault().Count,
+                        Scanned = calculateMissingShoesDto.ScannedShoeModels.Where(sM => sM.RefWithOutSize == totalStockShoeModel.RefWithOutSize).FirstOrDefault().Sizes.Where(s => s.Matnr == shoe.Matnr).FirstOrDefault().Count,
+                        Missing = calculateMissingShoesDto.MissingShoeModels.Where(sM => sM.RefWithOutSize == totalStockShoeModel.RefWithOutSize).FirstOrDefault().Sizes.Where(s => s.Matnr == shoe.Matnr).FirstOrDefault().Count,
+                        Surplus = calculateMissingShoesDto.SurplusShoeModels.Where(sM => sM.RefWithOutSize == totalStockShoeModel.RefWithOutSize).FirstOrDefault().Sizes.Where(s => s.Matnr == shoe.Matnr).FirstOrDefault().Count,
                         TotalStock = shoe.Count
                     });
             }

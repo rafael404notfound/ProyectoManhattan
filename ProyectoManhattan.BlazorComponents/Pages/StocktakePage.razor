@@ -1,0 +1,167 @@
+﻿@inject HttpClient Http
+<PageTitle>Inventario</PageTitle>
+
+<h1>Inventario</h1>
+
+<div>
+    <label>
+        <MudTextField @bind-Value="displayName" Label="Nombre" Variant="Variant.Text" InputType="InputType.Text"></MudTextField>
+    </label>
+    <label>
+        <MudTextField @bind-Value="uneco" Label="Uneco" Variant="Variant.Text" InputType="InputType.Text"></MudTextField>
+    </label>
+</div>
+
+<form @onsubmit=@FormSubmitted class="d-flex flex-row align-items-end">
+    <div>
+        <label>
+            <MudTextField @bind-Value="inputValue" Label="Scanear" Variant="Variant.Text" InputType="InputType.Text"></MudTextField>
+        </label>
+    </div>
+    <div>
+        <MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Primary" OnClick="@(() => FormSubmitted())">Añadir</MudButton>
+    </div>
+</form>
+
+@if (shoes.Count > 0)
+{
+    @foreach (var shoe in shoes)
+    {
+        <MudChip T="string" Color="Color.Secondary">@shoe.Uneco : @shoe.Ean</MudChip>
+    }
+}
+<div class="d-flex flex-row pe-2">
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => GroupShoesIntoBrands())">Crear</MudButton>
+    <div>
+        <MudProgressCircular Color="Color.Primary" Indeterminate="@loading" Size="Size.Small" />
+    </div>
+</div>
+
+
+@if (result != null)
+{
+    <MudTable Hover="true" Height="500px" FixedHeader="true"
+              Items="@brandTableContexts"
+              GroupBy="@_groupDefinition"
+              GroupHeaderStyle="background-color:var(--mud-palette-background-gray)"
+              GroupFooterClass="mb-4"
+              Dense="true"
+              Breakpoint="Breakpoint.None"
+              @ref="_tableRef">
+        <ColGroup>
+            <col style="width: 60px;" />
+            <col />
+            <col />
+        </ColGroup>
+        <HeaderContent>
+            <MudTh>Modelo</MudTh>
+            <MudTh>Stock</MudTh>
+        </HeaderContent>
+        <GroupHeaderTemplate>
+            <MudTh Class="mud-table-cell-custom-group" colspan="5">@context.Key.ToString()</MudTh>
+        </GroupHeaderTemplate>
+        <RowTemplate>
+            <MudTd DataLabel="Modelo">@context.ModelRef</MudTd>
+            <MudTd DataLabel="Stock">
+                @foreach (var count in context.Count)
+                {
+                    <MudChip T="string" Color="Color.Primary">@count.Key : @count.Value</MudChip>
+                }
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+}
+
+<style>
+    .mud-table-cell-custom-group {
+        font-weight: 500;
+    }
+
+    .mud-table-cell-custom-group-footer {
+        padding-bottom: 50px;
+        text-align: right;
+    }
+</style>
+
+
+@code {
+    //public List<string> shoeRefs { get; set; } = new List<string>();
+    public List<Domain.Dto.EanAndUnecoDto> shoes = new List<EanAndUnecoDto>();
+    public string? inputValue { get; set; }
+    public string? uneco { get; set; }
+    public string? displayName { get; set; }
+    public List<Brand> result { get; set; } = new List<Brand>();
+    public bool loading { get; set; } = false;
+    public List<BrandTableContext> brandTableContexts { get; set; }
+    private MudTable<BrandTableContext> _tableRef;
+
+    private void FormSubmitted()
+    {
+        shoes.Add(new EanAndUnecoDto(inputValue, uneco));
+        inputValue = "";
+    }
+
+    private async Task GroupShoesIntoBrands()
+    {
+        loading = true;
+        StocktakeDto stocktakeDto = new StocktakeDto();
+        stocktakeDto.eanAndUnecoDtos = shoes;
+        stocktakeDto.Name = displayName;
+        stocktakeDto.Uneco = uneco;
+        var response = await Http.PostAsJsonAsync($"{UrlGetter.Url}Brand/Stocktake", stocktakeDto);
+        result = await response.Content.ReadFromJsonAsync<List<Brand>>();
+        brandTableContexts = GetBrandTableCotnexts(result);
+        loading = false;
+    }
+
+    public class BrandTableContext
+    {
+        public string? Brand { get; set; }
+        public string? ModelRef { get; set; }
+        public Dictionary<int, int> Count { get; set; }
+    }
+
+
+    public List<BrandTableContext> GetBrandTableCotnexts(List<Brand> brands)
+    {
+        List<BrandTableContext> brandTableContexts = new List<BrandTableContext>();
+        foreach (var brand in brands)
+        {
+            foreach (var shoeModel in brand.ShoeModels)
+            {
+                Dictionary<int, int> count = new Dictionary<int, int>();
+
+                foreach (var shoe in shoeModel.Sizes)
+                {
+                    count.Add(shoe.Size, shoe.Count);
+                }
+                brandTableContexts.Add(new BrandTableContext
+                    {
+                        Brand = brand.SapName,
+                        ModelRef = shoeModel.RefWithOutSize,
+                        Count = count
+                    });
+            }
+            brandTableContexts = brandTableContexts.OrderBy(b => b.ModelRef).ToList();
+        }
+        return brandTableContexts;
+    }
+
+    private TableGroupDefinition<BrandTableContext> _groupDefinition = new()
+        {
+            GroupName = "Marca",
+            Indentation = false,
+            Expandable = true,
+            IsInitiallyExpanded = false,
+            Selector = (b) => b.Brand
+        };
+
+    /*private TableGroupDefinition<ShoeTableContext> _groupDefinition = new()
+            {
+            GroupName = "Modelo",
+            Indentation = false,
+            Expandable = true,
+            IsInitiallyExpanded = false,
+            Selector = (s) => s.RefWithOutSize
+    };*/
+}

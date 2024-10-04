@@ -1,0 +1,38 @@
+@inject HttpClient Http
+
+<MudDialog>
+    <DialogContent>
+        <MudText>@ContentText</MudText>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancelar</MudButton>
+        <MudButton Color="@Color" Variant="Variant.Filled" OnClick="Submit">@ButtonText</MudButton>
+    </DialogActions>
+</MudDialog>
+@code {
+    [CascadingParameter]
+    private MudDialogInstance MudDialog { get; set; }
+
+    [Parameter]
+    public string ContentText { get; set; }
+
+    [Parameter]
+    public string ButtonText { get; set; }
+
+    [Parameter]
+    public Color Color { get; set; }
+
+    [Parameter]
+    public int? Id { get; set; }
+
+    [Parameter]
+    public EventCallback updateUI { get; set; }
+
+    private async Task Submit(){
+        var result = Http.DeleteAsync($"{UrlGetter.Url}Brand?id={Id}");
+        await result.ContinueWith(async (r) => await updateUI.InvokeAsync());
+        MudDialog.Close(DialogResult.Ok(true));
+    } 
+     
+    private void Cancel() => MudDialog.Cancel();
+}

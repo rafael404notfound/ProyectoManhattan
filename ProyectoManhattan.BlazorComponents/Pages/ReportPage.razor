@@ -1,0 +1,156 @@
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime
+
+<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Info" OnClick="@(() => GetFileContent())">Pdf</MudButton>
+@if(result is not null)
+{
+    <h1>@result.Name</h1>
+    <h3>Fecha de creación:</h3>
+    <MudText>@result.CreatedAt</MudText>
+    <h3>Tiempo de cálculo:</h3>
+    <MudText>@result.CalculationTime milisegundos</MudText>
+
+    
+    @foreach(var brandReportInfo in result.BrandReportInfos)
+    {
+        <h1>@brandReportInfo.Uneco @brandReportInfo.DisplayName:</h1>
+        <MudTable Hover="true" Height="500px" FixedHeader="true"
+              Items="@reportTableContexts.Where(rtc => rtc.BrandName == brandReportInfo.DisplayName && rtc.Uneco == brandReportInfo.Uneco)"
+              GroupBy="@_groupDefinition"
+              GroupHeaderStyle="background-color:var(--mud-palette-background-gray)"
+              GroupFooterClass="mb-4"
+              Dense="true"
+              Breakpoint="Breakpoint.None"
+              @ref="_tableRef">
+        <ColGroup>
+            <col style="width: 60px;" />
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+        </ColGroup>
+        <HeaderContent>
+            <MudTh>Talla</MudTh>
+            <MudTh>Parking</MudTh>
+            <MudTh>Total</MudTh>
+            <MudTh>Faltante</MudTh>
+            <MudTh>Sobrante</MudTh>
+        </HeaderContent>
+        <GroupHeaderTemplate>
+            <MudTh Class="mud-table-cell-custom-group" colspan="5">@($"{context.Key.ToString()?.Substring(3, 4)} {context.Key.ToString()?.Substring(7, 3)} {context.Key.ToString()?.Substring(10, 5)}")</MudTh>
+        </GroupHeaderTemplate>
+        <RowTemplate>
+            <MudTd DataLabel="Talla">@context.Size</MudTd>
+                <MudTd DataLabel="Parking">@context.Parking</MudTd>
+                <MudTd DataLabel="Total">@context.Total</MudTd>
+                <MudTd DataLabel="Faltante">@context.Missing</MudTd>
+                <MudTd DataLabel="Sobrante">@context.Surplus</MudTd>
+        </RowTemplate>
+    </MudTable>
+    }    
+}
+
+<style>
+    .mud-table-cell-custom-group {
+        font-weight: 500;
+    }
+
+    .mud-table-cell-custom-group-footer {
+        padding-bottom: 50px;
+        text-align: right;
+    }
+</style> 
+
+<script>
+    function openPdf(obj) 
+    {
+        let pdfWindow = window.open("")
+        pdfWindow.document.write(
+            "<iframe width='100%' height='100%' src='data:application/pdf;base64, " +
+            encodeURI(obj.base64pdf) + "'></iframe>"
+)
+    }
+</script>
+
+
+@code {
+    [Parameter] public int ReportId { get; set; }
+    public Report? result { get; set; } 
+    public bool loading { get; set; } = false;
+    public List<ReportTableContext> reportTableContexts { get; set; } = new List<ReportTableContext>();
+    private MudTable<ReportTableContext> _tableRef;
+
+    protected override async Task OnInitializedAsync()
+    {
+        loading = true;
+        result = await Http.GetFromJsonAsync<Report>($"{UrlGetter.Url}Report/Get?id={ReportId}");
+        reportTableContexts = GetReportTableCotnexts(result.BrandReportInfos);
+        loading = false;
+    }
+
+    public class ReportTableContext
+    {   
+        public string BrandName { get; set; }
+        public string Uneco { get; set;}     
+        public string? RefWithOutSize { get; set; }
+        public int Size { get; set; }
+        public int Parking { get; set; }
+        public int Total { get; set; }        
+        public int Missing { get; set; }
+        public int Surplus { get; set; }
+    }
+
+
+    public List<ReportTableContext> GetReportTableCotnexts(List<BrandReportInfo> brandReportInfos)
+    {
+        foreach(var brandReportInfo in brandReportInfos)
+        {
+            foreach (var shoeModelReportInfo in brandReportInfo.ShoeModelReportInfos)
+            {
+                foreach (var shoeReportInfo in shoeModelReportInfo.ShoeReportInfos)
+                {
+                    reportTableContexts.Add(new ReportTableContext
+                        {
+                            BrandName = brandReportInfo.DisplayName,
+                            Uneco = brandReportInfo.Uneco,
+                            RefWithOutSize = shoeModelReportInfo.RefWithOutSize,
+                            Size = shoeReportInfo.Size,
+                            Parking = shoeReportInfo.Parking,
+                            Total = shoeReportInfo.Total,
+                            Missing = shoeReportInfo.Missing,
+                            Surplus = shoeReportInfo.Surplus
+                        });
+                }
+
+            }
+        }        
+        
+        return reportTableContexts.OrderBy(b => b.RefWithOutSize).ToList();
+    }
+
+    private TableGroupDefinition<ReportTableContext> _groupDefinition = new()
+        {
+            GroupName = "Referencia",
+            Indentation = false,
+            Expandable = true,
+            IsInitiallyExpanded = false,
+            Selector = (b) => b.RefWithOutSize
+        };
+    private async Task GetFileContent() 
+    {
+        //var FileStream = new  MemoryStream(Encoding.UTF8.GetBytes(result.Base64Pdf));
+        var obj = new{
+                base64pdf= result.Base64Pdf
+            };
+        await JSRuntime.InvokeVoidAsync("openPdf", obj);
+    }
+    /*private TableGroupDefinition<ShoeTableContext> _groupDefinition = new()
+            {
+            GroupName = "Modelo",
+            Indentation = false,
+            Expandable = true,
+            IsInitiallyExpanded = false,
+            Selector = (s) => s.RefWithOutSize
+    };*/
+}

@@ -1,0 +1,79 @@
+@inject HttpClient Http
+@inject ISnackbar Snackbar
+<PageTitle>@GetActionString</PageTitle>
+
+<h1>@GetActionString()</h1>
+
+<div>
+    <label>
+        <MudTextField @bind-Value="uneco" Label="Uneco" Variant="Variant.Text" InputType="InputType.Text"></MudTextField>
+    </label>
+</div>
+
+<form @onsubmit=@FormSubmitted class="d-flex flex-row align-items-end">
+    <div>
+        <label>
+            <MudTextField @bind-Value="inputValue" Label="Scanear" Variant="Variant.Text" InputType="InputType.Text"></MudTextField>
+        </label>
+    </div>
+    <div>
+        <MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Primary" OnClick="@(() => FormSubmitted())">Añadir</MudButton>
+    </div>
+</form>
+
+@if (shoes.Count > 0)
+{
+    @foreach (var shoe in shoes)
+    {
+        <MudChip T="string" Color="Color.Secondary">@shoe.Uneco : @shoe.Ean</MudChip>
+    }
+}
+<div class="d-flex flex-row pe-2">
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => StockChangeOperation())">@GetActionString()</MudButton>
+    <div>
+        <MudProgressCircular Color="Color.Primary" Indeterminate="@loading" Size="Size.Small" />
+    </div>
+</div>
+
+@code {
+    //public List<string> shoeRefs { get; set; } = new List<string>();
+    public List<Domain.Dto.EanAndUnecoDto> shoes = new List<EanAndUnecoDto>();
+    public string? inputValue { get; set; }
+    public string? uneco { get; set; }
+    public List<Brand> result { get; set; } = new List<Brand>();
+    public bool loading { get; set; } = false;
+    [Parameter] public Operation operation { get; set; }
+    private void FormSubmitted()
+    {
+        shoes.Add(new EanAndUnecoDto(inputValue, uneco));
+        inputValue = "";
+    }
+
+    private async Task StockChangeOperation()
+    {
+        loading = true;
+        var stockChangeDto = new StockChangeDto
+            {
+                EanAndUnecoDtos = shoes,
+                Operation = operation
+            };
+        var result = await Http.PostAsJsonAsync($"{UrlGetter.Url}Brand/StockChange", stockChangeDto);
+        if (result.IsSuccessStatusCode)
+        {
+            Snackbar.Add("La operación se ha completado con éxito", Severity.Success);
+        }
+        else 
+        {
+            Snackbar.Add("Error al intentar la operación", Severity.Success);
+        }
+        loading = false;
+    }
+
+    private string GetActionString(){
+        return operation switch {
+            Operation.Add => "Añadir",
+            Operation.Substract => "Retirar",
+            _ => throw new Exception("Accion Invalida")
+        };
+    }
+}

@@ -1,0 +1,83 @@
+@inject HttpClient Http
+@inject NavigationManager _navigationManager
+@inject IDialogService DialogService
+
+<h1>Informes:</h1>
+<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Info" OnClick="@(() => CreateReport())">Generar Informe</MudButton>
+@if(reports is not null)
+{
+	foreach(var report in reports)
+	{
+		
+		<MudCard Class="mb-2">
+			<MudCardHeader>
+				<CardHeaderContent>
+					<NavLink href=@($"/Informe/{report.Id}")>
+						<MudText>@report.Name</MudText>
+					</NavLink>
+				</CardHeaderContent>
+				<CardHeaderActions>
+            		<MudIconButton Icon="@Icons.Material.Outlined.Delete" Color="Color.Error" @onclick="async() => await DeleteReport(report.Id)"/>
+        		</CardHeaderActions>
+			</MudCardHeader>
+		</MudCard>
+		
+	}
+}
+
+
+@code {
+	private List<Report>? reports;
+	protected override async Task OnInitializedAsync()
+	{
+		await GetData();
+	}
+
+	public async Task GetData()
+	{
+		var task = Http.GetFromJsonAsync<List<Report>>($"{UrlGetter.Url}Report/GetAll");
+		await task.ContinueWith((r) =>
+		{
+			reports = r.Result;
+			StateHasChanged();
+		});
+	}
+
+	private async Task DeleteReport(int id){
+		var report = reports.FirstOrDefault(r => r.Id == id);
+		var factory = new EventCallbackFactory();
+		var parameters = new DialogParameters<DialogDeleteReport>
+        {
+            { x => x.ContentText, $"Estas seguro de que quieres borrar la el informe \"{report.Name}\"?" },
+            { x => x.ButtonText, "Borrar" },
+            { x => x.Color, Color.Error },
+			{ x => x.Id, id },
+			{ x => x.updateUI, factory.Create(this,() => GetData())}
+        };
+		var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+		var dialog = DialogService.ShowAsync<DialogDeleteReport>("Borrar", parameters, options);
+
+		await dialog;
+	}
+
+	public async Task CreateReport()
+	{
+		var brands = await Http.GetFromJsonAsync<List<Brand>>($"{UrlGetter.Url}Brand/GetBrands");
+			
+		var factory = new EventCallbackFactory();
+		var parameters = new DialogParameters<DialogCreateReport>
+        {   
+			{ x => x.Brands, brands},
+            { x => x.ButtonText, "Crear" },
+            { x => x.Color, Color.Success },
+			{ x => x.updateUI, factory.Create(this,() => GetData())}
+        };
+		var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+		var dialog = DialogService.ShowAsync<DialogCreateReport>("Crear Informe", parameters, options);
+
+		await dialog;
+	}
+				
+}

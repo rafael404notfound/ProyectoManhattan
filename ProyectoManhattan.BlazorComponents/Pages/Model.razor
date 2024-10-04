@@ -1,0 +1,186 @@
+﻿@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+@inject HttpClient http
+
+
+<h1>Consultar Modelo</h1>
+<MudSelect T="string" @bind-Value="methodSelected">
+    <MudSelectItem Value="@("Codigo de barras")" />
+    <MudSelectItem Value="@("Referencia")" />
+    <MudSelectItem Value="@("Matnr")" />
+</MudSelect>
+<EditForm Model="shoe" OnSubmit="Submit" class="d-flex flex-row align-items-end">
+	<div>
+        <label>
+            <MudTextField @bind-Value="input" Label="@getLabel()" Variant="Variant.Text" InputType="InputType.Text"></MudTextField>
+        </label>
+    </div>
+    <div>
+        <MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Primary" ButtonType="ButtonType.Submit">Consultar</MudButton>
+    </div>
+    <div>
+        <MudProgressCircular Color="Color.Primary" Indeterminate="@loading" Size="Size.Small"/>
+    </div>
+</EditForm>
+
+@if(shoeModel != null && parkingShoeModel != null)
+{    
+    if(shoeModel.BrandSapName != null)
+    {
+        <div class=" mt-2">
+            <h5>Marca:</h5>
+            <p>@shoeModel.BrandSapName</p>
+        </div>
+    }
+    <div class=" mt-2">
+        <h5>Referencia:</h5>
+        <p>@shoeModel.Uneco @shoeModel.Family @shoeModel.Model</p>
+    </div>
+    
+
+    <h5 class="mt-2">Tallaje:</h5>
+    <MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Secondary" @onclick="@(async() => await Operate(Operation.Add))">Añadir</MudButton>
+    <MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Warning" OnClick="@(async() => await Operate(Operation.Substract))">Retirar</MudButton>    
+    <MudTable Items="@shoeModel.Sizes" Hover="true"  Breakpoint="Breakpoint.None">
+        <HeaderContent>
+            <MudTh>Talla</MudTh>
+            <MudTh>Parking</MudTh>
+            <MudTh>Total</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Talla">@context.Size</MudTd>
+            <MudTd DataLabel="Tienda">@(parkingShoeModel.Sizes.FirstOrDefault(s => s.Size == context.Size).Count)</MudTd>
+            <MudTd DataLabel="Total">@context.Count</MudTd>
+        </RowTemplate>
+    </MudTable>
+}
+
+<div>
+    @resultString
+</div>
+
+
+@code {
+    public Shoe shoe { get; set; } = new Shoe();
+    public ShoeModel? shoeModel { get; set; }
+    public bool loading { get; set; } = false;
+    public string uneco { get; set; } = string.Empty;
+    public string methodSelected { get; set; } = "Codigo de barras";
+    public string input { get; set; } = "";
+    public ShoeModel? parkingShoeModel { get; set; }
+    public EanAndUnecoDto eanAndUnecoDto { get; set; }
+    string resultString;
+
+    public string getLabel()
+    {
+        if(methodSelected == "Codigo de barras") return "Scanear";
+        if (methodSelected == "Matnr") return "Introducir Matnr";
+        if (methodSelected == "Referencia") return "Introducir Ref";
+        else return "";
+    }    
+    public async Task Submit()
+    {
+        HttpClient Http = new HttpClient();
+        switch(methodSelected)
+        {
+            case "Codigo de barras":
+                shoeModel = null;
+                shoe.Ean = input;
+                try
+                {
+                    loading = true;
+                    shoeModel = await Http.GetFromJsonAsync<ShoeModel>($"{UrlGetter.Url}shoe/Ean?shoeEan={input}");
+                    loading = false;
+                }
+                catch
+                {
+                    loading = false;
+                    await InvokeAsync(StateHasChanged);
+                    var result = await DialogService.ShowAsync<DialogUneco>(string.Empty);
+                    this.uneco = await result.GetReturnValueAsync<string>() ?? string.Empty;
+                    if (uneco != "")
+                    {
+                        loading = true;
+                        await InvokeAsync(StateHasChanged);
+                        try
+                        {
+                            shoeModel = await Http.GetFromJsonAsync<ShoeModel>($"{UrlGetter.Url}shoe/Uneco?shoeEan={shoe.Ean}&shoeUneco={uneco}");
+                        }
+                        catch
+                        {
+                            Snackbar.Add($"No se ha encontrado resultado para Ean '{shoe.Ean}' con Uneco '{uneco}'", Severity.Error);
+                        }
+
+                    }
+                    loading = false;
+                }
+                eanAndUnecoDto = new EanAndUnecoDto(shoe.Ean, uneco);
+                input = "";
+                break;
+
+            case "Referencia":
+                shoeModel = null;
+                loading = true;
+                shoeModel = await Http.GetFromJsonAsync<ShoeModel>($"{UrlGetter.Url}shoe/Ean?shoeEan={input}");
+                loading = false;
+                input = "";
+                break;
+
+            case "Matnr":
+                shoeModel = null;
+                loading = true;
+                shoeModel = await Http.GetFromJsonAsync<ShoeModel>($"{UrlGetter.Url}shoe/matnr?shoeMatnr={input}");
+                loading = false;
+                input = "";
+                break;
+        }
+        await SetParkingShoeModel();
+    }
+    public async Task SetParkingShoeModel()
+    {
+        var brand =  await http.GetFromJsonAsync<List<Brand>>($"{UrlGetter.Url}brand/getbrands");
+        parkingShoeModel = brand.FirstOrDefault(b => b.SapName == shoeModel.BrandSapName)?.ShoeModels.FirstOrDefault(sm => sm.RefWithOutSize == shoeModel.RefWithOutSize);
+        if (parkingShoeModel is null)
+        {
+            parkingShoeModel = new ShoeModel();
+            foreach(var size in shoeModel.Sizes)
+            {
+                parkingShoeModel.Sizes.Add(new Shoe
+                    {
+                        Count = 0,
+                        Size = size.Size
+                    });
+            }
+        }
+    }
+    public async Task Operate(Operation operation)
+    {
+        var eanAndUnecoDtos = new List<EanAndUnecoDto>();
+        eanAndUnecoDtos.Add(eanAndUnecoDto);           
+        var stockChangeDto = new StockChangeDto
+            {
+                EanAndUnecoDtos = eanAndUnecoDtos,
+                Operation = operation
+            };
+        var result = await http.PostAsJsonAsync($"{UrlGetter.Url}Brand/StockChange", stockChangeDto);
+        
+        if (result.IsSuccessStatusCode)
+        {
+            await SetParkingShoeModel();
+            StateHasChanged();
+            Snackbar.Add($"Operación completada con éxito", Severity.Success);
+        }
+        else 
+        {
+            Snackbar.Add($"Error al intentar la operación", Severity.Error);
+        }
+    }
+
+    /*protected override async Task OnInitializedAsync()
+    {
+        HttpClient Http = new HttpClient();
+        var result = await Http.GetAsync($"http://5.189.137.10/shoe/Ean?shoeEan=001383300017030");
+        //var result = await Http.GetAsync($"http://www.google.com");
+        resultString = result.ToString();
+    }*/
+}

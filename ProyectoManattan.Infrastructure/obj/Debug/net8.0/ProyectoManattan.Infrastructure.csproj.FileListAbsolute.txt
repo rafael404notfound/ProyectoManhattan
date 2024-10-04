@@ -1,0 +1,16 @@
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\bin\Debug\net8.0\ProyectoManattan.Infrastructure.deps.json
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\bin\Debug\net8.0\ProyectoManattan.Infrastructure.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\bin\Debug\net8.0\ProyectoManattan.Infrastructure.pdb
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\bin\Debug\net8.0\ProyectoManhattan.Domain.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\bin\Debug\net8.0\ProyectoManhattan.Domain.pdb
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\obj\Debug\net8.0\ProyectoManattan.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\obj\Debug\net8.0\ProyectoManattan.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\obj\Debug\net8.0\ProyectoManattan.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\obj\Debug\net8.0\ProyectoManattan.Infrastructure.AssemblyInfo.cs
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\obj\Debug\net8.0\ProyectoManattan.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\obj\Debug\net8.0\ProyectoManattan.Infrastructure.sourcelink.json
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\obj\Debug\net8.0\Proyecto.89A55B61.Up2Date
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\obj\Debug\net8.0\ProyectoManattan.Infrastructure.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\obj\Debug\net8.0\refint\ProyectoManattan.Infrastructure.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\obj\Debug\net8.0\ProyectoManattan.Infrastructure.pdb
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManattan.Infrastructure\obj\Debug\net8.0\ref\ProyectoManattan.Infrastructure.dll

@@ -1,8 +1,7 @@
-﻿namespace ProyectoManhattan.Client
-{
+﻿namespace ProyectoManhattan.Client{ 
     public static class UrlGetter
     {
-        public static readonly string Url = "http://5.189.137.10/";
-        //public static readonly string Url = "https://localhost:5000/";
+        //public static readonly string Url = "http://5.189.137.10/";
+        public static readonly string Url = "https://localhost:5000/";
     }
 }

@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ProyectoManhattan.BlazorComponents.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ProyectoManhattan.BlazorComponents.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\wwwroot\\background.png",
+      "PackagePath": "staticwebassets\\background.png"
+    },
+    {
+      "Id": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\wwwroot\\exampleJsInterop.js",
+      "PackagePath": "staticwebassets\\exampleJsInterop.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ProyectoManhattan.BlazorComponents.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ProyectoManhattan.BlazorComponents.props",
+      "PackagePath": "build\\ProyectoManhattan.BlazorComponents.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ProyectoManhattan.BlazorComponents.props",
+      "PackagePath": "buildMultiTargeting\\ProyectoManhattan.BlazorComponents.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ProyectoManhattan.BlazorComponents.props",
+      "PackagePath": "buildTransitive\\ProyectoManhattan.BlazorComponents.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

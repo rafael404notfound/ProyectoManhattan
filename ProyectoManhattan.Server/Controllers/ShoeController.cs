@@ -27,16 +27,33 @@ namespace EciApi.Controllers
         public EciService _eciService { get; set; }
         public EmailService _emailService { get; set; }
         public PdfEditor _pdfEditor { get; set; }
+        public IApplicationRepo _applicationRepo { get; set; }
 
-        public ShoeController(CookieGetter cookieGetter,EciService eciService, EmailService emailService, PdfEditor pdfEditor)
+        public ShoeController(CookieGetter cookieGetter,EciService eciService, EmailService emailService, PdfEditor pdfEditor, IApplicationRepo applicationRepo)
         {
             _cookieGetter = cookieGetter;
             _eciService = eciService;
             _emailService = emailService;
             _pdfEditor = pdfEditor;
+            _applicationRepo = applicationRepo;
+        }        
+
+		/*[HttpGet()]
+        [Route("GetModels")]
+        public IEnumerable<ShoeModel> GetShoeModels()
+        {
+            return _applicationRepo.GetAll();
         }
 
-        [HttpGet(Name = "FetchShoeModel")]
+        [HttpPost()]
+        [Route("PostModel")]
+        public IActionResult PostShoeModels([FromBody] ShoeModel shoeModel)
+        {
+            _applicationRepo.Create(shoeModel);
+            return Ok(shoeModel);
+        }*/
+
+		[HttpGet()]
         [Route("Ean")]
         public async Task<ShoeModel> FetchShoeModelByEan(string shoeEan)
         {
@@ -49,12 +66,12 @@ namespace EciApi.Controllers
             shoes = _eciService.FetchByMatnr(shoe.Matnr, httpClient).Result;
             ShoeModel result = _eciService.GetShoeModelTemplateByMatnr(shoe.Matnr, httpClient).Result;
             result.Sizes = shoes;
-            result.Brand = shoe.Brand;
+            result.BrandSapName = shoe.BrandSapName;
 
             return result;
         }
 
-        [HttpGet(Name = "FetchShoeModel")]
+        [HttpGet()]
         [Route("matnr")]
         public async Task<ShoeModel> FetchShoeModelByMatnr(string shoeMatnr)
         {
@@ -71,7 +88,7 @@ namespace EciApi.Controllers
         }
 
 
-        [HttpGet(Name = "FetchShoeModel")]
+        [HttpGet()]
         [Route("reference")]
         public async Task<ShoeModel> FetchShoeModeByReference(string shoeReference)
         {
@@ -88,7 +105,7 @@ namespace EciApi.Controllers
             return result;
         }
 
-        [HttpGet(Name = "FetchShoeModelWithUneco")]
+        [HttpGet()]
         [Route("Uneco")]
         public async Task<ShoeModel> FetchShoeModelByUneco([FromQuery]string shoeEan, [FromQuery]string shoeUneco)
         {
@@ -105,7 +122,7 @@ namespace EciApi.Controllers
             return result;
         }
 
-        [HttpPost(Name = "GetMissingShoes")]
+        [HttpPost("GetMissingShoes")]
         public async Task<CalculateMissingShoesDto> GetMissingShoes(List<EanAndUnecoDto> shoeEans)
         {
 
@@ -116,12 +133,12 @@ namespace EciApi.Controllers
             Shoe shoe = new Shoe();
 
 
-            foreach (var shoeEan in shoeEans)
+            /*foreach (var shoeEan in shoeEans)
             {
                 shoe = await _eciService.GetShoeByEan(shoeEan.Ean, httpClient, shoeEan.Uneco);
                 shoe.Count = 1;
                 shoes.Add(shoe);
-            }
+            }*/
 
             /*List<Task<Shoe>> tasks = new List<Task<Shoe>>();
             foreach (var shoeEan in shoeEans)
@@ -137,20 +154,21 @@ namespace EciApi.Controllers
             }*/
 
             
-           /* List<Task<Shoe>> tasks = new List<Task<Shoe>>();
+            List<Task<Shoe>> tasks = new List<Task<Shoe>>();
             foreach (var shoeEan in shoeEans)
             {
                 tasks.Add(_eciService.GetShoeByEan(shoeEan.Ean, httpClient, shoeEan.Uneco));
             }
             var results = await Task.WhenAll(tasks.ToArray());
-            shoes.AddRange(results);     */
+            shoes.AddRange(results);
 
             List<ShoeModel> scannedShoeModels = await _eciService.GroupShoesInToShoeModels(shoes, httpClient);
+            //GroupShoesIntoShoeModelsDto groupShoesIntoShoeModelsDto = await _eciService.GroupShoesInToShoeModels(shoes, httpClient);
 
             var result = _eciService.CalculateMissingShoes(scannedShoeModels, true, httpClient);
 
-            string pdf = _pdfEditor.CreatePdf(result);
-            await _emailService.SendEmail(pdf);
+            //string pdf = _pdfEditor.CreatePdf(result);
+            //await _emailService.SendEmail(pdf);
 
             return result;
         }

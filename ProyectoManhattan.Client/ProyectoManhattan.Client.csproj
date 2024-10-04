@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProyectoManhattan.Application\ProyectoManhattan.Application.csproj" />
+    <ProjectReference Include="..\ProyectoManhattan.BlazorComponents\ProyectoManhattan.BlazorComponents.csproj" />
     <ProjectReference Include="..\ProyectoManhattan.Domain\ProyectoManhattan.Domain.csproj" />
   </ItemGroup>
 
