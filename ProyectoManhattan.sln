@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoManhattan.Applicati
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{49DE8336-D00E-4642-96B6-51B4F2B81D22}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoManhattan.MAUI", "ProyectoManhattan.MAUI\ProyectoManhattan.MAUI.csproj", "{5E66498C-8E5C-46A0-8384-6BCA82F94FC8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoManhattan.BlazorComponents", "ProyectoManhattan.BlazorComponents\ProyectoManhattan.BlazorComponents.csproj", "{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoManhattan.Infrastructure", "ProyectoManattan.Infrastructure\ProyectoManhattan.Infrastructure.csproj", "{402F71A2-7C70-40AC-BC38-2469C4CEF651}"

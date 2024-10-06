@@ -117,13 +117,12 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T04:32:54.912Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProyectoManhattan.Server",
+              "Title": "ProyectoManhattan.Server.csproj",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj",
               "RelativeDocumentMoniker": "ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj",
               "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj",
