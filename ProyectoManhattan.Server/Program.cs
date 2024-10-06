@@ -10,10 +10,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(opts =>
 {
-    opts.UseSqlServer(builder.Configuration["ConnectionStrings:ApplicationConnectionSql"]);
+    opts.UseNpgsql(builder.Configuration["ConnectionStrings:ApplicationConnection"]);
     opts.EnableSensitiveDataLogging(true);
-    //AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 });
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyOrigin();
+        });
+});
+
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
@@ -30,14 +40,14 @@ builder.Services.AddTransient<EmailService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCors(policy =>
+/*builder.Services.AddCors(policy =>
 {
     policy.AddPolicy("_myAllowSpecificOrigins", builder => builder.WithOrigins("https://localhost:5000/")
          .SetIsOriginAllowed((host) => true)
          .AllowAnyMethod()
          .AllowAnyHeader()
          .AllowCredentials());
-});
+});*/
 
 
 var app = builder.Build();
@@ -49,7 +59,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.UseWebAssemblyDebugging();
 }
-app.UseCors("_myAllowSpecificOrigins");
+//app.UseCors("_myAllowSpecificOrigins");
+app.UseCors();
 
 app.UseHttpsRedirection();
 

@@ -28,8 +28,9 @@ namespace ProyectoManhattan.Infrastructure.Persistance
         }
 
 
-        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {           
-        }*/
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Report>().Property(r => r.CalculationTime).HasColumnType("decimal(18,2)");
+        }
     }
 }

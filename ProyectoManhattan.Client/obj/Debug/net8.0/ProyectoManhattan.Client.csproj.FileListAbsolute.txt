@@ -1282,7 +1282,7 @@ C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Client\obj\Debu
 C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Client\obj\Debug\net8.0\compressed\dzponlon0j.gz
 C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Client\obj\Debug\net8.0\compressed\yewy9a0ntc.gz
 C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Client\obj\Debug\net8.0\compressed\e474a45osh.gz
-C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Client\obj\Debug\net8.0\compressed\walxbuugr2.gz
-C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Client\obj\Debug\net8.0\compressed\zcnf8fdl1e.gz
 C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Client\obj\Debug\net8.0\compressed\nd4bbx89ha.gz
 C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Client\obj\Debug\net8.0\compressed\u59auxgpxb.gz
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Client\obj\Debug\net8.0\compressed\walxbuugr2.gz
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Client\obj\Debug\net8.0\compressed\zcnf8fdl1e.gz

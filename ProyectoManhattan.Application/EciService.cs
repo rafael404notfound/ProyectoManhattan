@@ -446,8 +446,8 @@ namespace ProyectoManhattan.Application
             watch.Stop();
 
             // Finish building Report result
-            result.CreatedAt = DateTime.Now;
-            result.Name = $"Infome_{result.CreatedAt.ToString()}";
+            //result.CreatedAt = DateTime.Now;
+            result.Name = $"Informe";
             result.CalculationTime = watch.ElapsedMilliseconds;
             result.IsFinished = true;
 

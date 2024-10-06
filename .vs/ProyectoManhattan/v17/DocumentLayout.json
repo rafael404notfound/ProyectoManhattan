@@ -3,20 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|solutionrelative:proyectomanhattan.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|solutionrelative:proyectomanhattan.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CA1C8EC7-1BB2-44DE-81ED-5C60DF84D882}|ProyectoManhattan.Client\\ProyectoManhattan.Client.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.client\\url.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA1C8EC7-1BB2-44DE-81ED-5C60DF84D882}|ProyectoManhattan.Client\\ProyectoManhattan.Client.csproj|solutionrelative:proyectomanhattan.client\\url.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.blazorcomponents\\url.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|solutionrelative:proyectomanhattan.blazorcomponents\\url.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA1C8EC7-1BB2-44DE-81ED-5C60DF84D882}|ProyectoManhattan.Client\\ProyectoManhattan.Client.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.client\\url.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA1C8EC7-1BB2-44DE-81ED-5C60DF84D882}|ProyectoManhattan.Client\\ProyectoManhattan.Client.csproj|solutionrelative:proyectomanhattan.client\\url.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.application\\cookiegetter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|solutionrelative:proyectomanhattan.application\\cookiegetter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|solutionrelative:proyectomanhattan.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.blazorcomponents\\pages\\dialogs\\dialogcreatereport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|solutionrelative:proyectomanhattan.blazorcomponents\\pages\\dialogs\\dialogcreatereport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|solutionrelative:proyectomanhattan.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EB34B9-D8D1-4312-8079-F2B3057DD4C9}|ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.domain\\entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EB34B9-D8D1-4312-8079-F2B3057DD4C9}|ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj|solutionrelative:proyectomanhattan.domain\\entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{402F71A2-7C70-40AC-BC38-2469C4CEF651}|ProyectoManattan.Infrastructure\\ProyectoManhattan.Infrastructure.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanattan.infrastructure\\persistance\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{402F71A2-7C70-40AC-BC38-2469C4CEF651}|ProyectoManattan.Infrastructure\\ProyectoManhattan.Infrastructure.csproj|solutionrelative:proyectomanattan.infrastructure\\persistance\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EB34B9-D8D1-4312-8079-F2B3057DD4C9}|ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.domain\\entities\\brandreportinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EB34B9-D8D1-4312-8079-F2B3057DD4C9}|ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj|solutionrelative:proyectomanhattan.domain\\entities\\brandreportinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.blazorcomponents\\pages\\reportspage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|solutionrelative:proyectomanhattan.blazorcomponents\\pages\\reportspage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EB34B9-D8D1-4312-8079-F2B3057DD4C9}|ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.domain\\entities\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EB34B9-D8D1-4312-8079-F2B3057DD4C9}|ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj|solutionrelative:proyectomanhattan.domain\\entities\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.blazorcomponents\\pages\\reportpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|solutionrelative:proyectomanhattan.blazorcomponents\\pages\\reportpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.application\\eciservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|solutionrelative:proyectomanhattan.application\\eciservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.server\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -27,20 +63,8 @@
       "RelativeMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|solutionrelative:proyectomanhattan.server\\controllers\\shoecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.blazorcomponents\\pages\\dialogs\\dialogcreatereport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|solutionrelative:proyectomanhattan.blazorcomponents\\pages\\dialogs\\dialogcreatereport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.blazorcomponents\\pages\\reportspage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|solutionrelative:proyectomanhattan.blazorcomponents\\pages\\reportspage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.server\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|solutionrelative:proyectomanhattan.server\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.blazorcomponents\\pages\\reportpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|solutionrelative:proyectomanhattan.blazorcomponents\\pages\\reportpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,11 +74,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ReportsPage.razor",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\Pages\\ReportsPage.razor",
               "RelativeDocumentMoniker": "ProyectoManhattan.BlazorComponents\\Pages\\ReportsPage.razor",
@@ -63,24 +87,26 @@
               "ViewState": "AgIAAEUAAAAAAAAAAAAAwD0AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-09-30T03:04:39.387Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Url.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\Url.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.BlazorComponents\\Url.cs",
               "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\Url.cs",
               "RelativeToolTip": "ProyectoManhattan.BlazorComponents\\Url.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T04:32:38.869Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Url.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\Url.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.Client\\Url.cs",
@@ -89,36 +115,116 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T04:32:54.912Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "CookieGetter.cs",
+              "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\CookieGetter.cs",
+              "RelativeDocumentMoniker": "ProyectoManhattan.Application\\CookieGetter.cs",
+              "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\CookieGetter.cs",
+              "RelativeToolTip": "ProyectoManhattan.Application\\CookieGetter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T15:46:51.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Brand.cs",
+              "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\Entities\\Brand.cs",
+              "RelativeDocumentMoniker": "ProyectoManhattan.Domain\\Entities\\Brand.cs",
+              "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\Entities\\Brand.cs",
+              "RelativeToolTip": "ProyectoManhattan.Domain\\Entities\\Brand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T14:21:46.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BrandReportInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\Entities\\BrandReportInfo.cs",
+              "RelativeDocumentMoniker": "ProyectoManhattan.Domain\\Entities\\BrandReportInfo.cs",
+              "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\Entities\\BrandReportInfo.cs",
+              "RelativeToolTip": "ProyectoManhattan.Domain\\Entities\\BrandReportInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T14:21:39.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManattan.Infrastructure\\Persistance\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "ProyectoManattan.Infrastructure\\Persistance\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManattan.Infrastructure\\Persistance\\ApplicationDbContext.cs",
+              "RelativeToolTip": "ProyectoManattan.Infrastructure\\Persistance\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAzwCEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T14:14:32.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EciService.cs",
+              "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\EciService.cs",
+              "RelativeDocumentMoniker": "ProyectoManhattan.Application\\EciService.cs",
+              "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\EciService.cs",
+              "RelativeToolTip": "ProyectoManhattan.Application\\EciService.cs",
+              "ViewState": "AgIAALcBAAAAAAAAAAAjwMEBAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T14:07:11.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Report.cs",
+              "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\Entities\\Report.cs",
+              "RelativeDocumentMoniker": "ProyectoManhattan.Domain\\Entities\\Report.cs",
+              "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\Entities\\Report.cs",
+              "RelativeToolTip": "ProyectoManhattan.Domain\\Entities\\Report.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-04T14:06:26.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\Program.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.Server\\Program.cs",
               "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\Program.cs",
               "RelativeToolTip": "ProyectoManhattan.Server\\Program.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAIwAwAAABXAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvxgAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T04:26:30.846Z"
+              "WhenOpened": "2024-10-03T04:26:30.846Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\appsettings.json",
               "RelativeDocumentMoniker": "ProyectoManhattan.Server\\appsettings.json",
               "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\appsettings.json",
               "RelativeToolTip": "ProyectoManhattan.Server\\appsettings.json",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAAAAoAAACRAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-10-03T04:25:36.919Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 13,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\appsettings.Development.json",
               "RelativeDocumentMoniker": "ProyectoManhattan.Server\\appsettings.Development.json",
@@ -131,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 14,
               "Title": "ShoeController.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\Controllers\\ShoeController.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.Server\\Controllers\\ShoeController.cs",
@@ -144,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "DialogCreateReport.razor",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\Pages\\Dialogs\\DialogCreateReport.razor",
               "RelativeDocumentMoniker": "ProyectoManhattan.BlazorComponents\\Pages\\Dialogs\\DialogCreateReport.razor",
@@ -157,20 +263,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "ReportPage.razor",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\Pages\\ReportPage.razor",
               "RelativeDocumentMoniker": "ProyectoManhattan.BlazorComponents\\Pages\\ReportPage.razor",
               "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\Pages\\ReportPage.razor",
               "RelativeToolTip": "ProyectoManhattan.BlazorComponents\\Pages\\ReportPage.razor",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAjwFkAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-09-30T03:37:15.314Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "ReportController.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\Controllers\\ReportController.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.Server\\Controllers\\ReportController.cs",
