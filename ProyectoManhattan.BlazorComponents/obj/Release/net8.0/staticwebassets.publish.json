@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8+7LbVAJ2mPkdzFnr+BuztnTziRJj1pnpEfkFdQ25yY=",
+  "Hash": "WBsyWINu+m1IeuHrI7ftegrKo1xfgB+UDNYU4dx9mNs=",
   "Source": "ProyectoManhattan.BlazorComponents",
   "BasePath": "_content/ProyectoManhattan.BlazorComponents",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "ProyectoManhattan.BlazorComponents\\wwwroot",
       "Source": "ProyectoManhattan.BlazorComponents",
-      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\wwwroot\\",
       "BasePath": "_content/ProyectoManhattan.BlazorComponents",
       "Pattern": "**"
     }
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "C:\\Users\\Rafita\\.nuget\\packages\\mudblazor\\7.6.0\\staticwebassets\\MudBlazor.min.js"
     },
     {
-      "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\obj\\Release\\net8.0\\scopedcss\\bundle\\ProyectoManhattan.BlazorComponents.styles.css",
+      "Identity": "C:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\obj\\Release\\net8.0\\scopedcss\\bundle\\ProyectoManhattan.BlazorComponents.styles.css",
       "SourceId": "ProyectoManhattan.BlazorComponents",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\obj\\Release\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\obj\\Release\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/ProyectoManhattan.BlazorComponents",
       "RelativePath": "ProyectoManhattan.BlazorComponents.styles.css",
       "AssetKind": "All",
@@ -71,13 +71,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\obj\\Release\\net8.0\\scopedcss\\bundle\\ProyectoManhattan.BlazorComponents.styles.css"
+      "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\obj\\Release\\net8.0\\scopedcss\\bundle\\ProyectoManhattan.BlazorComponents.styles.css"
     },
     {
-      "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\ProyectoManhattan.BlazorComponents.bundle.scp.css",
+      "Identity": "C:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\ProyectoManhattan.BlazorComponents.bundle.scp.css",
       "SourceId": "ProyectoManhattan.BlazorComponents",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/ProyectoManhattan.BlazorComponents",
       "RelativePath": "ProyectoManhattan.BlazorComponents.bundle.scp.css",
       "AssetKind": "All",
@@ -90,13 +90,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\ProyectoManhattan.BlazorComponents.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\ProyectoManhattan.BlazorComponents.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\wwwroot\\background.png",
+      "Identity": "C:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\wwwroot\\background.png",
       "SourceId": "ProyectoManhattan.BlazorComponents",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\wwwroot\\",
       "BasePath": "_content/ProyectoManhattan.BlazorComponents",
       "RelativePath": "background.png",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\background.png"
     },
     {
-      "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\wwwroot\\exampleJsInterop.js",
+      "Identity": "C:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\wwwroot\\exampleJsInterop.js",
       "SourceId": "ProyectoManhattan.BlazorComponents",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\wwwroot\\",
       "BasePath": "_content/ProyectoManhattan.BlazorComponents",
       "RelativePath": "exampleJsInterop.js",
       "AssetKind": "All",

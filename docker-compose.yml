@@ -1,0 +1,6 @@
+services:
+  proyectomanhattan.server:
+    image: ${DOCKER_REGISTRY-}proyectomanhattanserver
+    build:
+      context: .
+      dockerfile: ProyectoManhattan.Server/Dockerfile
