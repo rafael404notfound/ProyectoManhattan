@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "ProyectoManhattan.Client",
   "resources": {
-    "hash": "sha256-yWpfscAx3Gs41GmEyl8fN20TsTh+eIsy7h6rIOHW3Ww=",
+    "hash": "sha256-SzBcTxfAH0kHpaylJRgS3qQTHmWF4zO76lX4TkPDL/c=",
     "jsModuleNative": {
       "dotnet.native.8.0.10.1e3b3r9dmq.js": "sha256-QVxMlY7ohmjgde/bZMA0dlWDAeuUP+tEfkiSdg4DFcE="
     },
@@ -253,16 +253,16 @@
       "mscorlib.wasm": "sha256-Gz8PyW2/fwihe5ul81OwmRUrU71r+KtbyRw6xlOGD+Q=",
       "netstandard.wasm": "sha256-jMTqIQzoDS810lyhZpMO5eEC36EzntXqSVn+2qwkOMQ=",
       "System.Private.CoreLib.wasm": "sha256-NFj5WE5VLP2LptZIRJCUIc1AMk06FmxpsSILfPISwAw=",
-      "ProyectoManhattan.Application.wasm": "sha256-yj+rmUxnSTCbbTwbHVp4MZW21rK0qSmjsWFm8dYnuUI=",
-      "ProyectoManhattan.BlazorComponents.wasm": "sha256-3TBp4MnwneC+NXhOmNnxvZS3b0xj2htxxJpg4YAISvA=",
+      "ProyectoManhattan.Application.wasm": "sha256-Rh62ZKXVqB62PpJB6gCw/BwhwRoPCNfnYUV1lPOrwd0=",
+      "ProyectoManhattan.BlazorComponents.wasm": "sha256-7xjSJa8LZi82CCN6bezWwMpEd5YyHOP1EkjqBy09qcI=",
       "ProyectoManhattan.Domain.wasm": "sha256-DMpiU8UgMalX10UwyXv5O6r+egHCjR5+/vkiTtPpLoI=",
-      "ProyectoManhattan.Client.wasm": "sha256-Xl9+01sYAygIUYBUD0dD5Xd/9CmGIdW4us5ugC12At8="
+      "ProyectoManhattan.Client.wasm": "sha256-U3n5CpYm4z505fYbVxqcngcfIIPcBzoYTMO84duIkBM="
     },
     "pdb": {
-      "ProyectoManhattan.Application.pdb": "sha256-HkFPwTagY7RGRD3WrFxy31A40EAh8U1X4tKGEPKnLDQ=",
-      "ProyectoManhattan.BlazorComponents.pdb": "sha256-msUY/46ws6bcpeMI5jYxVYM1GjJSkb1tS7ykFJXRC6M=",
+      "ProyectoManhattan.Application.pdb": "sha256-NvvGVQjw1JLT5OjPG9+5tm/ZR4vUHvIbbFe2QEAhIGY=",
+      "ProyectoManhattan.BlazorComponents.pdb": "sha256-/Sp22IpHpu652MMVUL5LAZoFd6qzbY9Rxf2Fi3NC50E=",
       "ProyectoManhattan.Domain.pdb": "sha256-ArPyRWoIsYmO05loFZQ0mKVrw85VAzUKIK5ZBH+YY2w=",
-      "ProyectoManhattan.Client.pdb": "sha256-/NAbV8rgnx1EdHEY6fMBd3n8tVPLFhtryhpuSyL4K10="
+      "ProyectoManhattan.Client.pdb": "sha256-WdsxrFHjPdZu37H41fua9BhzqGCoyVgAyAuhglsgDqA="
     }
   },
   "cacheBootResources": true,

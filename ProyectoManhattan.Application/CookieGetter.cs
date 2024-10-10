@@ -34,20 +34,22 @@ namespace ProyectoManhattan.Application
         public void SetCookies()
         {
             // Navigate to sap            
-            var options = new ChromeOptions();
-            options.AddArgument("no-sandbox");
-             driver = new ChromeDriver(options);
+            var options = new ChromeOptions();            
+            options.AddArgument("--headless"); 
+            options.AddArgument("--no-sandbox"); 
+            //options.AddArgument("--disable-dev-shm-usage"); 
+            driver = new ChromeDriver(options);
             //driver = new ChromeDriver("C:/Published/ProyectoManhattan/chromedriver/win64/chromedriver.exe", options, TimeSpan.FromSeconds(130));
 
             driver.Navigate().GoToUrl("https://sapfiori.elcorteingles.es/sap/bc/ui2/flp");
 
             // Get form elements
             
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            IWebElement usernameElement = wait.Until(drv => drv.FindElement(By.Id("username")));
-            //IWebElement usernameElement = driver.FindElement(By.Id("username"));
-            IWebElement passwordElement = wait.Until(drv => drv.FindElement(By.Id("password")));
-            //IWebElement passwordElement = driver.FindElement(By.Id("password"));
+            //var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            //IWebElement usernameElement = wait.Until(drv => drv.FindElement(By.Id("username")));
+            IWebElement usernameElement = driver.FindElement(By.Id("username"));
+            //IWebElement passwordElement = wait.Until(drv => drv.FindElement(By.Id("password")));
+            IWebElement passwordElement = driver.FindElement(By.Id("password"));
 
             // Activate form
             usernameElement.SendKeys("73607079");
