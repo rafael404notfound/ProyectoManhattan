@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fITga/k6sEXajk8a4B2KwYMMZvau1bxJJzVXzdTqOw4=",
+  "Hash": "8Z0oTq+T/qg1TfgzosHQ9t+3u1rIuMEj7SUhTZ6ilIY=",
   "Source": "ProyectoManhattan.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -1860,6 +1860,25 @@
       "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\obj\\Debug\\net8.0\\webcil\\Microsoft.AspNetCore.WebUtilities.wasm"
     },
     {
+      "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Bcl.AsyncInterfaces.wasm",
+      "SourceId": "ProyectoManhattan.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Bcl.AsyncInterfaces.wasm",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\obj\\Debug\\net8.0\\webcil\\Microsoft.Bcl.AsyncInterfaces.wasm"
+    },
+    {
       "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.CSharp.wasm",
       "SourceId": "ProyectoManhattan.Client",
       "SourceType": "Computed",
@@ -2409,6 +2428,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\obj\\Debug\\net8.0\\webcil\\Microsoft.Net.Http.Headers.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Playwright.wasm",
+      "SourceId": "ProyectoManhattan.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Playwright.wasm",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\obj\\Debug\\net8.0\\webcil\\Microsoft.Playwright.wasm"
     },
     {
       "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.VisualBasic.Core.wasm",
@@ -7351,6 +7389,25 @@
       "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Mailjet.Client.wasm"
     },
     {
+      "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\obj\\Debug\\net8.0\\compressed\\cuxo3us57b.gz",
+      "SourceId": "ProyectoManhattan.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Playwright.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Playwright.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Playwright.wasm"
+    },
+    {
       "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\obj\\Debug\\net8.0\\compressed\\cxql3jf603.gz",
       "SourceId": "ProyectoManhattan.Client",
       "SourceType": "Computed",
@@ -9287,6 +9344,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\BouncyCastle.Cryptography.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\obj\\Debug\\net8.0\\compressed\\q54j094gjs.gz",
+      "SourceId": "ProyectoManhattan.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Bcl.AsyncInterfaces.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Bcl.AsyncInterfaces.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Bcl.AsyncInterfaces.wasm"
     },
     {
       "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\obj\\Debug\\net8.0\\compressed\\q8bharwk4j.gz",

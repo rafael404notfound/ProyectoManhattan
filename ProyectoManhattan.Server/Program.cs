@@ -28,11 +28,13 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
 builder.Services.AddRazorPages();
-builder.Services.AddHostedService((sp) => sp.GetRequiredService<CookieGetter>());
+//builder.Services.AddHostedService((sp) => sp.GetRequiredService<CookieGetter>());
+builder.Services.AddHostedService((sp) => sp.GetRequiredService<IJwtGetter>());
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddScoped<IApplicationRepo, EFApplicationRepository>();
 builder.Services.AddScoped<IReportRepo, EFReportRepository>();
-builder.Services.AddSingleton<CookieGetter>();
+//builder.Services.AddSingleton<IJwtGetter, CookieGetter>();
+builder.Services.AddSingleton<IJwtGetter, PlaywrightJwtGetter>();
 builder.Services.AddSingleton<PdfEditor>();
 builder.Services.AddTransient<EciService>();
 builder.Services.AddTransient<EmailService>();

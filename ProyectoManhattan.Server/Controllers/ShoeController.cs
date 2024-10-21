@@ -23,15 +23,16 @@ namespace EciApi.Controllers
     [Route("[controller]")]
     public class ShoeController : ControllerBase
     {
-        private CookieGetter _cookieGetter { get; set; }
+        //private CookieGetter _cookieGetter { get; set; }
+        private IJwtGetter _jwtGetter { get; set; }
         public EciService _eciService { get; set; }
         public EmailService _emailService { get; set; }
         public PdfEditor _pdfEditor { get; set; }
         public IApplicationRepo _applicationRepo { get; set; }
 
-        public ShoeController(CookieGetter cookieGetter,EciService eciService, EmailService emailService, PdfEditor pdfEditor, IApplicationRepo applicationRepo)
+        public ShoeController(IJwtGetter jwtGetter,EciService eciService, EmailService emailService, PdfEditor pdfEditor, IApplicationRepo applicationRepo)
         {
-            _cookieGetter = cookieGetter;
+            _jwtGetter = jwtGetter;
             _eciService = eciService;
             _emailService = emailService;
             _pdfEditor = pdfEditor;
@@ -57,8 +58,9 @@ namespace EciApi.Controllers
         [Route("Ean")]
         public async Task<ShoeModel> FetchShoeModelByEan(string shoeEan)
         {
-            var handler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
+            var handler = new HttpClientHandler { CookieContainer = _jwtGetter.cookieContainer };
             HttpClient httpClient = new HttpClient(handler);
+            var response = await httpClient.GetAsync("https://www.google.com");
             List<Shoe> shoes = new List<Shoe>();
             Shoe shoe = new Shoe();
 
@@ -75,7 +77,7 @@ namespace EciApi.Controllers
         [Route("matnr")]
         public async Task<ShoeModel> FetchShoeModelByMatnr(string shoeMatnr)
         {
-            var handler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
+            var handler = new HttpClientHandler { CookieContainer = _jwtGetter.cookieContainer };
             HttpClient httpClient = new HttpClient(handler);
             List<Shoe> shoes = new List<Shoe>();
             Shoe shoe = new Shoe();
@@ -92,7 +94,7 @@ namespace EciApi.Controllers
         [Route("reference")]
         public async Task<ShoeModel> FetchShoeModeByReference(string shoeReference)
         {
-            var handler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
+            var handler = new HttpClientHandler { CookieContainer = _jwtGetter.cookieContainer };
             HttpClient httpClient = new HttpClient(handler);
             List<Shoe> shoes = new List<Shoe>();
             Shoe shoe = new Shoe();
@@ -109,7 +111,7 @@ namespace EciApi.Controllers
         [Route("Uneco")]
         public async Task<ShoeModel> FetchShoeModelByUneco([FromQuery]string shoeEan, [FromQuery]string shoeUneco)
         {
-            var handler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
+            var handler = new HttpClientHandler { CookieContainer = _jwtGetter.cookieContainer };
             HttpClient httpClient = new HttpClient(handler);
             List<Shoe> shoes = new List<Shoe>();
             Shoe shoe = new Shoe();
@@ -126,7 +128,7 @@ namespace EciApi.Controllers
         public async Task<CalculateMissingShoesDto> GetMissingShoes(List<EanAndUnecoDto> shoeEans)
         {
 
-            var handler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
+            var handler = new HttpClientHandler { CookieContainer = _jwtGetter.cookieContainer };
             HttpClient httpClient = new HttpClient(handler);
 
             List<Shoe> shoes = new List<Shoe>();

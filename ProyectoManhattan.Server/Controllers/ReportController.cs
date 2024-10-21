@@ -11,10 +11,10 @@ namespace Eci.Api.Controllers
     {
         private IReportRepo _repository { get; set; }
         private EciService _eciService { get; set; }
-        private CookieGetter _cookieGetter { get; set; }
+        private IJwtGetter _cookieGetter { get; set; }
         private PdfEditor _pdfEditor { get; set; }
 
-        public ReportController(IReportRepo repository, EciService eciService, CookieGetter cookieGetter, PdfEditor pdfEditor)
+        public ReportController(IReportRepo repository, EciService eciService, IJwtGetter cookieGetter, PdfEditor pdfEditor)
         {
             _repository = repository;
             _eciService = eciService;

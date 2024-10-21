@@ -12,10 +12,10 @@ namespace EciApi.Controllers
     public class BrandController : ControllerBase 
     {
         private IApplicationRepo _applicationRepo { get; set; }
-        private CookieGetter _cookieGetter { get; set; }
+        private IJwtGetter _cookieGetter { get; set; }
         private EciService _eciService { get; set; }
 
-        public BrandController(IApplicationRepo applicationRepo, CookieGetter cookieGetter, EciService eciService)
+        public BrandController(IApplicationRepo applicationRepo, IJwtGetter cookieGetter, EciService eciService)
         {
             _applicationRepo = applicationRepo;
             _cookieGetter = cookieGetter;
