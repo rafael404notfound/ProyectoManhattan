@@ -3,26 +3,23 @@
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
-# Install selenium
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends gnupg wget curl unzip && \
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
-    apt-get update -y && \
-    apt-get install -y --no-install-recommends google-chrome-stable && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-
-# Install chrome driver
-RUN export CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE"); \
-wget -q --continue -P /chromedriver "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"; \
-echo ""
-
 USER app
 WORKDIR /app
+RUN chown -R app /app
+
 EXPOSE 8080
 EXPOSE 8081
 
+RUN apt-get install -y wget xvfb unzip
+
+# Set up the Chrome PPA
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
+
+# Update the package list and install chrome
+RUN apt-get update -y
+RUN apt-get install -y google-chrome-stable
+RUN apt-get install -y firefox
 
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
@@ -38,6 +35,8 @@ RUN dotnet restore "./ProyectoManhattan.Server/ProyectoManhattan.Server.csproj"
 COPY . .
 WORKDIR "/src/ProyectoManhattan.Server"
 RUN dotnet build "./ProyectoManhattan.Server.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN npx playwright install-deps
+RUN npx playwright install
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProyectoManhattan.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+26b283dd09d57a45080fe086ac6ab4e18371a4f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34edcc42ab176898adbdda2979fcb8779810993e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProyectoManhattan.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProyectoManhattan.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
