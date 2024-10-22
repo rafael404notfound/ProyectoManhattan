@@ -3,9 +3,9 @@
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
-USER app
+USER root
 WORKDIR /app
-RUN chown -R app /app
+RUN chown -R root /app
 
 EXPOSE 8080
 EXPOSE 8081
