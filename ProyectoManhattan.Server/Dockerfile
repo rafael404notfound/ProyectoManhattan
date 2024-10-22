@@ -14,7 +14,7 @@ RUN apt-get update -yq && apt-get upgrade -yq && apt-get install -yq curl git na
 #RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -yq nodejs build-essential
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -yq nodejs build-essential
 RUN npm install -g npm@latest
-RUN npm i -g npx
+RUN npm install -g npx
 
 RUN apt-get install -y wget xvfb unzip
 
