@@ -12,7 +12,7 @@ namespace ProyectoManhattan.Application
             Console.WriteLine("///// SETTING COOKIES");   
             // Navigate to sap
             using var playwright = await Playwright.CreateAsync();
-            await using var browser = await playwright.Chromium.LaunchAsync(new() { Headless = false });
+            await using var browser = await playwright.Chromium.LaunchAsync();
             var page = await browser.NewPageAsync();
             await page.GotoAsync("https://sapfiori.elcorteingles.es/sap/bc/ui2/flp");
             
