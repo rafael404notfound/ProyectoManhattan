@@ -12,7 +12,7 @@ services:
   proyectomanhattan.database:
     image: postgre:latest
     container_name: proyectomanhattan.database
-    enviroment:
+    environment:
       - POSTGRES_DB=ProyectoManhattanDb
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
