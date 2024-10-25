@@ -10,7 +10,7 @@ services:
       - "5001:5001"
   
   proyectomanhattan.database:
-    image: postgre:latest
+    image: postgres:latest
     container_name: proyectomanhattan.database
     environment:
       - POSTGRES_DB=ProyectoManhattanDb
