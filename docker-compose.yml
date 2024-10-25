@@ -1,6 +1,23 @@
 services:
   proyectomanhattan.server:
     image: ${DOCKER_REGISTRY-}proyectomanhattanserver
+    contaienr_name: proyectomanhattan.server
     build:
       context: .
       dockerfile: ProyectoManhattan.Server/Dockerfile
+      ports:
+      - "5000:5000"
+      - "5001:5001"
+  
+  proyectomanhattan.database:
+    image: postgre:latest
+    container_name: proyectomanhattan.database
+    enviroment:
+      - POSTGRES_DB=ProyectoManhattanDb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volume:
+      - ./.containers/proyectomanhattan-db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
