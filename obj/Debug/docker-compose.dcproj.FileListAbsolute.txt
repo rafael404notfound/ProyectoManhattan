@@ -60,3 +60,5 @@ C:\Users\Rafita\source\repos\ProyectoManhattan\bin\Debug\ProyectoManhattan.Infra
 C:\Users\Rafita\source\repos\ProyectoManhattan\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 C:\Users\Rafita\source\repos\ProyectoManhattan\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 C:\Users\Rafita\source\repos\ProyectoManhattan\obj\Debug\docker-c.35A3FFBA.Up2Date
+C:\Users\Rafita\source\repos\ProyectoManhattan\bin\Debug\Microsoft.Playwright.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll

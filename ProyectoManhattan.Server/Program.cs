@@ -38,6 +38,7 @@ builder.Services.AddSingleton<IJwtGetter, PlaywrightJwtGetter>();
 builder.Services.AddSingleton<PdfEditor>();
 builder.Services.AddTransient<EciService>();
 builder.Services.AddTransient<EmailService>();
+builder.Services.AddTransient<WebFetcher>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
