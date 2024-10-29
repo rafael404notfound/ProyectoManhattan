@@ -72,6 +72,19 @@ namespace ProyectoManhattan.Application
                 //var request = new HttpRequestMessage(HttpMethod.Get, $"https://www.elcorteingles.es/api/firefly/vuestore/products_list/{GetSearchString(uneco)}/zapatos/brand::{brand}/{i + 1}");
                 //var request = new HttpRequestMessage(HttpMethod.Get, $"https://www.elcorteingles.es/api/firefly/vuestore/products_list/moda-infantil/zapatos/delivery_time::0007/brand::Kids%20El%20Corte%20Inglés/{i + 1}?deliveryType=collect");
                 //https://www.elcorteingles.es/api/firefly/vuestore/products_list/delivery_time::0007/brand::Dustin/?deliveryType=collect
+                request.Headers.Add("authority", "www.elcorteingles.es");
+                //request.Headers.Add("Accept-Encoding", "gzip, deflate ,br,zstd");
+                request.Headers.Add("Accept-Language", "es-ES,es;q=0.9,en;q=0.8");
+                request.Headers.Add("Scheme", "https");
+                request.Headers.Add("Priority", "u=1, i");
+                request.Headers.Add("Referer", "https://www.elcorteingles.es/moda-mujer/zapatos/delivery_time::0007/?deliveryType=collect");
+                request.Headers.Add("Sec-Ch-Ua", "Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not");
+                request.Headers.Add("Sec-Ch-Ua-Mobile", "?1");
+                request.Headers.Add("Sec-Ch-Ua-Platform", "Android");
+                request.Headers.Add("Sec-Fetch-Dest", "empty");
+                request.Headers.Add("Sec-Fetch-Mode", "cors");
+                request.Headers.Add("Sec-Fetch-Site", "same-origin");
+
                 request.Headers.Add("User-Agent", "PostmanRuntime/7.37.3");
                 request.Headers.Add("Accept", "*/*");
                 request.Headers.Add("Connection", "keep-alive");

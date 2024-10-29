@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.blazorcomponents\\pages\\reportspage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|solutionrelative:proyectomanhattan.blazorcomponents\\pages\\reportspage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.application\\webfetcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|solutionrelative:proyectomanhattan.application\\webfetcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.blazorcomponents\\pages\\reportspage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|solutionrelative:proyectomanhattan.blazorcomponents\\pages\\reportspage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.application\\eciservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -145,17 +145,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ReportsPage.razor",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\Pages\\ReportsPage.razor",
               "RelativeDocumentMoniker": "ProyectoManhattan.BlazorComponents\\Pages\\ReportsPage.razor",
               "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\Pages\\ReportsPage.razor",
               "RelativeToolTip": "ProyectoManhattan.BlazorComponents\\Pages\\ReportsPage.razor",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAAwD4AAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-09-30T03:04:39.387Z",
               "IsPinned": true,
@@ -197,8 +197,7 @@
               "RelativeToolTip": "ProyectoManhattan.Client\\Layout\\NavMenu.razor",
               "ViewState": "AgIAAB4AAAAAAAAAAAAAACYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-28T09:47:59.703Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-28T09:47:59.703Z"
             },
             {
               "$type": "Document",
@@ -210,8 +209,7 @@
               "RelativeToolTip": "ProyectoManhattan.BlazorComponents\\Layout\\NavMenu.razor",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-28T09:47:37.99Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-28T09:47:37.99Z"
             },
             {
               "$type": "Document",
@@ -223,8 +221,7 @@
               "RelativeToolTip": "ProyectoManhattan.BlazorComponents\\Pages\\ModelsPage.razor",
               "ViewState": "AgIAAGAAAAAAAAAAAAAAAG4AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-28T09:34:18.17Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-28T09:34:18.17Z"
             },
             {
               "$type": "Document",
@@ -252,13 +249,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "WebFetcher.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\WebFetcher.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.Application\\WebFetcher.cs",
               "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\WebFetcher.cs",
               "RelativeToolTip": "ProyectoManhattan.Application\\WebFetcher.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAQwEcAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAQwFEAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-25T14:43:54.503Z",
               "EditorCaption": ""
@@ -309,8 +306,7 @@
               "RelativeToolTip": "ProyectoManhattan.BlazorComponents\\Pages\\Model.razor",
               "ViewState": "AgIAAJYAAAAAAAAAAAAYwI4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-21T13:34:20.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T13:34:20.357Z"
             },
             {
               "$type": "Document",
@@ -465,8 +461,7 @@
               "RelativeToolTip": "ProyectoManhattan.Application\\EciService.cs",
               "ViewState": "AgIAAJkAAAAAAAAAAAAowLgAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T14:07:11.987Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T14:07:11.987Z"
             },
             {
               "$type": "Document",
