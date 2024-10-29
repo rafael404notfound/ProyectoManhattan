@@ -16,83 +16,83 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = ProyectoManhattan.Client
 build_property.RootNamespace = ProyectoManhattan.Client
-build_property.ProjectDir = C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Client\
+build_property.ProjectDir = c:\Users\Rafita\source\repos\proyectomanhattan\ProyectoManhattan.Client\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Client
+build_property.MSBuildProjectDirectory = c:\Users\Rafita\source\repos\proyectomanhattan\ProyectoManhattan.Client
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/App.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/BrandViewPage.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/BrandViewPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnJhbmRWaWV3UGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/Counter.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/DialogUneco.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/DialogUneco.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlhbG9nVW5lY28ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/DiferenciaStock.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/DiferenciaStock.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlmZXJlbmNpYVN0b2NrLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/GroupIntoBrandPage.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/GroupIntoBrandPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBJbnRvQnJhbmRQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/Home.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/Model.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/Model.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kZWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/ModelsPage.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/ModelsPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kZWxzUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/Report.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/Report.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVwb3J0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/Reports.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/Reports.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVwb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/StockChangePage.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/StockChangePage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tDaGFuZ2VQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/StocktakePage.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/StocktakePage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2t0YWtlUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/StorePage.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/StorePage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmVQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Pages/Weather.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/_Imports.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Layout/MainLayout.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-dsz6ktkkfk
 
-[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.Client/Layout/NavMenu.razor]
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.Client/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-76dq8duhpq
