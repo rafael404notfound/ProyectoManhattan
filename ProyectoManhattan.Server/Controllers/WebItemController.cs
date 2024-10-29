@@ -17,9 +17,9 @@ namespace ProyectoManhattan.Server.Controllers
 
         [HttpGet]
         [Route("GetItems")]
-        public async Task<List<WebItem>> GetItems(string searchString)
+        public async Task<List<WebItem>> GetItems(string uneco, string brand, bool collectSameDay)
         {
-            return await _webFetcher.GetItems(searchString);
+            return await _webFetcher.GetItems(uneco, brand, collectSameDay);
         }
     }
 }

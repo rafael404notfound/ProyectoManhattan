@@ -103,7 +103,7 @@
 
     private async Task GroupShoesIntoBrands()
     {
-        loading = true;
+        /*loading = true;
         StocktakeDto stocktakeDto = new StocktakeDto();
         stocktakeDto.eanAndUnecoDtos = shoes;
         stocktakeDto.Name = displayName;
@@ -111,7 +111,7 @@
         var response = await Http.PostAsJsonAsync($"{UrlGetter.Url}Brand/Stocktake", stocktakeDto);
         result = await response.Content.ReadFromJsonAsync<List<Brand>>();
         brandTableContexts = GetBrandTableCotnexts(result);
-        loading = false;
+        loading = false;*/
     }
 
     public class BrandTableContext

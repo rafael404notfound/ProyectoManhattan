@@ -369,8 +369,18 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "searchString",
+        "Name": "uneco",
         "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "brand",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "collectSameDay",
+        "Type": "System.Boolean",
         "IsRequired": false
       }
     ],

@@ -1,0 +1,391 @@
+@inject HttpClient Http
+
+<h1>Modelos</h1>
+
+<div clas="mb-2">
+    <MudSelect T="string" Label="Uneco" AnchorOrigin="Origin.BottomCenter" @bind-Value="unecoSelected">
+        <MudSelectItem Value="@("0033")" />
+        <MudSelectItem Value="@("0978")" />
+        <MudSelectItem Value="@("0013")" />
+        <MudSelectItem Value="@("0312")" />
+        <MudSelectItem Value="@("0420")" />
+        <MudSelectItem Value="@("0516")" />
+        <MudSelectItem Value="@("0030")" />
+        <MudSelectItem Value="@("0178")" />
+    </MudSelect>
+    <MudSelect T="string" Label="Marca" AnchorOrigin="Origin.BottomCenter" @bind-Value="brandSelected">
+        @switch(unecoSelected)
+        {
+            case "0978":
+                foreach(var brand in unecoAndBrands.First(uAB => uAB.Uneco == "0978").Brands)
+                {
+                    <MudSelectItem Value="@(brand)" />
+                }
+                break;
+
+            case "0033":
+                foreach(var brand in unecoAndBrands.First(uAB => uAB.Uneco == "0033").Brands)
+                {
+                    <MudSelectItem Value="@(brand)" />
+                }
+                break;
+
+            case "0312":
+            foreach(var brand in unecoAndBrands.First(uAB => uAB.Uneco == "0312").Brands)
+                {
+                    <MudSelectItem Value="@(brand)" />
+                }
+                break;
+
+            case "0013":
+                foreach(var brand in unecoAndBrands.First(uAB => uAB.Uneco == "0013").Brands)
+                {
+                    <MudSelectItem Value="@(brand)" />
+                }
+                break;
+            case "0516":
+                foreach(var brand in unecoAndBrands.First(uAB => uAB.Uneco == "0516").Brands)
+                {
+                    <MudSelectItem Value="@(brand)" />
+                }
+                break;
+            case "0420":
+                foreach(var brand in unecoAndBrands.First(uAB => uAB.Uneco == "0420").Brands)
+                {
+                    <MudSelectItem Value="@(brand)" />
+                }
+                break;
+            case "0178":
+                foreach(var brand in unecoAndBrands.First(uAB => uAB.Uneco == "0178").Brands)
+                {
+                    <MudSelectItem Value="@(brand)" />
+                }
+                break;
+            case "0030":
+                foreach(var brand in unecoAndBrands.First(uAB => uAB.Uneco == "0030").Brands)
+                {
+                    <MudSelectItem Value="@(brand)" />
+                }
+                break;
+
+            default:
+                <MudSelectItem Value="@("")" />
+                break;
+        }
+    </MudSelect>
+    <MudCheckBox @bind-Value="collectSameDay" Label="Recogida en el día"></MudCheckBox>
+    <div class="d-flex flex-row align-items-end">
+        <MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Primary" OnClick="@(() => GetWebItems(unecoSelected , brandSelected))">Aplicar</MudButton>
+        <MudProgressCircular Color="Color.Primary" Indeterminate="@loading" Size="Size.Small"/>
+    </div>
+</div>
+
+
+@if(webItems.Count() > 0)
+{
+    @*foreach(var webItem in webItems)
+    {
+        <MudCard>
+            <MudCardMedia Image="@webItem.Photos.First()"/>
+            <MudCardContent>
+                <MudText Typo="Typo.h5">@webItem.Reference</MudText>
+            </MudCardContent>
+        </MudCard>
+    }*@
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+        @foreach (var webItem in webItems)
+        {
+            
+        
+                <MudCard Style="width:180px" Class="mb-2">			
+                    <MudCarousel Class="mud-width-full rounded-top" Style="height:180px" ShowArrows="true" ShowBullets="true" EnableSwipeGesture="true" AutoCycle="false" TData="object">
+                        @foreach(var image in webItem.Photos){
+                            <MudCarouselItem Transition="Transition.Fade" Color="@Color.Primary">
+                            <div class="d-flex">
+                                <MudImage src="@image" Style="object-fit:contain;width:100%;height:100%"></MudImage>
+                            </div>							
+                            </MudCarouselItem>
+                        }
+                    </MudCarousel>	
+                    <MudCardContent>
+                        <MudText Typo="Typo.h6">@webItem.Reference.Substring(3, 4) @webItem.Reference.Substring(7, 3) @webItem.Reference.Substring(10, 5)</MudText>
+                    </MudCardContent>
+                </MudCard>
+        }
+    </div>
+}
+
+@code
+{
+    public List<WebItem> webItems = new List<WebItem>();
+    public bool loading = false;
+    public string unecoSelected = "";
+    public string brandSelected = "";
+    public bool collectSameDay = false;
+    public List<UnecoAndBrands> unecoAndBrands = new List<UnecoAndBrands>();
+    public class UnecoAndBrands
+    {
+        public string Uneco { get; set; }
+        public List<string> Brands { get; set; }
+    }
+    protected override async Task OnInitializedAsync()
+    {        
+        unecoAndBrands.Add(new UnecoAndBrands
+        {
+            Uneco = "0978",
+            Brands = new List<string>
+                {
+                    "Dustin",
+                    "Emidio Tucci",
+                    "Green Coast"
+                }
+        });
+        unecoAndBrands.Add(new UnecoAndBrands
+        {
+            Uneco = "0033",
+            Brands = new List<string>
+                {
+                    "24HRS",
+                    "1901",
+                    "Armani Exchange",
+                    "Berwick",
+                    "Birkenstock",
+                    "Boss",
+                    "Callaghan",
+                    "Calvin Klein",
+                    "Calvin Klein Jeans",
+                    "Castellano",
+                    "Clarks",
+                    "Cole Haan",
+                    "Dr.Martens",
+                    "Ecoalf",
+                    "Fluchos",
+                    "Fred Perry",
+                    "Gant",
+                    "Geox",
+                    "Guess",
+                    "Hackett",
+                    "HeyDude",
+                    "Hoff",
+                    "Hot Potatoes",
+                    "Hugo",
+                    "Jack & Jones",
+                    "Kangaroos",
+                    "L'Stony",
+                    "Lacoste",
+                    "Levi's",
+                    "Lottusse",
+                    "Luis Gonzalo",
+                    "Magnanni",
+                    "Martinelli",
+                    "Michael Kors",
+                    "Michael Michael Kors",
+                    "Morrison",
+                    "Munich",
+                    "Mustang",
+                    "New Balance",
+                    "Nordikas",
+                    "Panama Jack",
+                    "Pepe Jeans",
+                    "Pielsa",
+                    "Pikolinos",
+                    "Polo Ralph Lauren",
+                    "Pompei",
+                    "Replay",
+                    "Roberto Ley",
+                    "Scalpers",
+                    "Sebago",
+                    "Skechers",
+                    "Snipe",
+                    "Stonefly",
+                    "sun68",
+                    "Timberland",
+                    "Tommy Hilfiger",
+                    "Toni Pons",
+                    "UGG",
+                    "Victoria",
+                    "Walk In Pitas",
+                    "Yanko",
+                    "yuccs"
+                }
+        });
+        unecoAndBrands.Add(new UnecoAndBrands
+        {
+            Uneco = "0312",
+            Brands = new List<string>
+                {
+                    "Coconut El Corte Inglés",
+                    "Kids El Corte Inglés",
+                }
+        });
+        unecoAndBrands.Add(new UnecoAndBrands
+        {
+            Uneco = "0013",
+            Brands = new List<string>
+                {
+                    "1901",
+                    "adidas",
+                    "Agatha Ruiz de la Prada",
+                    "Attipas",
+                    "Biomecanics",
+                    "Birkenstock",
+                    "Chuches",
+                    "Conguitos",
+                    "Converse",
+                    "Garzón",
+                    "Geox",
+                    "Giossepo",
+                    "Gorila",
+                    "Hunter",
+                    "Igor",
+                    "Levi's",
+                    "Mustang",
+                    "New Balance",
+                    "Pablosky",
+                    "Paola",
+                    "Pisamonas",
+                    "Primigi",
+                    "Puma",
+                    "Rebook",
+                    "Sckechers",
+                    "UGG",
+                    "Victoria",
+                    "Xti",
+                    "ZGirls"
+                }
+        });
+        unecoAndBrands.Add(new UnecoAndBrands
+        {
+            Uneco = "0516",
+            Brands = new List<string>
+                {
+                    "Baby El Corte Inglés",
+                    "Coconut El Corte Inglés",
+                }
+        });
+        unecoAndBrands.Add(new UnecoAndBrands
+        {
+            Uneco = "0420",
+            Brands = new List<string>
+                {
+                    "Attipas",
+                    "Biomecanics",
+                    "Blanditos",
+                    "Conguitos",
+                    "Converse",
+                    "Cuches",
+                    "Garzón",
+                    "Geox",
+                    "Giossepo",
+                    "Igor",
+                    "Leon Shoes",
+                    "New Balance",
+                    "Osito",
+                    "Pablosky",
+                    "Pisamonas",
+                    "Primigi",
+                    "Puma",
+                    "Rebook",
+                    "Skechers",
+                    "UGG",
+                    "Victoria",
+                    "Vulladi"
+                }
+        });
+        unecoAndBrands.Add(new UnecoAndBrands
+        {
+            Uneco = "0178",
+            Brands = new List<string>
+                {
+                    "Green Coast",
+                    "Latouche",
+                    "Tintoretto"
+                }
+        });
+        unecoAndBrands.Add(new UnecoAndBrands
+        {
+            Uneco = "0030",
+            Brands = new List<string>
+                {
+                    "24HRS",
+                    "Alpe",
+                    "Ángel Alarcón",
+                    "Bibi Lou",
+                    "Birkenstock",
+                    "Callaghan",
+                    "Calvin klein",
+                    "Calvin Klein Jeans",
+                    "Camper",
+                    "Carmela",
+                    "Castañer",
+                    "Castellano",
+                    "Chika10",
+                    "Clarks",
+                    "Crime London",
+                    "D'Chicas",
+                    "D.Franklin",
+                    "Dakota Boots",
+                    "Dansi",
+                    "Dorking",
+                    "Dr. Martens",
+                    "Ecoalf",
+                    "Fabiolas",
+                    "Fluchos",
+                    "Gaimo",
+                    "Geox",
+                    "Giossepo",
+                    "Guess",
+                    "Hispanitas",
+                    "Hoff",
+                    "Hot Potatoes",
+                    "Hunter",
+                    "Igor",
+                    "Karl Lagerfeld",
+                    "Kosma",
+                    "Lacoste",
+                    "Lodi",
+                    "Luis Gonzalo",
+                    "Martinelli",
+                    "Mascaró",
+                    "Michael Kors",
+                    "Michael Michael Kors",
+                    "Micuir",
+                    "Miss Elastic",
+                    "Mustang",
+                    "Nero Giardini",
+                    "New Balance",
+                    "Nordikas",
+                    "Nuvola",
+                    "Panama Jack",
+                    "Pedro Miralles",
+                    "Pepe Jeans",
+                    "Pikolinos",
+                    "Porronet",
+                    "Scalpers",
+                    "Sebago",
+                    "Skechers",
+                    "Stonefly",
+                    "Superga",
+                    "Timberland",
+                    "Tommy Hilfiger",
+                    "Toni Pons",
+                    "UGG",
+                    "Unisa",
+                    "Verbenas",
+                    "Victoria",
+                    "Vidorreta",
+                    "Viguera",
+                    "Walk In Pitas",
+                    "Wonders"
+                }
+        });
+    }
+
+    public async Task GetWebItems(string uneco, string brand)
+    {
+        loading = true;
+        webItems = await Http.GetFromJsonAsync<List<WebItem>>($"{UrlGetter.Url}WebItem/GetItems/?uneco={uneco}&brand={brand}&collectSameDay={collectSameDay}");
+        loading = false;
+    }
+}

@@ -46,12 +46,12 @@
 
 	public async Task GetData()
 	{
-		var task = Http.GetFromJsonAsync<List<Brand>>($"{UrlGetter.Url}Brand/GetBrands");
+		/*var task = Http.GetFromJsonAsync<List<Brand>>($"{UrlGetter.Url}Brand/GetBrands");
 		await task.ContinueWith((r) =>
 		{
 			brands = r.Result;
 			StateHasChanged();
-		});
+		});*/
 	}
 
 	private async Task DeleteBrand(string brandName){
@@ -74,8 +74,9 @@
 
 	public async Task CreateReport()
 	{
+		/*
 		var result = await Http.PostAsJsonAsync<List<Brand>>($"{UrlGetter.Url}Report/Create", brands);
-		/*if (result.EnsureSuccessStatusCode().IsSuccessStatusCode is true)
+		if (result.EnsureSuccessStatusCode().IsSuccessStatusCode is true)
 		{
 			reportOperationResult = "Informe creado con exito";
 		} 

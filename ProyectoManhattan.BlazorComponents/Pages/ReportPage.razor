@@ -83,10 +83,12 @@
 
     protected override async Task OnInitializedAsync()
     {
+        /*
         loading = true;
         result = await Http.GetFromJsonAsync<Report>($"{UrlGetter.Url}Report/Get?id={ReportId}");
         reportTableContexts = GetReportTableCotnexts(result.BrandReportInfos);
         loading = false;
+        */
     }
 
     public class ReportTableContext

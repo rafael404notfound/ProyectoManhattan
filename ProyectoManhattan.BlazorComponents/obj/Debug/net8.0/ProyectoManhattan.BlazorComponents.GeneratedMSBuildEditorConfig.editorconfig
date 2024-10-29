@@ -61,6 +61,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kZWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.BlazorComponents/Pages/ModelsPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kZWxzUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Rafita/source/repos/ProyectoManhattan/ProyectoManhattan.BlazorComponents/Pages/ReportPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVwb3J0UGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
