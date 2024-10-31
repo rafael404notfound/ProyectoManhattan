@@ -17,7 +17,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
     volumes:
-      - ./.containers/proyectomanhattan-db:/var/lib/postgresql/data
+      - ./.containers/proyectomanhattan-db:/var/lib/postgresql@17/data
     ports:
       - 5432:5432
 
