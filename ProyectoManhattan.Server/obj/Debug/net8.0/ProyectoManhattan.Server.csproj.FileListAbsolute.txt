@@ -492,3 +492,4 @@ C:\Users\Rafita\source\repos\proyectomanhattan\proyectomanhattan.server\bin\Debu
 C:\Users\Rafita\source\repos\proyectomanhattan\proyectomanhattan.server\bin\Debug\net8.0\.playwright\package\types\types.d.ts
 C:\Users\Rafita\source\repos\proyectomanhattan\proyectomanhattan.server\bin\Debug\net8.0\playwright.ps1
 C:\Users\Rafita\source\repos\proyectomanhattan\proyectomanhattan.server\bin\Debug\net8.0\Microsoft.Playwright.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Proxy.dll

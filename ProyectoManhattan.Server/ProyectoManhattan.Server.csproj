@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Proxy" Version="0.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
       <PrivateAssets>all</PrivateAssets>
@@ -32,6 +34,10 @@
     <ProjectReference Include="..\ProyectoManhattan.Application\ProyectoManhattan.Application.csproj" />
     <ProjectReference Include="..\ProyectoManhattan.Client\ProyectoManhattan.Client.csproj" />
     <ProjectReference Include="..\ProyectoManhattan.Domain\ProyectoManhattan.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Exstensions\" />
   </ItemGroup>
 
 </Project>

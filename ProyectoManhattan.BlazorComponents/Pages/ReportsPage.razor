@@ -35,13 +35,13 @@
 
 	public async Task GetData()
 	{
-		/*
+		
 		var task = Http.GetFromJsonAsync<List<Report>>($"{UrlGetter.Url}Report/GetAll");
 		await task.ContinueWith((r) =>
 		{
 			reports = r.Result;
 			StateHasChanged();
-		});*/
+		});
 	}
 
 	private async Task DeleteReport(int id){
@@ -64,7 +64,7 @@
 
 	public async Task CreateReport()
 	{
-		/*
+		
 		var brands = await Http.GetFromJsonAsync<List<Brand>>($"{UrlGetter.Url}Brand/GetBrands");
 			
 		var factory = new EventCallbackFactory();
@@ -79,7 +79,7 @@
 
 		var dialog = DialogService.ShowAsync<DialogCreateReport>("Crear Informe", parameters, options);
 
-		await dialog;*/
+		await dialog;
 	}
 				
 }

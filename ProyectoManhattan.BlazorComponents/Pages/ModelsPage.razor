@@ -1,4 +1,5 @@
 @inject HttpClient Http
+@inject ProyectoManhattan.Application.WebFetcher WebFetcher
 
 <h1>Modelos</h1>
 
@@ -80,18 +81,15 @@
     </div>
 </div>
 
-
-@if(webItems.Count() > 0)
+@*
 {
-    @*foreach(var webItem in webItems)
-    {
-        <MudCard>
-            <MudCardMedia Image="@webItem.Photos.First()"/>
-            <MudCardContent>
-                <MudText Typo="Typo.h5">@webItem.Reference</MudText>
-            </MudCardContent>
-        </MudCard>
-    }*@
+    <MudCard>
+        <MudCardMedia Image="@webItem.Photos.First()"/>
+        <MudCardContent>
+            <MudText Typo="Typo.h5">@webItem.Reference</MudText>
+        </MudCardContent>
+    </MudCard>
+}*@
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
         @foreach (var webItem in webItems)
@@ -386,6 +384,8 @@
     {
         loading = true;
         webItems = await Http.GetFromJsonAsync<List<WebItem>>($"{UrlGetter.Url}WebItem/GetItems/?uneco={uneco}&brand={brand}&collectSameDay={collectSameDay}");
+        //webItems = await WebFetcher.GetItems(uneco, brand, collectSameDay);
+        //var json = await  Http.GetStringAsync("https://www.elcorteingles.es/api/firefly/vuestore/products_list/moda-hombre/zapatos/brand::24HRS/1");
         loading = false;
     }
 }

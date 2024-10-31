@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using ProyectoManhattan.Infrastructure.Persistance;
 using ProyectoManhattan.Application;
 using System;
+using ProyectoManhattan.Server;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,12 +18,20 @@ builder.Services.AddDbContext<ApplicationDbContext>(opts =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(
+    options.AddPolicy("open", 
         policy =>
         {
-            policy.AllowAnyOrigin();
+            policy.AllowAnyOrigin()            
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
         });
 });
+
+/*builder.Services.AddHttpsRedirection(options =>
+{
+    options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
+    options.HttpsPort = 5000;
+});*/
 
 
 builder.Services.AddControllersWithViews();
@@ -61,16 +70,29 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     app.UseWebAssemblyDebugging();
+    app.ApplyMigrations();
 }
 //app.UseCors("_myAllowSpecificOrigins");
-app.UseCors();
+
 
 app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 
+app.UseRouting();
+app.UseCors("open");
 app.UseAuthorization();
+
+/*app.MapWhen(
+    context => context.Request.Path.StartsWithSegments("/api"),
+    builder => builder.RunProxy(new ProxyOptions
+    {
+        Scheme = "https",
+        Host = "localhost",
+        Port = "80",
+    })
+);*/
 
 app.MapRazorPages();
 app.MapControllers();
