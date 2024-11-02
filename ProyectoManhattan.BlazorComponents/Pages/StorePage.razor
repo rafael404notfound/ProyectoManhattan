@@ -6,7 +6,6 @@
 <MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Primary" OnClick="@(() => _navigationManager.NavigateTo("Inventario"))">Crear Marca</MudButton>
 <MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Secondary" OnClick="@(() => _navigationManager.NavigateTo("CambioDeInventario/Añadir"))">Añadir</MudButton>
 <MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Warning" OnClick="@(() => _navigationManager.NavigateTo("CambioDeInventario/Retirar"))">Retirar</MudButton>
-<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Info" OnClick="@(() => CreateReport())">Generar Informe</MudButton>
 
 @if(reportOperationResult is not null)
 {
@@ -27,6 +26,7 @@
 					</NavLink>
 				</CardHeaderContent>
 				<CardHeaderActions>
+            		<MudIconButton Icon="@Icons.Material.Filled.AddChart" Color="Color.Primary" @onclick="async() => await CreateBrandReport(brand.DisplayName)"/>
             		<MudIconButton Icon="@Icons.Material.Outlined.Delete" Color="Color.Error" @onclick="async() => await DeleteBrand(brand.DisplayName)"/>
         		</CardHeaderActions>
 			</MudCardHeader>
@@ -68,6 +68,27 @@
 		var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
 
 		var dialog = DialogService.ShowAsync<DialogDeleteBrand>("Borrar", parameters, options);
+
+		await dialog;
+	}
+
+	public async Task CreateBrandReport(string brandName)
+	{
+		var brand = await Http.GetFromJsonAsync<Brand>($"{UrlGetter.Url}Brand/GetBrand/?brand={brandName}");
+		var dialogBrandsParameter = new List<Brand>();
+		dialogBrandsParameter.Add(brand);
+			
+		var factory = new EventCallbackFactory();
+		var parameters = new DialogParameters<DialogCreateReport>
+        {   
+			{ x => x.Brands, dialogBrandsParameter},
+            { x => x.ButtonText, "Crear" },
+            { x => x.Color, Color.Success },
+			{ x => x.updateUI, factory.Create(this,() => GetData())}
+        };
+		var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+		var dialog = DialogService.ShowAsync<DialogCreateReport>("Crear Informe", parameters, options);
 
 		await dialog;
 	}

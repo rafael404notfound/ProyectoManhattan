@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(opts =>
 {
-    opts.UseNpgsql(builder.Configuration["ConnectionStrings:ApplicationDockerConnection"]);
+    opts.UseNpgsql(builder.Configuration["ConnectionStrings:ApplicationConnection"]);
     opts.EnableSensitiveDataLogging(true);
     AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 });

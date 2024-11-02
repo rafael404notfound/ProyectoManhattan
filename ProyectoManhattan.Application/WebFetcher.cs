@@ -80,7 +80,7 @@ namespace ProyectoManhattan.Application
                 }
                 //var request = new HttpRequestMessage(HttpMethod.Get, $"https://www.elcorteingles.es/api/firefly/vuestore/products_list/{GetSearchString(uneco)}/zapatos/delivery_time::0007/brand::{brand}/{i+1}?deliveryType=collect");
                 //var request = new HttpRequestMessage(HttpMethod.Get, $"https://www.elcorteingles.es/api/firefly/vuestore/products_list/{GetSearchString(uneco)}/zapatos/brand::{brand}/{i + 1}");
-                //var request = new HttpRequestMessage(HttpMethod.Get, $"https://www.elcorteingles.es/api/firefly/vuestore/products_list/moda-infantil/zapatos/delivery_time::0007/brand::Kids%20El%20Corte%20Inglés/{i + 1}?deliveryType=collect");
+                //var request = new HttpRequestMessage(HttpMethod.Get, $"https://www.elcorteingles.es/api/firefly/vuestore/products_list/moda-infantil/zapatos/delivery_time::0007/brand::Kids%20El%20Corte%20Inglï¿½s/{i + 1}?deliveryType=collect");
                 //https://www.elcorteingles.es/api/firefly/vuestore/products_list/delivery_time::0007/brand::Dustin/?deliveryType=collect
                 /*
                 request.Headers.Add("authority", "www.elcorteingles.es");
@@ -101,11 +101,11 @@ namespace ProyectoManhattan.Application
                 request.Headers.Add("User-Agent", "PostmanRuntime/7.37.3");
                 request.Headers.Add("Accept", "*/*");
                 request.Headers.Add("Connection", "keep-alive");
-                //var response = await  httpClient.SendAsync(request);
+                var response = await  httpClient.SendAsync(request);
 
-                //var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync();
 
-                var json = SendRequestByPlaywright(url).Result;
+                //var json = SendRequestByPlaywright(url).Result;
                 var parsedObject = JObject.Parse(json);
 
                 totalPages = Convert.ToInt32(parsedObject["data"]["paginatedDatalayer"]["page"]["total_pages"]?.ToString());

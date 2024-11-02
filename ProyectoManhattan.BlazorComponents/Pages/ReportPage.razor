@@ -13,7 +13,7 @@
     
     @foreach(var brandReportInfo in result.BrandReportInfos)
     {
-        <h1>@brandReportInfo.Uneco @brandReportInfo.DisplayName:</h1>
+        <h3>@brandReportInfo.Uneco @brandReportInfo.DisplayName:</h3>
         <MudTable Hover="true" Height="500px" FixedHeader="true"
               Items="@reportTableContexts.Where(rtc => rtc.BrandName == brandReportInfo.DisplayName && rtc.Uneco == brandReportInfo.Uneco)"
               GroupBy="@_groupDefinition"
