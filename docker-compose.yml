@@ -10,14 +10,14 @@ services:
       - "5001:5001"
   
   proyectomanhattan.database:
-    image: postgres:latest
+    image: postgres:15
     container_name: proyectomanhattan.database
     environment:
       - POSTGRES_DB=ProyectoManhattanDb
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
     volumes:
-      - ./.containers/proyectomanhattan-db:/var/lib/postgresql@17/data
+      - ./.containers/proyectomanhattan-db:/var/lib/postgresql/data
     ports:
       - 5432:5432
 
