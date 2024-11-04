@@ -10,6 +10,7 @@ using Org.BouncyCastle.Crypto.Operators;
 using System.Threading;
 using System.Diagnostics;
 using Domain.ValueTypes;
+using ProyectoManahttan.Domain.ValueTypes;
 
 namespace ProyectoManhattan.Application
 {
@@ -355,7 +356,7 @@ namespace ProyectoManhattan.Application
             return matnr;
         }
 
-        public Report CalculateReport(List<Brand> brands, HttpClient httpClient)
+        public Report CalculateReport(PendingReport pendingReport, HttpClient httpClient)
         {
             Report result = new Report();
 
@@ -363,7 +364,7 @@ namespace ProyectoManhattan.Application
             var watch = Stopwatch.StartNew();
 
             // Get BrandReportInfo for each brand
-            foreach(var brand in brands)
+            foreach(var brand in pendingReport.Brands)
             {
                 CalculateMissingShoesDto calculateMissingShoesDto = CalculateMissingShoes(brand.ShoeModels, true, httpClient);
                 BrandReportInfo brandReportInfo = new BrandReportInfo(brand);
@@ -447,7 +448,7 @@ namespace ProyectoManhattan.Application
 
             // Finish building Report result
             //result.CreatedAt = DateTime.Now;
-            result.Name = $"Informe";
+            result.Name= pendingReport.ReportName ?? "Informe";
             result.CalculationTime = watch.ElapsedMilliseconds;
             result.IsFinished = true;
 

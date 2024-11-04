@@ -13,13 +13,15 @@ namespace Eci.Api.Controllers
         private EciService _eciService { get; set; }
         private IJwtGetter _cookieGetter { get; set; }
         private PdfEditor _pdfEditor { get; set; }
+        private PendingReportQueue _pendingReportQeue { get; set; }
 
-        public ReportController(IReportRepo repository, EciService eciService, IJwtGetter cookieGetter, PdfEditor pdfEditor)
+        public ReportController(IReportRepo repository, EciService eciService, IJwtGetter cookieGetter, PdfEditor pdfEditor, PendingReportQueue pendingReportQeue)
         {
             _repository = repository;
             _eciService = eciService;
             _cookieGetter = cookieGetter;
             _pdfEditor = pdfEditor;
+            _pendingReportQeue = pendingReportQeue;
         }
 
         [HttpGet]
@@ -27,6 +29,13 @@ namespace Eci.Api.Controllers
         public async Task<IActionResult> Get(int id)
         {
             return Ok(await _repository.Get(id));
+        }
+
+        [HttpGet]
+        [Route("GetPendingReports")]
+        public async Task<IActionResult> GetPendingReports(int id)
+        {
+            return Ok(_pendingReportQeue.GetPendingReports());  
         }
 
         [HttpGet]
@@ -38,9 +47,9 @@ namespace Eci.Api.Controllers
 
         [HttpPost]
         [Route("Create")]
-        public IActionResult Create([FromBody]List<Brand> brands, string? reportName)
+        public async Task<IActionResult> Create([FromBody]List<Brand> brands, string reportName)
         {
-            var httpClientHandler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
+            /*var httpClientHandler = new HttpClientHandler { CookieContainer = _cookieGetter.cookieContainer };
             var httpClient = new HttpClient(httpClientHandler); 
 
             var report = _eciService.CalculateReport(brands, httpClient);
@@ -52,16 +61,18 @@ namespace Eci.Api.Controllers
                 report.Name = reportName;
             }
 
-            _repository.Create(report);
+            _repository.Create(report);*/
+
+            await _pendingReportQeue.Add(brands, reportName);
             
             return Ok();
         }
 
         [HttpPut]
         [Route("Update")]
-        public IActionResult Update([FromBody]Report report)
+        public async Task<IActionResult> Update([FromBody]Report report)
         {
-            _repository.Update(report);
+            await _repository.Update(report);
             return Ok();
         }
 

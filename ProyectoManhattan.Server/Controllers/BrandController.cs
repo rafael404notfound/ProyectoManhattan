@@ -37,9 +37,9 @@ namespace EciApi.Controllers
 		}
 
         [HttpDelete()]
-        public async Task<IActionResult> DeleteBrand(int id)
+        public IActionResult DeleteBrand(int id)
         {
-            await _applicationRepo.Delete(id);
+            _applicationRepo.Delete(id);
             return Ok();
         }  
 

@@ -1,11 +1,37 @@
 @inject HttpClient Http
 @inject NavigationManager _navigationManager
 @inject IDialogService DialogService
+@implements IAsyncDisposable
+<h1>Informes</h1>
 
-<h1>Informes:</h1>
-<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Info" OnClick="@(() => CreateReport())">Generar Informe</MudButton>
+@*<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Info" OnClick="@(() => CreateReport())">Generar Informe</MudButton>*@
+@if(pendingReports is not null)
+{
+	<h3>En cola:</h3>
+	foreach(var pendingReport in pendingReports)
+	{
+		int count = 1;
+		<MudCard Class="mb-2">
+			<MudCardHeader>
+				<CardHeaderContent>
+					<div class="d-flex justify-content-start">
+						<MudChip T="string" Label="true" Color="Color.Warning">@GetPosition(pendingReport.ReportName)</MudChip>
+						<MudText>@pendingReport.ReportName</MudText>
+					</div>						
+						@if(GetPosition(pendingReport.ReportName) == "1")
+						{
+							<MudProgressLinear Color="Color.Primary" Indeterminate="true" Size="Size.Small" />
+						}
+				</CardHeaderContent>
+			</MudCardHeader>
+		</MudCard>
+		count++;
+	}
+}
+
 @if(reports is not null)
 {
+	<h3>Finalizados:</h3>
 	foreach(var report in reports)
 	{
 		
@@ -25,17 +51,27 @@
 	}
 }
 
-
 @code {
+	private HubConnection? _hubConnection;
 	private List<Report>? reports;
+	private Queue<PendingReport>? pendingReports;
+	private readonly List<string> _messages = new();
 	protected override async Task OnInitializedAsync()
 	{
+		_hubConnection = new HubConnectionBuilder().WithUrl($"{UrlGetter.Url}notifications").Build();
+		_hubConnection.On<string>("ReceiveNotification", message => 
+			{
+				_messages.Add(message);
+				InvokeAsync(async() => await GetData());
+			});
+
+		await _hubConnection.StartAsync(); 
 		await GetData();
 	}
 
 	public async Task GetData()
 	{
-		
+		pendingReports = await Http.GetFromJsonAsync<Queue<PendingReport>>($"{UrlGetter.Url}Report/GetPendingReports"); 
 		var task = Http.GetFromJsonAsync<List<Report>>($"{UrlGetter.Url}Report/GetAll");
 		await task.ContinueWith((r) =>
 		{
@@ -43,6 +79,7 @@
 			StateHasChanged();
 		});
 	}
+
 
 	private async Task DeleteReport(int id){
 		var report = reports.FirstOrDefault(r => r.Id == id);
@@ -76,10 +113,28 @@
 			{ x => x.updateUI, factory.Create(this,() => GetData())}
         };
 		var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
-
-		var dialog = DialogService.ShowAsync<DialogCreateReport>("Crear Informe", parameters, options);
-
-		await dialog;
 	}
-				
+
+	public string GetPosition(string reportName)
+	{
+		var count = 1;
+		foreach(var pendingReport in pendingReports)
+		{
+			if (pendingReport.ReportName == reportName)
+			{
+				return count.ToString();
+			}
+			count++;
+		}
+		return "Error";
+	}
+
+	public async ValueTask DisposeAsync()
+	{
+		if(_hubConnection is not null)
+		{
+			await _hubConnection.DisposeAsync();
+		}
+	}
+
 }

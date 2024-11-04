@@ -12,8 +12,8 @@ namespace ProyectoManhattan.Application
     public interface IApplicationRepo
     {
         public void Create(Brand entity);
-        public Task Delete(int id);
-        public Task Delete(string name);
+        public void Delete(int id);
+        public void Delete(string name);
         public Task<Brand> Get(int id);
         public Task<Brand> Get(string name);
 

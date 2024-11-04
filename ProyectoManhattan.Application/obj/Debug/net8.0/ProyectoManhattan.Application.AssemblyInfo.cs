@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProyectoManhattan.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c062ce3d847b114da301d1342058eb09c9a2c2df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a92b487a3359dc0de3bbc44200970196c576a85f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProyectoManhattan.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProyectoManhattan.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -22,12 +22,12 @@ namespace ProyectoManhattan.Application
             DbContext.SaveChanges();
         }
 
-        public async Task Delete(int id)
+        public void Delete(int id)
         {
             var report = DbContext.Reports.Include(r => r.BrandReportInfos).ThenInclude(bri => bri.ShoeModelReportInfos).ThenInclude(s => s.ShoeReportInfos)
                 .FirstOrDefault(bri => bri.Id == id);
             DbContext.Reports.Remove(report);
-            await DbContext.SaveChangesAsync();
+            DbContext.SaveChanges();
         }
 
         public async Task<Report> Get(int id)

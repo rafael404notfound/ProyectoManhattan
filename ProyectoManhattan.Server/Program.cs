@@ -4,6 +4,7 @@ using ProyectoManhattan.Infrastructure.Persistance;
 using ProyectoManhattan.Application;
 using System;
 using ProyectoManhattan.Server;
+using ProyectoManahttan.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,19 +40,23 @@ builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 //builder.Services.AddHostedService((sp) => sp.GetRequiredService<CookieGetter>());
 builder.Services.AddHostedService((sp) => sp.GetRequiredService<IJwtGetter>());
+builder.Services.AddHostedService((sp) => sp.GetRequiredService<PendingReportQueue>());
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddScoped<IApplicationRepo, EFApplicationRepository>();
 builder.Services.AddScoped<IReportRepo, EFReportRepository>();
 //builder.Services.AddSingleton<IJwtGetter, CookieGetter>();
 builder.Services.AddSingleton<IJwtGetter, PlaywrightJwtGetter>();
+builder.Services.AddSingleton<PendingReportQueue>();
 builder.Services.AddSingleton<PdfEditor>();
 builder.Services.AddTransient<EciService>();
 builder.Services.AddTransient<EmailService>();
 builder.Services.AddTransient<WebFetcher>();
+builder.Services.AddTransient<IServiceProvider, ServiceProvider>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSignalR();
 /*builder.Services.AddCors(policy =>
 {
     policy.AddPolicy("_myAllowSpecificOrigins", builder => builder.WithOrigins("https://localhost:5000/")
@@ -97,5 +102,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
+
+app.MapHub<NotificationHub>("notifications");
 
 app.Run();

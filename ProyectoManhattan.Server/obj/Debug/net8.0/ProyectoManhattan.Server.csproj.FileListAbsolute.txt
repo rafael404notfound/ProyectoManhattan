@@ -493,3 +493,12 @@ C:\Users\Rafita\source\repos\proyectomanhattan\proyectomanhattan.server\bin\Debu
 C:\Users\Rafita\source\repos\proyectomanhattan\proyectomanhattan.server\bin\Debug\net8.0\playwright.ps1
 C:\Users\Rafita\source\repos\proyectomanhattan\proyectomanhattan.server\bin\Debug\net8.0\Microsoft.Playwright.dll
 C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Proxy.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Connections.Client.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Http.Connections.Common.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Server\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Client.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Server\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Server\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Common.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Server\bin\Debug\net8.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Server\bin\Debug\net8.0\Microsoft.Extensions.Features.dll
+C:\Users\Rafita\source\repos\ProyectoManhattan\ProyectoManhattan.Server\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

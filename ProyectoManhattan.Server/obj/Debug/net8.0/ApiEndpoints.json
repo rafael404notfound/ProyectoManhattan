@@ -190,6 +190,22 @@
   },
   {
     "ContainingType": "Eci.Api.Controllers.ReportController",
+    "Method": "GetPendingReports",
+    "RelativePath": "Report/GetPendingReports",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Eci.Api.Controllers.ReportController",
     "Method": "Update",
     "RelativePath": "Report/Update",
     "HttpMethod": "PUT",

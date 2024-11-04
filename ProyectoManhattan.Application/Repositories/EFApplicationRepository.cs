@@ -23,16 +23,16 @@ namespace ProyectoManhattan.Application
         }
 
         // Returns false if an the entity didnt exist
-        public async Task Delete(int id)
+        public void Delete(int id)
         {
             var brand = DbContext.Brands.Include(b => b.ShoeModels).ThenInclude(s => s.Sizes).FirstOrDefault(b => b.Id == id);
             DbContext.Brands.Remove(brand);
-            await DbContext.SaveChangesAsync();
+            DbContext.SaveChangesAsync();
         }
-        public async Task Delete(string name)
+        public void Delete(string name)
         {
             DbContext.Brands.Remove(new Brand { DisplayName = name });
-            await DbContext.SaveChangesAsync();
+            DbContext.SaveChanges();
         }
 
         public async Task<Brand> Get(int id)
