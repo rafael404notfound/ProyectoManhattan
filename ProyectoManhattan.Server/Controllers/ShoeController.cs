@@ -156,13 +156,14 @@ namespace EciApi.Controllers
             }*/
 
             
-            List<Task<Shoe>> tasks = new List<Task<Shoe>>();
+            List<Task<ShoeOrErrorDto>> tasks = new List<Task<ShoeOrErrorDto>>();
             foreach (var shoeEan in shoeEans)
             {
                 tasks.Add(_eciService.GetShoeByEan(shoeEan.Ean, httpClient, shoeEan.Uneco));
             }
             var results = await Task.WhenAll(tasks.ToArray());
-            shoes.AddRange(results);
+            shoes.AddRange(results.Where(sOE => sOE.Shoe is not null).Select(sOE => sOE.Shoe));
+
 
             List<ShoeModel> scannedShoeModels = await _eciService.GroupShoesInToShoeModels(shoes, httpClient);
             //GroupShoesIntoShoeModelsDto groupShoesIntoShoeModelsDto = await _eciService.GroupShoesInToShoeModels(shoes, httpClient);

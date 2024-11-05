@@ -70,31 +70,46 @@ namespace ProyectoManhattan.Application
 
         }
 
-        public async Task<Shoe> GetShoeByEan(string ean, HttpClient httpClient, string? uneco = null)
+        public async Task<ShoeOrErrorDto> GetShoeByEan(string ean, HttpClient httpClient, string? uneco = null)
         {
             //int threadId = Thread.CurrentThread.ManagedThreadId;
             //Console.WriteLine($"Iniciando GetShoeByEan para ean =¨{ean} en treadId = {threadId}");
-            // Get and set shoe infi
-            Shoe shoe = new Shoe();
-            SetShoeInfoByEan(ean, ref shoe, httpClient, uneco);
 
-            // Send Http request
-            var url = new Uri($"https://sapfiori.elcorteingles.es/sap/opu/odata/GECI/EA_CONSULTA_ARTICULO_SRV;o=GEW_006/EA_HEADERSet(Matnr='{shoe.Matnr}',Werks='007E',Stock='')");
+            try 
+            {            
+                // Get and set shoe infi
+                Shoe shoe = new Shoe();
+                SetShoeInfoByEan(ean, ref shoe, httpClient, uneco);
 
-            var response = await httpClient.GetStringAsync(url);
+                // Send Http request
+                var url = new Uri($"https://sapfiori.elcorteingles.es/sap/opu/odata/GECI/EA_CONSULTA_ARTICULO_SRV;o=GEW_006/EA_HEADERSet(Matnr='{shoe.Matnr}',Werks='007E',Stock='')");
 
-            // Get xml from response
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(response);
+                var response = await httpClient.GetStringAsync(url);
 
-            //get Count from response
-            var elements = doc.GetElementsByTagName("d:HeaderSt");
-            string count = elements.Item(0)?["d:Stock"]?.InnerText;
-            shoe.Count = (int)char.GetNumericValue(count[0]);
-            //threadId = Thread.CurrentThread.ManagedThreadId;
-            //Console.WriteLine($"Finalizando GetShoeByEan para ean =¨{ean} en treadId = {threadId}");
+                // Get xml from response
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(response);
 
-            return shoe;
+                //get Count from response
+                var elements = doc.GetElementsByTagName("d:HeaderSt");
+                string count = elements.Item(0)?["d:Stock"]?.InnerText;
+                shoe.Count = (int)char.GetNumericValue(count[0]);
+                //threadId = Thread.CurrentThread.ManagedThreadId;
+                //Console.WriteLine($"Finalizando GetShoeByEan para ean =¨{ean} en treadId = {threadId}");
+                ShoeOrErrorDto result = new ShoeOrErrorDto() 
+                {
+                    Shoe = shoe
+                };
+                return result;
+            }
+            catch
+            {
+                ShoeOrErrorDto result = new ShoeOrErrorDto() 
+                {
+                    Error = $"No se ha podido determinar el zapato con el identificador: {ean}"
+                };
+                return result;
+            }            
         }
 
         public async Task<List<ShoeModel>> GroupShoesInToShoeModels(List<Shoe> shoes, HttpClient httpClient)

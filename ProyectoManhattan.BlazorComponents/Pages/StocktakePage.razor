@@ -38,8 +38,19 @@
 </div>
 
 
-@if (result != null)
+@if (result != null && stocktakeResultDto!= null)
 {
+    @if(stocktakeResultDto.Errors is not null)
+    {
+        <ul>
+            @foreach(var error in stocktakeResultDto.Errors)
+            {
+                <li>
+                    <MudText Color="Color.Error">@error</MudText>
+                </li>
+            }
+        </ul>
+    }    
     <MudTable Hover="true" Height="500px" FixedHeader="true"
               Items="@brandTableContexts"
               GroupBy="@_groupDefinition"
@@ -91,6 +102,7 @@
     public string? uneco { get; set; }
     public string? displayName { get; set; }
     public List<Brand> result { get; set; } = new List<Brand>();
+    public StocktakeResultDto stocktakeResultDto;
     public bool loading { get; set; } = false;
     public List<BrandTableContext> brandTableContexts { get; set; }
     private MudTable<BrandTableContext> _tableRef;
@@ -109,7 +121,9 @@
         stocktakeDto.Name = displayName;
         stocktakeDto.Uneco = uneco;
         var response = await Http.PostAsJsonAsync($"{UrlGetter.Url}Brand/Stocktake", stocktakeDto);
-        result = await response.Content.ReadFromJsonAsync<List<Brand>>();
+        stocktakeResultDto = await response.Content.ReadFromJsonAsync<StocktakeResultDto>();
+        result = new List<Brand>();
+        result.Add(stocktakeResultDto.Brand ?? new Brand());
         brandTableContexts = GetBrandTableCotnexts(result);
         loading = false;
     }

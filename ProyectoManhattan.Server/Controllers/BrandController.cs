@@ -62,13 +62,13 @@ namespace EciApi.Controllers
             List<Shoe> shoes = new List<Shoe>();
             Shoe shoe = new Shoe();
 
-            List<Task<Shoe>> tasks = new List<Task<Shoe>>();
+            List<Task<ShoeOrErrorDto>> tasks = new List<Task<ShoeOrErrorDto>>();
             foreach (var eanAndUnecoDto in eanAndUnecoDtos)
             {
                 tasks.Add(_eciService.GetShoeByEan(eanAndUnecoDto.Ean, httpClient, eanAndUnecoDto.Uneco));
             }
             var results = await Task.WhenAll(tasks.ToArray());
-            shoes.AddRange(results);
+            shoes.AddRange(results.Where(sOE => sOE.Shoe is not null).Select(sOE => sOE.Shoe));
 
             List<ShoeModel> scannedShoeModels = await _eciService.GroupShoesInToShoeModels(shoes, httpClient);
 
@@ -100,13 +100,13 @@ namespace EciApi.Controllers
             List<Shoe> shoes = new List<Shoe>();
             Shoe shoe = new Shoe();
 
-            List<Task<Shoe>> tasks = new List<Task<Shoe>>();
+            List<Task<ShoeOrErrorDto>> tasks = new List<Task<ShoeOrErrorDto>>();
             foreach (var eanAndUnecoDto in stockChangeDto.EanAndUnecoDtos)
             {
                 tasks.Add(_eciService.GetShoeByEan(eanAndUnecoDto.Ean, httpClient, eanAndUnecoDto.Uneco));
             }
             var results = await Task.WhenAll(tasks.ToArray());
-            shoes.AddRange(results);
+            shoes.AddRange(results.Where(sOE => sOE.Shoe is not null).Select(sOE => sOE.Shoe));
 
             List<ShoeModel> scannedShoeModels = await _eciService.GroupShoesInToShoeModels(shoes, httpClient);
 
@@ -142,13 +142,17 @@ namespace EciApi.Controllers
             List<Shoe> shoes = new List<Shoe>();
             Shoe shoe = new Shoe();
 
-            List<Task<Shoe>> tasks = new List<Task<Shoe>>();
+            List<Task<ShoeOrErrorDto>> tasks = new List<Task<ShoeOrErrorDto>>();
             foreach (var eanAndUnecoDto in stocktakeDto.eanAndUnecoDtos)
             {
                 tasks.Add(_eciService.GetShoeByEan(eanAndUnecoDto.Ean, httpClient, eanAndUnecoDto.Uneco));
             }
             var results = await Task.WhenAll(tasks.ToArray());
-            shoes.AddRange(results);
+            StocktakeResultDto result = new StocktakeResultDto()
+            {
+                Errors = results.Where(sOE => sOE.Error is not null).Select(sOE => sOE.Error).ToList()
+            };
+            shoes.AddRange(results.Where(sOE => sOE.Shoe is not null).Select(sOE => sOE.Shoe));
 
             List<ShoeModel> scannedShoeModels = await _eciService.GroupShoesInToShoeModels(shoes, httpClient);
 
@@ -170,8 +174,9 @@ namespace EciApi.Controllers
             brands.First().DisplayName = stocktakeDto.Name;
             brands.First().Uneco = stocktakeDto.Uneco;
             _applicationRepo.Create(brands.First());
+            result.Brand = brands.First();
 
-            return Ok(brands);
+            return Ok(result);
         }
     }
 }

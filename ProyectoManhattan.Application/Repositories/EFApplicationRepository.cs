@@ -27,7 +27,7 @@ namespace ProyectoManhattan.Application
         {
             var brand = DbContext.Brands.Include(b => b.ShoeModels).ThenInclude(s => s.Sizes).FirstOrDefault(b => b.Id == id);
             DbContext.Brands.Remove(brand);
-            DbContext.SaveChangesAsync();
+            DbContext.SaveChanges();
         }
         public void Delete(string name)
         {
