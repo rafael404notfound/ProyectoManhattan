@@ -9,10 +9,10 @@ services:
       - "5000:5000"
       - "5001:5001"
     environment:
-        - Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+        - Kestrel__Certificates__Default__Path=/root/.aspnet/https/aspnetapp.pfx
         - Kestrel__Certificates__Default__Password=changeit
     volumes:
-      - ~/.aspnet/https:/https:ro 
+      - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https
   
   proyectomanhattan.database:
     image: postgres:15
