@@ -12,7 +12,7 @@ services:
         - Kestrel__Certificates__Default__Path=/root/.aspnet/https/aspnetapp.pfx
         - Kestrel__Certificates__Default__Password=changeit
     volumes:
-      - root\.aspnet\https:/root/.aspnet/https
+      - ~/root\.aspnet\https:/root/.aspnet/https
   
   proyectomanhattan.database:
     image: postgres:15
