@@ -178,5 +178,13 @@ namespace EciApi.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("SetCookies")]
+        public async Task<IActionResult> SetCookies()
+        {
+            await _cookieGetter.SetCookies();
+            return Ok();
+        }
     }
 }

@@ -3,9 +3,12 @@
 @inject IDialogService DialogService
 
 <h1>Almacen</h1>
-<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Primary" OnClick="@(() => _navigationManager.NavigateTo("Inventario"))">Crear Marca</MudButton>
-<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Secondary" OnClick="@(() => _navigationManager.NavigateTo("CambioDeInventario/Añadir"))">Añadir</MudButton>
-<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Warning" OnClick="@(() => _navigationManager.NavigateTo("CambioDeInventario/Retirar"))">Retirar</MudButton>
+<div>
+	<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Primary" OnClick="@(() => _navigationManager.NavigateTo("Inventario"))" class="mb-2">Crear Marca</MudButton>
+	<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Secondary" OnClick="@(() => _navigationManager.NavigateTo("CambioDeInventario/Añadir"))" class="mb-2">Añadir</MudButton>
+	<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Warning" OnClick="@(() => _navigationManager.NavigateTo("CambioDeInventario/Retirar"))" class="mb-2">Retirar</MudButton>
+	<MudButton Variant="Variant.Filled" Size="Size.Small" Color="Color.Info" OnClick="@(async() => await SetSapCredentials())" class="mb-2">Renovar Sesión</MudButton>
+</div>
 
 @if(reportOperationResult is not null)
 {
@@ -16,8 +19,7 @@
 @if(brands is not null)
 {
 	foreach(var brand in brands)
-	{
-		
+	{		
 		<MudCard Class="mb-2">
 			<MudCardHeader>
 				<CardHeaderContent>
@@ -105,6 +107,26 @@
 		{
 			reportOperationResult = "Error";
 		}
+	}
+
+	public async Task SetSapCredentials()
+	{
+		var factory = new EventCallbackFactory();
+		var parameters = new DialogParameters<DialogCreateReport>
+        {   
+			{ x => x.ButtonText, "Confirmar" },
+            { x => x.Color, Color.Error },
+			{ x => x.updateUI, factory.Create(this,() => GetData())}
+        };
+		var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+		var result = await DialogService.ShowAsync<DialogGetPassword>("Contraseña", parameters, options);
+		var password = await result.GetReturnValueAsync<string>();
+		
+		if(password == "klkmanin")
+		{
+			await Http.GetAsync($"{UrlGetter.Url}Brand/SetCookies");
+		}		
 	}
 				
 }

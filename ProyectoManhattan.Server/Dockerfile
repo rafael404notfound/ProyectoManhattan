@@ -13,7 +13,10 @@ EXPOSE 5001
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet dev-certs https
+#RUN mkdir \.aspnet\https
+#RUN dotnet dev-certs https -ep \.aspnet\https\aspnetapp.pfx -p supersecret
+#RUN dotnet dev-certs https --trust
+#RUN dotnet dev-certs https
 WORKDIR /src
 COPY ["ProyectoManhattan.Server/ProyectoManhattan.Server.csproj", "ProyectoManhattan.Server/"]
 COPY ["ProyectoManattan.Infrastructure/ProyectoManhattan.Infrastructure.csproj", "ProyectoManattan.Infrastructure/"]
@@ -34,6 +37,7 @@ RUN dotnet publish "./ProyectoManhattan.Server.csproj" -c $BUILD_CONFIGURATION -
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM mcr.microsoft.com/playwright/dotnet:v1.47.0-noble AS final
 WORKDIR /app
-COPY --from=publish /root/.dotnet/corefx/cryptography/x509stores/my/* /root/.dotnet/corefx/cryptography/x509stores/my/
+#COPY --from=publish /root/.dotnet/corefx/cryptography/x509stores/my/* /root/.dotnet/corefx/cryptography/x509stores/my/
+#COPY --from=publish /root/.aspnet/https* /root/.aspnet/https
 COPY --from=publish /app/publish /app
 ENTRYPOINT ["dotnet", "ProyectoManhattan.Server.dll"]

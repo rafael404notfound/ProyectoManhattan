@@ -1,7 +1,7 @@
 @inject HttpClient Http
 @inject ProyectoManhattan.Application.WebFetcher WebFetcher
 
-<h1>Modelos</h1>
+<h1>Modelos (RIP)</h1>
 
 <div clas="mb-2">
     <MudSelect T="string" Label="Uneco" AnchorOrigin="Origin.BottomCenter" @bind-Value="unecoSelected">
@@ -113,6 +113,13 @@
         }
     </div>
 
+<div>
+    <h3 class="mt-4">Demo para el ENVIDIOSO del Ramiro:</h3>
+    <video autoplay loop muted controls="controls"class="w-100 mt-2">
+        <source src="@($"{UrlGetter.Url}WebItem/GetVideo")" type="video/mp4">
+    </video>
+</div>
+
 
 @code
 {
@@ -127,6 +134,7 @@
         public string Uneco { get; set; }
         public List<string> Brands { get; set; }
     }
+
     protected override async Task OnInitializedAsync()
     {        
         unecoAndBrands.Add(new UnecoAndBrands

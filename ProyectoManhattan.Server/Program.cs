@@ -5,8 +5,14 @@ using ProyectoManhattan.Application;
 using System;
 using ProyectoManhattan.Server;
 using ProyectoManahttan.Application;
+using System.Security.Cryptography.X509Certificates;
 
 var builder = WebApplication.CreateBuilder(args);
+
+/*builder.WebHost.UseKestrel(options => options.ListenAnyIP(5001, listenOptions => listenOptions.UseHttps(adapterOptions =>
+                        {
+                            adapterOptions.ServerCertificate = new X509Certificate2("/home/app/.aspnet/https/aspnetapp.pfx", "supersecret");
+                        })));*/
 
 // Add services to the container.
 

@@ -21,5 +21,22 @@ namespace ProyectoManhattan.Server.Controllers
         {
             return await _webFetcher.GetItems(uneco, brand, collectSameDay);
         }
+
+        [HttpGet]
+        [Route("GetVideo")]
+        public async Task<ActionResult> GetVideo()
+        {
+            var memory = new MemoryStream();
+
+            using (var file = new FileStream("content/video.mp4", FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                await file.CopyToAsync(memory);
+            }
+
+            memory.Position = 0;
+            var ext = Path.GetExtension("content/video.mp4").ToLowerInvariant();
+
+            return File(memory, "video/mp4", $"PalRamiro");
+        }
     }
 }

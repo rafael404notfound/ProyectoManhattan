@@ -41,6 +41,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlhbG9nc1xEaWFsb2dEZWxldGVSZXBvcnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.BlazorComponents/Pages/Dialogs/DialogGetPassword.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlhbG9nc1xEaWFsb2dHZXRQYXNzd29yZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [c:/Users/Rafita/source/repos/proyectomanhattan/ProyectoManhattan.BlazorComponents/Pages/DialogUneco.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlhbG9nVW5lY28ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

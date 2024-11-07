@@ -4,9 +4,16 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=5000
       - ASPNETCORE_HTTPS_PORTS=5001
+      #- Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      #- Kestrel__Certificates__Default__Path=/root/.aspnet/https/ApiHost.pfx
+      - Kestrel__Certificates__Default__Path=/home/app/.aspnet/https/aspnetapp.pfx
+      - Kestrel__Certificates__Default__Password=supersecret
     ports:
       - "5000:5000"
       - "5001:5001"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      #- ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      #- ${APPDATA}/.aspnet/https:/root/.aspnet/https
+      #- /.aspnet/https:/https:ro
+      - ${APPDATA}/.aspnet/https:/home/app/.aspnet/https

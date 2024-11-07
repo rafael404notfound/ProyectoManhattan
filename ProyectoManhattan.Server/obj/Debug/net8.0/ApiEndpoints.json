@@ -95,6 +95,16 @@
   },
   {
     "ContainingType": "EciApi.Controllers.BrandController",
+    "Method": "SetCookies",
+    "RelativePath": "Brand/SetCookies",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EciApi.Controllers.BrandController",
     "Method": "StockChange",
     "RelativePath": "Brand/StockChange",
     "HttpMethod": "POST",
@@ -411,5 +421,15 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "ProyectoManhattan.Server.Controllers.WebItemController",
+    "Method": "GetVideo",
+    "RelativePath": "WebItem/GetVideo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]
