@@ -9,10 +9,12 @@ namespace ProyectoManhattan.Server.Controllers
     public class WebItemController : ControllerBase
     {
         private WebFetcher _webFetcher { get; set; }
+        private IHostEnvironment _environment;
 
-        public WebItemController(WebFetcher webFetcher)
+        public WebItemController(WebFetcher webFetcher, IHostEnvironment environment)
         {
             _webFetcher = webFetcher;
+            _environment = environment;
         }
 
         [HttpGet]
@@ -27,14 +29,17 @@ namespace ProyectoManhattan.Server.Controllers
         public async Task<ActionResult> GetVideo()
         {
             var memory = new MemoryStream();
+            var path = Path.Combine(_environment.ContentRootPath , "content/video.mp4");
+            Console.WriteLine(path);
 
-            using (var file = new FileStream("content/video.mp4", FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (var file = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 await file.CopyToAsync(memory);
             }
 
             memory.Position = 0;
-            var ext = Path.GetExtension("content/video.mp4").ToLowerInvariant();
+            var ext = Path.GetExtension(path).ToLowerInvariant();
+            
 
             return File(memory, "video/mp4", $"PalRamiro");
         }

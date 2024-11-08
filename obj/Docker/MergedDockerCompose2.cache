@@ -1,0 +1,59 @@
+name: dockercompose8661967865890764188
+services:
+  proyectomanhattan.database:
+    container_name: proyectomanhattan.database
+    environment:
+      POSTGRES_DB: ProyectoManhattanDb
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    image: postgres:15
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 5432
+      published: "5432"
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\Rafita\source\repos\ProyectoManhattan\.containers\proyectomanhattan-db
+      target: /var/lib/postgresql/data
+      bind:
+        create_host_path: true
+  proyectomanhattan.server:
+    build:
+      context: C:\Users\Rafita\source\repos\ProyectoManhattan
+      dockerfile: ProyectoManhattan.Server/Dockerfile
+    container_name: proyectomanhattan.server
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "5000"
+      ASPNETCORE_HTTPS_PORTS: "5001"
+    image: proyectomanhattanserver
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 5000
+      published: "5000"
+      protocol: tcp
+    - mode: ingress
+      target: 5001
+      published: "5001"
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\Rafita\AppData\Roaming/Microsoft/UserSecrets
+      target: /home/app/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Rafita\AppData\Roaming/ASP.NET/Https
+      target: /home/app/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+networks:
+  default:
+    name: dockercompose8661967865890764188_default

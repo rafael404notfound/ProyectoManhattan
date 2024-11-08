@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "ProyectoManhattan.Client",
   "resources": {
-    "hash": "sha256-nF5r1kFN0qE17ePUMROXnYlsKOo7qb982LSV+bDx20A=",
+    "hash": "sha256-bAfUHDTUdzALu8aU3H/nmEibhTGVbJlyJUU0hZbrKYE=",
     "jsModuleNative": {
       "dotnet.native.8.0.10.1e3b3r9dmq.js": "sha256-QVxMlY7ohmjgde/bZMA0dlWDAeuUP+tEfkiSdg4DFcE="
     },
@@ -269,15 +269,15 @@
       "netstandard.wasm": "sha256-v+s7sWxtOM6bnOvC0jFrtnm6uMfbDymwl2nHNgbS2LM=",
       "System.Private.CoreLib.wasm": "sha256-pklll63uFQoY6vaD3vbluS9osYiJWLLLmob1yHFgepI=",
       "ProyectoManhattan.Application.wasm": "sha256-RcY9OF2jM/tKH/IxdNnGAZQbFw5jYjmSVD/kjHrtNpo=",
-      "ProyectoManhattan.BlazorComponents.wasm": "sha256-ulNHZK/Rq0lrwy37KtB06eLx6tolvNDHXFLKTtX3S+0=",
+      "ProyectoManhattan.BlazorComponents.wasm": "sha256-9dyqOhUNL0hfnTSkGT5++Csbj+M2gG1E9rc3NZOuLwo=",
       "ProyectoManhattan.Domain.wasm": "sha256-eXh9EzYtnxD4nvCGsI1yblD8ryC7rd6t32+tArjq9Bk=",
-      "ProyectoManhattan.Client.wasm": "sha256-q7agJ1ohgj/GjE0nQVuyyo9Ym+/SxVeFe6Y6zzP6ONY="
+      "ProyectoManhattan.Client.wasm": "sha256-F7qkXWjz1vrg/GMy7E3kOejVrnoM7d1GRQSU0BFrr04="
     },
     "pdb": {
       "ProyectoManhattan.Application.pdb": "sha256-dOzoJCKefJa0eKKGXA68SRXAcb5phqr/vNWhgK8Lo+A=",
-      "ProyectoManhattan.BlazorComponents.pdb": "sha256-+b7NVDPKsPDkW6uL01wqYRAnhHNImiVPMIMscd/hF4M=",
+      "ProyectoManhattan.BlazorComponents.pdb": "sha256-jd0ovqv95Egf3xOI/ZUnGAKXKHUtfTTyBUJbkddWkwg=",
       "ProyectoManhattan.Domain.pdb": "sha256-E3jX3+nge17guGf9ooxxW1cpo9DwTe59s07V22EuLl8=",
-      "ProyectoManhattan.Client.pdb": "sha256-HfMeyXtNoXlbSSWVD8wqbsUj4q2p+k1pLM7PaCXvyfQ="
+      "ProyectoManhattan.Client.pdb": "sha256-aLsRS8GShkfBC8IWY1xZ5FMLJCljNfQoPD1QLvZK/M0="
     }
   },
   "cacheBootResources": true,
