@@ -9,9 +9,9 @@ namespace ProyectoManhattan.Server.Controllers
     public class WebItemController : ControllerBase
     {
         private WebFetcher _webFetcher { get; set; }
-        private IHostEnvironment _environment;
+        private IWebHostEnvironment _environment;
 
-        public WebItemController(WebFetcher webFetcher, IHostEnvironment environment)
+        public WebItemController(WebFetcher webFetcher, IWebHostEnvironment environment)
         {
             _webFetcher = webFetcher;
             _environment = environment;
@@ -29,7 +29,7 @@ namespace ProyectoManhattan.Server.Controllers
         public async Task<ActionResult> GetVideo()
         {
             var memory = new MemoryStream();
-            var path = Path.Combine(_environment.ContentRootPath , "content/video.mp4");
+            var path = Path.Combine(_environment.WebRootPath , "content/video.mp4");
             Console.WriteLine(path);
 
             using (var file = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
