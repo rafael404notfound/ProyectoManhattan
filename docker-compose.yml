@@ -1,6 +1,7 @@
 services:
   proyectomanhattan.server:
     image: ${DOCKER_REGISTRY-}proyectomanhattanserver
+    domainname: proyecto-manhattan.com
     container_name: proyectomanhattan.server
     build:
       context: .
