@@ -6,8 +6,10 @@ services:
       - ASPNETCORE_HTTPS_PORTS=5001
       #- Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
       #- Kestrel__Certificates__Default__Path=/root/.aspnet/https/ApiHost.pfx
-      #- Kestrel__Certificates__Default__Path=/home/app/.aspnet/https/aspnetapp.pfx
+      - Kestrel__Certificates__Default__Path=/home/app/.aspnet/https/sllcert.pfx
       #- Kestrel__Certificates__Default__Password=supersecret
+      - Kestrel__Certificates__Default__Password=supersecret
+      #- Kestrel__Certificates__Default__Path= /home/app/https/sllcert.pfx #path to the certificate in your container
     ports:
       - "5000:5000"
       - "5001:5001"
@@ -17,3 +19,5 @@ services:
       #- ${APPDATA}/.aspnet/https:/root/.aspnet/https
       #- /.aspnet/https:/https:ro
       #- ${APPDATA}/.aspnet/https:/home/app/.aspnet/https
+      - /home/volumes/proyectomanhattan/https:/home/app/.aspnet/https
+      #- C:\Users\Rafita\source\volumes\proyectomanhattan\sllcert.pfx:/home/app/https/sllcert.pfx
