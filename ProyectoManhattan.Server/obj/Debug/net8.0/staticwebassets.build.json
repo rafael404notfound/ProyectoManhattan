@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4Edh9UBwWpfeLcuIxMvbiPN2mZcEIKGoDRZHdiPNZnQ=",
+  "Hash": "1l+qEIxXPUKcwsk66Fgy47iinM1ndsRURZgI1UYSxwY=",
   "Source": "ProyectoManhattan.Server",
   "BasePath": "_content/ProyectoManhattan.Server",
   "Mode": "Default",
@@ -10419,6 +10419,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ProyectoManhattan.Client.styles.css"
+    },
+    {
+      "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\wwwroot\\content\\video.mp4",
+      "SourceId": "ProyectoManhattan.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "content/video.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\content\\video.mp4"
     },
     {
       "Identity": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\wwwroot\\css\\app.css",

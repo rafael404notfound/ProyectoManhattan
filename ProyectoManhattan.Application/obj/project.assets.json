@@ -8200,11 +8200,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj",
+      "projectUniqueName": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj",
       "projectName": "ProyectoManhattan.Application",
-      "projectPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj",
+      "projectPath": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj",
       "packagesPath": "C:\\Users\\Rafita\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\obj\\",
+      "outputPath": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8226,8 +8226,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj": {
-              "projectPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj"
+            "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj": {
+              "projectPath": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj"
             }
           }
         }
@@ -8304,7 +8304,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

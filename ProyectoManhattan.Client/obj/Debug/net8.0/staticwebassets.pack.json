@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\ProyectoManhattan.Client.styles.css"
     },
     {
+      "Id": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\wwwroot\\content\\video.mp4",
+      "PackagePath": "staticwebassets\\content\\video.mp4"
+    },
+    {
       "Id": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },

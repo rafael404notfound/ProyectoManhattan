@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj": {}
+    "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj": {
+    "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj",
+        "projectUniqueName": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj",
         "projectName": "ProyectoManhattan.Domain",
-        "projectPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj",
+        "projectPath": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj",
         "packagesPath": "C:\\Users\\Rafita\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\obj\\",
+        "outputPath": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -65,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
