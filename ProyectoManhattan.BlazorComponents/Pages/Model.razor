@@ -138,7 +138,7 @@
     }
     public async Task SetParkingShoeModel()
     {
-        var brand =  await http.GetFromJsonAsync<List<Brand>>($"{UrlGetter.Url}brand/getbrands");
+        var brand =  await http.GetFromJsonAsync<List<Brand>>($"{UrlGetter.Url}brand/getbrandswithincludes");
         parkingShoeModel = brand.FirstOrDefault(b => b.SapName == shoeModel.BrandSapName)?.ShoeModels.FirstOrDefault(sm => sm.RefWithOutSize == shoeModel.RefWithOutSize);
         if (parkingShoeModel is null)
         {

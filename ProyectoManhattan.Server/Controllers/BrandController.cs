@@ -28,6 +28,12 @@ namespace EciApi.Controllers
         {
             return _applicationRepo.GetAllWithoutIncludes();
         }  
+        [HttpGet()]
+        [Route("GetBrandsWithIncludes")]
+        public IEnumerable<Brand> GetGrandsWithIncludes()
+        {
+            return _applicationRepo.GetAll();
+        } 
 
 		[HttpGet()]
 		[Route("GetBrand")]
