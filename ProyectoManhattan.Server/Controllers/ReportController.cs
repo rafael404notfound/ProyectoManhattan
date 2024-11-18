@@ -42,7 +42,7 @@ namespace Eci.Api.Controllers
         [Route("GetAll")]
         public IActionResult GetAll()
         {
-            return Ok(_repository.GetAll());
+            return Ok(_repository.GetAllWithoutIncludes());
         }
 
         [HttpPost]

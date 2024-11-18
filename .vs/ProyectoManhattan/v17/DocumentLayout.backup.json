@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.server\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|solutionrelative:proyectomanhattan.server\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.application\\repositories\\ireportrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|solutionrelative:proyectomanhattan.application\\repositories\\ireportrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.application\\repositories\\iapplicationrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|solutionrelative:proyectomanhattan.application\\repositories\\iapplicationrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.application\\repositories\\efreportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|solutionrelative:proyectomanhattan.application\\repositories\\efreportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|solutionrelative:proyectomanhattan.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -25,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.blazorcomponents\\pages\\reportspage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9924AA49-4FC1-42E8-B348-D2A9AE48B5BB}|ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj|solutionrelative:proyectomanhattan.blazorcomponents\\pages\\reportspage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.server\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A4093A3D-6CED-46A5-9905-4C0CFF120A0C}|ProyectoManhattan.Server\\ProyectoManhattan.Server.csproj|solutionrelative:proyectomanhattan.server\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{05C8C3A7-76F5-4B81-B7D1-DCC3E3C77C8D}|ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj|c:\\users\\rafita\\source\\repos\\proyectomanhattan\\proyectomanhattan.application\\eciservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,11 +70,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
+              "Title": "IReportRepo.cs",
+              "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\Repositories\\IReportRepo.cs",
+              "RelativeDocumentMoniker": "ProyectoManhattan.Application\\Repositories\\IReportRepo.cs",
+              "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\Repositories\\IReportRepo.cs",
+              "RelativeToolTip": "ProyectoManhattan.Application\\Repositories\\IReportRepo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T04:36:18.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IApplicationRepo.cs",
+              "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\Repositories\\IApplicationRepo.cs",
+              "RelativeDocumentMoniker": "ProyectoManhattan.Application\\Repositories\\IApplicationRepo.cs",
+              "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\Repositories\\IApplicationRepo.cs",
+              "RelativeToolTip": "ProyectoManhattan.Application\\Repositories\\IApplicationRepo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T04:36:12.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EFReportRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\Repositories\\EFReportRepository.cs",
+              "RelativeDocumentMoniker": "ProyectoManhattan.Application\\Repositories\\EFReportRepository.cs",
+              "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\Repositories\\EFReportRepository.cs",
+              "RelativeToolTip": "ProyectoManhattan.Application\\Repositories\\EFReportRepository.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T04:35:20.097Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "ReportController.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\Controllers\\ReportController.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.Server\\Controllers\\ReportController.cs",
@@ -70,11 +121,12 @@
               "RelativeToolTip": "ProyectoManhattan.Server\\Controllers\\ReportController.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAwwBEAAACMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-03T08:50:07.357Z"
+              "WhenOpened": "2024-11-03T08:50:07.357Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "ProyectoManhattan.Server\\Properties\\launchSettings.json",
@@ -86,7 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Url.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\Url.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.Client\\Url.cs",
@@ -98,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "MigrationExtensions.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\Exstensions\\MigrationExtensions.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.Server\\Exstensions\\MigrationExtensions.cs",
@@ -106,25 +158,24 @@
               "RelativeToolTip": "ProyectoManhattan.Server\\Exstensions\\MigrationExtensions.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T05:09:45.773Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-31T05:09:45.773Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\Program.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.Server\\Program.cs",
               "ToolTip": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\Program.cs",
               "RelativeToolTip": "ProyectoManhattan.Server\\Program.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAawBQAAABHAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAABQAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-30T04:26:49.149Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Url.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\Url.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.BlazorComponents\\Url.cs",
@@ -136,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "ReportsPage.razor",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\Pages\\ReportsPage.razor",
               "RelativeDocumentMoniker": "ProyectoManhattan.BlazorComponents\\Pages\\ReportsPage.razor",
@@ -148,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "ProyectoManhattan.BlazorComponents.csproj",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj",
               "RelativeDocumentMoniker": "ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj",
@@ -160,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "EciService.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\EciService.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.Application\\EciService.cs",
@@ -172,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "BrandController.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Server\\Controllers\\BrandController.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.Server\\Controllers\\BrandController.cs",
@@ -184,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "ModelsPage.razor",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\Pages\\ModelsPage.razor",
               "RelativeDocumentMoniker": "ProyectoManhattan.BlazorComponents\\Pages\\ModelsPage.razor",
@@ -196,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "WebFetcher.cs",
               "DocumentMoniker": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\WebFetcher.cs",
               "RelativeDocumentMoniker": "ProyectoManhattan.Application\\WebFetcher.cs",

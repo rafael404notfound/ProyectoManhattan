@@ -14,6 +14,7 @@ namespace ProyectoManhattan.Application
         public void Create(Report entity);
         public void Delete(int id);
         public Task<Report> Get(int id);
+        public IQueryable<Report> GetAllWithoutIncludes();
         public IQueryable<Report> GetAll();
         public Task Update(Report brand);
     }

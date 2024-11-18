@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WexC70Q383g=",
+  "dgSpecHash": "OXQful6GOgw=",
   "success": true,
-  "projectFilePath": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Client\\ProyectoManhattan.Client.csproj",
+  "projectFilePath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\ProyectoManhattan.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rafita\\.nuget\\packages\\bootstrap\\5.3.3\\bootstrap.5.3.3.nupkg.sha512",
     "C:\\Users\\Rafita\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",

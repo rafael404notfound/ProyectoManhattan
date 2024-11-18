@@ -16,6 +16,7 @@ namespace ProyectoManhattan.Application
         public void Delete(string name);
         public Task<Brand> Get(int id);
         public Task<Brand> Get(string name);
+        public IQueryable<Brand>GetAllWithoutIncludes();
 
         public IQueryable<Brand> GetAll();
         public Task Update(Brand brand);

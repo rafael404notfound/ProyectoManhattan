@@ -35,6 +35,10 @@ namespace ProyectoManhattan.Application
             return await DbContext.Reports.Include(r => r.BrandReportInfos).ThenInclude(bri => bri.ShoeModelReportInfos).ThenInclude(s => s.ShoeReportInfos)
                 .FirstOrDefaultAsync(b => b.Id == id) ?? new Report();
         }
+        public IQueryable<Report> GetAllWithoutIncludes()
+        {
+            return DbContext.Reports;
+        }
 
 		public IQueryable<Report> GetAll()
         {

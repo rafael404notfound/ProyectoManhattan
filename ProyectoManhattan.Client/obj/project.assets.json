@@ -13490,11 +13490,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Client\\ProyectoManhattan.Client.csproj",
+      "projectUniqueName": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\ProyectoManhattan.Client.csproj",
       "projectName": "ProyectoManhattan.Client",
-      "projectPath": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Client\\ProyectoManhattan.Client.csproj",
+      "projectPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\ProyectoManhattan.Client.csproj",
       "packagesPath": "C:\\Users\\Rafita\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Client\\obj\\",
+      "outputPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -13516,14 +13516,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj": {
-              "projectPath": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj"
+            "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj": {
+              "projectPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Application\\ProyectoManhattan.Application.csproj"
             },
-            "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj": {
-              "projectPath": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj"
+            "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj": {
+              "projectPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.BlazorComponents\\ProyectoManhattan.BlazorComponents.csproj"
             },
-            "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj": {
-              "projectPath": "c:\\Users\\Rafita\\source\\repos\\proyectomanhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj"
+            "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj": {
+              "projectPath": "C:\\Users\\Rafita\\source\\repos\\ProyectoManhattan\\ProyectoManhattan.Domain\\ProyectoManhattan.Domain.csproj"
             }
           }
         }

@@ -15,13 +15,18 @@ namespace ProyectoManhattan.Application
             await using var browser = await playwright.Chromium.LaunchAsync();
             var page = await browser.NewPageAsync();
             await page.GotoAsync("https://sapfiori.elcorteingles.es/sap/bc/ui2/flp");
-            Thread.Sleep(1000);
             
             // Fill form elemtents
-            await page.Locator("#username").FillAsync("73607079");
-            Thread.Sleep(500);
-            await page.Locator("#password").FillAsync("ab123123");
-            Thread.Sleep(500);
+            //Task task = page.WaitForSelectorAsync("#username");
+            //await task.ContinueWith(async (r) => 
+            //{
+                Thread.Sleep(3000);
+                await page.Locator("#username").FillAsync("73607079");
+                Thread.Sleep(500);
+                await page.Locator("#password").FillAsync("ab123123");
+                Thread.Sleep(300);
+            //} );
+            
 
             // Send form
             await page.Locator("#password").PressAsync("Enter");

@@ -26,7 +26,7 @@ namespace EciApi.Controllers
         [Route("GetBrands")]
         public IEnumerable<Brand> GetBrands()
         {
-            return _applicationRepo.GetAll();
+            return _applicationRepo.GetAllWithoutIncludes();
         }  
 
 		[HttpGet()]

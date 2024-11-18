@@ -50,6 +50,11 @@ namespace ProyectoManhattan.Application
             return DbContext.Brands.Include(b => b.ShoeModels).ThenInclude(s => s.Sizes);
         }
 
+        public IQueryable<Brand> GetAllWithoutIncludes()
+        {
+            return DbContext.Brands;
+        }
+
         public async Task Operate(Brand brand, Operation operation)
         {
             if (brand.DisplayName == null)
