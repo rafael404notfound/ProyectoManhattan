@@ -32,7 +32,10 @@
 @if(reports is not null)
 {
 	<h3>Finalizados:</h3>
-	foreach(var report in reports)
+
+	<MudTextField Class="mb-2" @bind-Value="searchString" Label="Buscar" Variant="Variant.Text" InputType="InputType.Text" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" Adornment="Adornment.End"></MudTextField>
+
+	foreach(var report in reports.Where(r => r.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase) || String.IsNullOrEmpty(searchString)))
 	{
 		
 		<MudCard Class="mb-2">
@@ -54,6 +57,7 @@
 @code {
 	private HubConnection? _hubConnection;
 	private List<Report>? reports;
+	private string searchString = String.Empty;
 	private Queue<PendingReport>? pendingReports;
 	private readonly List<string> _messages = new();
 	protected override async Task OnInitializedAsync()

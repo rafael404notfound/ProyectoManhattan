@@ -18,7 +18,8 @@
 <h3>Marcas:</h3>
 @if(brands is not null)
 {
-	foreach(var brand in brands)
+	<MudTextField Class="mb-2" @bind-Value="searchString" Label="Buscar" Variant="Variant.Text" InputType="InputType.Text" Immediate="true" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" Adornment="Adornment.End"></MudTextField>
+	foreach(var brand in brands.Where(b => b.DisplayName.Contains(searchString, StringComparison.OrdinalIgnoreCase) || String.IsNullOrEmpty(searchString)))
 	{		
 		<MudCard Class="mb-2">
 			<MudCardHeader>
@@ -40,6 +41,7 @@
 
 @code {
 	private List<Brand>? brands;
+	private string searchString = String.Empty;
 	public string? reportOperationResult;
 	protected override async Task OnInitializedAsync()
 	{

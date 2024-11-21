@@ -123,5 +123,10 @@ namespace ProyectoManhattan.Application
             // Close
             driver.Quit();
         }
+
+        public bool CookiesAreInvalid()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

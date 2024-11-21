@@ -7,5 +7,6 @@ namespace ProyectoManhattan.Application
     {
         public CookieContainer cookieContainer { get; set; }
         public Task SetCookies();
+        bool CookiesAreInvalid();
     }
 }
